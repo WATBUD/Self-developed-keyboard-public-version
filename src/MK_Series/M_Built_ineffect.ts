@@ -29,8 +29,7 @@ export class ModeParameter {
             field:'separate',
         },
     ] 
-    constructor (...theArgs:any){
-        this.translate=theArgs.translate;
+    constructor (){
     }
 }
 export class Wave extends ModeParameter{//Wave

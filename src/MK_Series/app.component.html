@@ -402,12 +402,7 @@ background-color:rgba(0, 0, 0, 0.78);;
         {{i18nManager.getTarget('HASNEWVERSION')}}
     </div>
 
-    <!-- <div id="ZoomOut" class="ZoomMax" style="position: absolute;
-        height: 19px;
-        margin-top: 0.6%;
-        width: 26px;
-        right: 10.2vw;" (click)="changeWinSystemTaskBar('maximize')">
-    </div> -->
+
 
     <div id="SystemSettingIcon" style="position: absolute;
             margin-top: 0.6%;
@@ -418,13 +413,13 @@ background-color:rgba(0, 0, 0, 0.78);;
             height: 22px;
             width: 22px;
             margin-top: 0.6%;
-            right: 3.2vw;" (click)="changeWinSystemTaskBar('minimize')">
+            right: 3.2vw;" (click)="this.Electron_Service.changeWinSystemTaskBar('minimize')">
     </div>
     <div id="CloseProgram" style="    position: absolute;
     margin-top: 0.6%;
     height: 22px;width: 22px;
     right: 1vw;
-    background-repeat: no-repeat;" (click)="changeWinSystemTaskBar('leave')">
+    background-repeat: no-repeat;" (click)="this.Electron_Service.changeWinSystemTaskBar('leave')">
     </div>
 
     <div id="backHome" (click)="setPageIndex('SelectDevice')">

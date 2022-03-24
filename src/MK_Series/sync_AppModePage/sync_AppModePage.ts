@@ -3,11 +3,10 @@ import { Component ,OnInit ,Output,Input ,EventEmitter, SimpleChange, OnChanges
     , ViewEncapsulation, forwardRef,ChangeDetectorRef, ViewChild
 ,Injectable} from '@angular/core';
 import { AppComponent } from '../app.component';
-import { protocolService } from '../../services/service/protocol.service';
 import { MouseMoveObjectManager } from './MouseMoveObject';
 import { MouseBoxSelection } from './MouseBoxSelection';
 import { CurrentColor,MacroScriptContent,MacroManager,Wave,APModeModule,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
-    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList  
+    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,i18nManager,FirewareManager,ImgPathList  
     ,count_boolean,CreateFakeArray,SharesFunction,ProgressBar,M_Light_CS,getMatchedCSS,DeviceService
 } from '../TSImportManager';
 let funcVar = System._nodeRequire('./backend/others/FunctionVariable');
@@ -19,8 +18,8 @@ var scaleConfig = {
 }
 @Component({
     selector: 'sync_AppModePage',
-    templateUrl : './components/sync_AppModePage/sync_AppModePage.html',
-    styleUrls: ['./components/sync_AppModePage/sync_AppModePage.css','./assets/css/Share.css'],
+    templateUrl : './sync_AppModePage.html',
+    styleUrls: ['./sync_AppModePage.css','../css/Share.css'],
     providers: [
         
         // {
@@ -51,8 +50,7 @@ export class sync_AppModePageComponent implements OnInit{
     private onChangeCallback: (_: any) => void;
     private onTouchedCallback: () => void;
     //private zz: AlertDevice
-    constructor(private mainapp: AppComponent,private changeDetectorRef: ChangeDetectorRef,
-        private protocol: protocolService){
+    constructor(private mainapp: AppComponent,private changeDetectorRef: ChangeDetectorRef){
         //this.MouseMoveObjectFn.addMoveObject('KeyBoardUI2');                                                                                                                                                                                                                                                                                                 
         
         
@@ -293,8 +291,7 @@ export class sync_AppModePageComponent implements OnInit{
             Func: 'setSyncColorDataToServer',
             Param: apmodesetting
         }
-        this.protocol.RunSetFunction(obj3).then((data) => {
-        })
+
     }
     // public writeValue(obj: any): void {
     //     // throw new Error("Method not implemented.");

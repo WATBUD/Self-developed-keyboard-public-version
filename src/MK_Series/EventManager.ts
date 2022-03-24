@@ -1,7 +1,5 @@
 
 declare var System;
-var ConstantArray = System._nodeRequire('./backend/others/ConstantArray');
-var SupportData = System._nodeRequire('./backend/others/SupportData');
 import { Injectable } from '@angular/core';
 let AllFunctionMapping = System._nodeRequire('./backend/others/SupportData').AllFunctionMapping
 

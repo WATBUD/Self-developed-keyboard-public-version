@@ -3,13 +3,11 @@ import { Component ,OnInit ,Output,Input ,EventEmitter, SimpleChange, OnChanges
     , ViewEncapsulation, forwardRef,ChangeDetectorRef, ViewChild
 ,Injectable} from '@angular/core';
 import { AppComponent } from '../app.component';
-import { protocolService } from '../../services/service/protocol.service';
 import { CurrentColor,MacroScriptContent,MacroManager,Wave,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
-    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList  
+    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,i18nManager,FirewareManager,ImgPathList  
     ,count_boolean,CreateFakeArray,SharesFunction,ProgressBar,getMatchedCSS,DeviceService,
 } from '../TSImportManager';
-let funcVar = System._nodeRequire('./backend/others/FunctionVariable');
-let remote = System._nodeRequire('electron').remote;
+
 //var this.MouseBoxSelectionFn=new MouseBoxSelection();AppComponent,
 var scaleConfig = {
     scaleMultipleConfig: [0.25, 0.5, 1, 2, 4],
@@ -17,8 +15,8 @@ var scaleConfig = {
 }
 @Component({
     selector: 'PlugDevicePage',
-    templateUrl : './components/PlugDeviceFolder/PlugDevicePage.html',
-    styleUrls: ['./components/PlugDeviceFolder/PlugDevicePage.css','./assets/css/Share.css'],
+    templateUrl : './PlugDevicePage.html',
+    styleUrls: ['./PlugDevicePage.css','../css/Share.css'],
     providers: [],
 })
 @Injectable()
@@ -33,8 +31,7 @@ export class PlugDevicePageComponent implements OnInit{
     DeviceService=DeviceService.getInstance();
     private onChangeCallback: (_: any) => void;
     private onTouchedCallback: () => void;
-    constructor(private changeDetectorRef: ChangeDetectorRef,
-        private protocol: protocolService){
+    constructor(private changeDetectorRef: ChangeDetectorRef){
         //this.MouseMoveObjectFn.addMoveObject('KeyBoardUI2')
         console.log('%c PlugDevicePageComponentInitial','background: red; color: white');
 

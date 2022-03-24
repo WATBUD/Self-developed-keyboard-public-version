@@ -1,13 +1,13 @@
-// @import '../assets/scss/app.variables';
+/* @import '../assets/scss/app.variables'; */
 /*#region Share*/
-// @font-face {
-//     font-family: 'mywebfont';
-//     src: url('./NotoSansHans-Light.otf');
-//   }
-//   * {
-//     font-family: 'mywebfont', sans-serif;
-//   }
-  
+@font-face {
+    font-family: 'mywebfont';
+    src: url('/NotoSansHans-Light.otf');
+  }
+  * {
+    font-family: 'mywebfont', sans-serif;
+  }
+
 
 
   #myProgress {
@@ -34,66 +34,66 @@
 
 
 #AdvancedBtnL0{
-    background-image: url('./image/Advanced/Off/LAdd.png');
+    background-image: url('/image/Advanced/Off/LAdd.png');
 }
 #AdvancedBtnL0:hover{
-    background-image: url('./image/Advanced/On/LAdd.png');
+    background-image: url('/image/Advanced/On/LAdd.png');
 }
 #AdvancedBtnL1{
-    background-image: url('./image/Advanced/Off/LDelete.png');
+    background-image: url('/image/Advanced/Off/LDelete.png');
 }
 #AdvancedBtnL1:hover{
-    background-image: url('./image/Advanced/On/LDelete.png');
+    background-image: url('/image/Advanced/On/LDelete.png');
 }
 #AdvancedBtnL2{
-    background-image: url('./image/Advanced/Off/LUp.png');
+    background-image: url('/image/Advanced/Off/LUp.png');
 }
 #AdvancedBtnL2:hover{
-    background-image: url('./image/Advanced/On/LUp.png');
+    background-image: url('/image/Advanced/On/LUp.png');
 }
 #AdvancedBtnL3{
-    background-image: url('./image/Advanced/Off/LDown.png');
+    background-image: url('/image/Advanced/Off/LDown.png');
 }
 #AdvancedBtnL3:hover{
-    background-image: url('./image/Advanced/On/LDown.png');
+    background-image: url('/image/Advanced/On/LDown.png');
 }
 #AdvancedBtnL4{
-    background-image: url('./image/Advanced/Off/LCopy.png');
+    background-image: url('/image/Advanced/Off/LCopy.png');
 }
 #AdvancedBtnL4:hover{
-    background-image: url('./image/Advanced/On/LCopy.png');
+    background-image: url('/image/Advanced/On/LCopy.png');
 }
 
 
 #AdvancedBtnR0{
-    background-image: url('./image/Advanced/Off/RAdd.png');
+    background-image: url('/image/Advanced/Off/RAdd.png');
 }
 #AdvancedBtnR0:hover{
-    background-image: url('./image/Advanced/On/RAdd.png');
+    background-image: url('/image/Advanced/On/RAdd.png');
 }
 #AdvancedBtnR1{
-    background-image: url('./image/Advanced/Off/RDelete.png');
+    background-image: url('/image/Advanced/Off/RDelete.png');
 }
 #AdvancedBtnR1:hover{
-    background-image: url('./image/Advanced/On/RDelete.png');
+    background-image: url('/image/Advanced/On/RDelete.png');
 }
 #AdvancedBtnR2{
-    background-image: url('./image/Advanced/Off/RUp.png');
+    background-image: url('/image/Advanced/Off/RUp.png');
 }
 #AdvancedBtnR2:hover{
-    background-image: url('./image/Advanced/On/RUp.png');
+    background-image: url('/image/Advanced/On/RUp.png');
 }
 #AdvancedBtnR3{
-    background-image: url('./image/Advanced/Off/RDown.png');
+    background-image: url('/image/Advanced/Off/RDown.png');
 }
 #AdvancedBtnR3:hover{
-    background-image: url('./image/Advanced/On/RDown.png');
+    background-image: url('/image/Advanced/On/RDown.png');
 }
 #AdvancedBtnR4{
-    background-image: url('./image/Advanced/Off/RCopy.png');
+    background-image: url('/image/Advanced/Off/RCopy.png');
 }
 #AdvancedBtnR4:hover{
-    background-image: url('./image/Advanced/On/RCopy.png');
+    background-image: url('/image/Advanced/On/RCopy.png');
 }
 
 
@@ -103,29 +103,29 @@
 
 
 #CloseProgram{
-    background-image: url('./image/Share/Off/CloseProgram.png');;
+    background-image: url('/image/Share/Off/CloseProgram.png');;
 }
 #CloseProgram:hover{
-    background-image: url('./image/Share/On/CloseProgram.png')
+    background-image: url('/image/Share/On/CloseProgram.png')
 }
 #Bell{
-    background-image: url('./image/Share/Off/Bell.png');
+    background-image: url('/image/Share/Off/Bell.png');
 }
 #Bell:hover{
-    background-image: url('./image/Share/On/Bell.png');
+    background-image: url('/image/Share/On/Bell.png');
 }
 #SystemSettingIcon{
-    background-image: url('./image/Share/Off/SystemSettingIcon.png');
+    background-image: url('/image/Share/Off/SystemSettingIcon.png');
 }
 #SystemSettingIcon:hover{
-    background-image: url('./image/Share/On/SystemSettingIcon.png');
+    background-image: url('/image/Share/On/SystemSettingIcon.png');
 
 }
 #ZoomOut{
-    background-image: url('./image/Share/Off/ZoomOut.png');
+    background-image: url('/image/Share/Off/ZoomOut.png');
 }
 #ZoomOut:hover{
-    background-image: url('./image/Share/On/ZoomOut.png');
+    background-image: url('/image/Share/On/ZoomOut.png');
 }
 
 
@@ -133,87 +133,87 @@
 
 
 #DecreaseBrightness{
-    background-image: url('./image/Keyboard/Off/DecreaseBrightness.png');
+    background-image: url('/image/Keyboard/Off/DecreaseBrightness.png');
 }
 #DecreaseBrightness:hover{
-    background-image: url('./image/Keyboard/On/DecreaseBrightness.png');
+    background-image: url('/image/Keyboard/On/DecreaseBrightness.png');
 }
-#IncreaseBrightness{//SwitchCustomMode
-    background-image: url('./image/Keyboard/Off/IncreaseBrightness.png');
+#IncreaseBrightness{
+    background-image: url('/image/Keyboard/Off/IncreaseBrightness.png');
 }
 #IncreaseBrightness:hover{
-    background-image: url('./image/Keyboard/On/IncreaseBrightness.png');
+    background-image: url('/image/Keyboard/On/IncreaseBrightness.png');
 }
 #SwitchCustomMode{
-    background-image: url('./image/Keyboard/Off/SwitchCustomMode.png');
+    background-image: url('/image/Keyboard/Off/SwitchCustomMode.png');
 }
 #SwitchCustomMode:hover{
-    background-image: url('./image/Keyboard/On/SwitchCustomMode.png');
+    background-image: url('/image/Keyboard/On/SwitchCustomMode.png');
 }
 #SwitchLEDMode{
-    background-image: url('./image/Keyboard/Off/SwitchLEDMode.png');
+    background-image: url('/image/Keyboard/Off/SwitchLEDMode.png');
 }
 #SwitchLEDMode:hover{
-    background-image: url('./image/Keyboard/On/SwitchLEDMode.png');
+    background-image: url('/image/Keyboard/On/SwitchLEDMode.png');
 }
 
 #SwitchLEDMode{
-        background-image: url('./image/Keyboard/Off/SwitchLEDMode.png');
+        background-image: url('/image/Keyboard/Off/SwitchLEDMode.png');
 }
 #SwitchLEDMode:hover{
-        background-image: url('./image/Keyboard/On/SwitchLEDMode.png');
+        background-image: url('/image/Keyboard/On/SwitchLEDMode.png');
 }
 
 #DecreaseLEDSpeed{
-    background-image: url('./image/Keyboard/Off/DecreaseLEDSpeed.png');
+    background-image: url('/image/Keyboard/Off/DecreaseLEDSpeed.png');
 }
 #DecreaseLEDSpeed:hover{
-    background-image: url('./image/Keyboard/On/DecreaseLEDSpeed.png');
+    background-image: url('/image/Keyboard/On/DecreaseLEDSpeed.png');
 }
 
 #IncreaseLEDSpeed{
-            background-image: url('./image/Keyboard/Off/IncreaseLEDSpeed.png');
+            background-image: url('/image/Keyboard/Off/IncreaseLEDSpeed.png');
 }
 #IncreaseLEDSpeed:hover{
-            background-image: url('./image/Keyboard/On/IncreaseLEDSpeed.png');
+            background-image: url('/image/Keyboard/On/IncreaseLEDSpeed.png');
 }
 #BT1{
-    background-image: url('./image/Keyboard/Off/BT1.png');
+    background-image: url('/image/Keyboard/Off/BT1.png');
 }
 #BT1:hover{
-    background-image: url('./image/Keyboard/On/BT1.png');
+    background-image: url('/image/Keyboard/On/BT1.png');
 }      
 #BT2{
-    background-image: url('./image/Keyboard/Off/BT2.png');
+    background-image: url('/image/Keyboard/Off/BT2.png');
 }
 #BT2:hover{
-    background-image: url('./image/Keyboard/On/BT2.png');
+    background-image: url('/image/Keyboard/On/BT2.png');
 }         
 #BT3{
-    background-image: url('./image/Keyboard/Off/BT3.png');
+    background-image: url('/image/Keyboard/Off/BT3.png');
 }
 #BT3:hover{
-    background-image: url('./image/Keyboard/On/BT3.png');
+    background-image: url('/image/Keyboard/On/BT3.png');
 }   
 #FNlock{
-    background-image: url('./image/Keyboard/Off/FNlock_C.png');
+    background-image: url('/image/Keyboard/Off/FNlock_C.png');
 }
 #FNlock:hover{
-    background-image: url('./image/Keyboard/On/FNlock_C.png');
+    background-image: url('/image/Keyboard/On/FNlock_C.png');
 }    
 
 #CloseLED{
-    background-image: url('./image/Keyboard/Off/CloseLED.png');
+    background-image: url('/image/Keyboard/Off/CloseLED.png');
 }
 #CloseLED:hover{
-    background-image: url('./image/Keyboard/On/CloseLED.png');
+    background-image: url('/image/Keyboard/On/CloseLED.png');
 }    
 
 #Endurance{
-    background-image: url('./image/Keyboard/Off/Endurance.png');
+    background-image: url('/image/Keyboard/Off/Endurance.png');
 }
 #Endurance:hover{
-    background-image: url('./image/Keyboard/On/Endurance.png');
+    background-image: url('/image/Keyboard/On/Endurance.png');
 }   
 
 
@@ -255,16 +255,15 @@
     box-sizing: border-box;
 
 }
-// .ProjectItem:focus{
-// background-color: red;
-
-// }
-// .ProjectItem:active{
-//     background-color: green;
-// }
-// .ProjectItem:visited{
-//     background-color: blue;
-// }
+/* .ProjectItem:focus{
+background-color: red;
+}
+.ProjectItem:active{
+    background-color: green;
+}
+.ProjectItem:visited{
+    background-color: blue;
+} */
 
 
 
@@ -295,12 +294,12 @@
     width: 15px;
 }
 .ProjectSelect::-webkit-scrollbar-button:vertical:decrement {
-    background-image: url('./image/ColorSet/UpArrow.png');
+    background-image: url('/image/ColorSet/UpArrow.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 .ProjectSelect::-webkit-scrollbar-button:vertical:increment {
-    background-image: url('./image/ColorSet/DownArrow.png');
+    background-image: url('/image/ColorSet/DownArrow.png');
 
     background-repeat: no-repeat;
     background-position: center;
@@ -375,13 +374,13 @@
     width: 15px;
 }
 #KeyBoardMacroSearchSetting::-webkit-scrollbar-button:vertical:decrement {
-    background-image: url('./image/ColorSet/UpArrow.png');
+    background-image: url('/image/ColorSet/UpArrow.png');
     background-repeat: no-repeat;
     background-position: center;
     height: 0;
 }
 #KeyBoardMacroSearchSetting::-webkit-scrollbar-button:vertical:increment {
-    background-image: url('./image/ColorSet/DownArrow.png');
+    background-image: url('/image/ColorSet/DownArrow.png');
      height: 0;
     background-repeat: no-repeat;
     background-position: center;
@@ -421,12 +420,12 @@
     width: 15px;
 }
 #ScriptClassSelect::-webkit-scrollbar-button:vertical:decrement {
-    background-image: url('./image/ColorSet/UpArrow.png');
+    background-image: url('/image/ColorSet/UpArrow.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 #ScriptClassSelect::-webkit-scrollbar-button:vertical:increment {
-    background-image: url('./image/ColorSet/DownArrow.png');
+    background-image: url('/image/ColorSet/DownArrow.png');
 
     background-repeat: no-repeat;
     background-position: center;
@@ -462,13 +461,12 @@
     width: 16px;
 }
 #MacroFileSelectList::-webkit-scrollbar-button:vertical:decrement {
-    background-image: url('./image/ColorSet/UpArrow.png');
+    background-image: url('/image/ColorSet/UpArrow.png');
     background-repeat: no-repeat;
     background-position: center;
-        // background-size: 100% 100%;
 }
 #MacroFileSelectList::-webkit-scrollbar-button:vertical:increment {
-    background-image: url('./image/ColorSet/DownArrow.png');
+    background-image: url('/image/ColorSet/DownArrow.png');
     background-repeat: no-repeat;
     background-position: center;
 
@@ -479,7 +477,7 @@
     height: 36px;
     display: flex;
     align-items: center;
-    background-image: url(./image/Share/CRUDSettingBG.png);
+    background-image: url(/image/Share/CRUDSettingBG.png);
     background-size: 100% 100%;
 
 }
@@ -511,13 +509,13 @@ text-align: center;
     width: 15px;
 }
 .DropListStyle::-webkit-scrollbar-button:vertical:decrement {
-    background-image: url('./image/ColorSet/UpArrow.png');
+    background-image: url('/image/ColorSet/UpArrow.png');
     background-repeat: no-repeat;
     background-position: center;
     height: 0;
 }
 .DropListStyle::-webkit-scrollbar-button:vertical:increment {
-    background-image: url('./image/ColorSet/DownArrow.png');
+    background-image: url('/image/ColorSet/DownArrow.png');
      height: 0;
     background-repeat: no-repeat;
     background-position: center;
@@ -541,12 +539,12 @@ text-align: center;
 /*#endregion Select*/
 
 /*#region WebInputUI*/
-// input[type="button"]{
-//     -webkit-appearance: none;
-//     -moz-appearance: none;
-//     appearance: none;
-//     margin: 0;
-// }
+ /* input[type="button"]{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     margin: 0;
+ } */
 input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -555,7 +553,6 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"].autoStartCheckBox{
-    //@extend: yellow;
     width:1.5vh;
     height: 1.5vh;
     border: 2px solid #519BFF;
@@ -613,7 +610,6 @@ input[type="checkbox"].autoStartCheckBox:checked{
     width: 100%;
     height: 3vh;
     font-size: 2.3vh;
-    // font-weight: bold;
     margin-top: 2%;
     border-radius: 2px;
     box-sizing: border-box;
@@ -630,11 +626,9 @@ input[type="checkbox"].autoStartCheckBox:checked{
     border-radius: 2px;
 
 }
-// .APModeSelect:hover{
-//     background-color:#FFC757;
-
-
-// }
+/* .APModeSelect:hover{
+    background-color:#FFC757;
+} */
 
 /*#endregion Page1:LEDmode*/
 
@@ -656,16 +650,16 @@ input[type="checkbox"].autoStartCheckBox:checked{
 
 
 
-// input[type=number]::-webkit-outer-spin-button,
-// input[type=number]::-webkit-inner-spin-button {
-//     -webkit-appearance: none;
-//     margin: 0;
-// }
-// input[type=number]::-webkit-inner-spin-button,
-// input[type=number]::-webkit-outer-spin-button {
-//   opacity:0;
-//   pointer-events:none;
-// }
+ /* input[type=number]::-webkit-outer-spin-button,
+ input[type=number]::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+ }
+ input[type=number]::-webkit-inner-spin-button,
+ input[type=number]::-webkit-outer-spin-button {
+   opacity:0;
+   pointer-events:none;
+ } */
 
 
 
@@ -695,8 +689,7 @@ input.InputBtnStyle:hover {
     font-size: 1.5vh;
     box-sizing: border-box;
     background-color: #4C4C4C;
-    //background-color: rgb(255, 0, 0);
-    // margin-left: 5.7%;
+
 }
 
 
@@ -723,8 +716,7 @@ input.InputBtnStyle:hover {
     float: left;
     line-height: 3.7vh;
     white-space: nowrap;
-    // background-size: 100% 100%;
-   // background-color: #f00;
+
     background-repeat: no-repeat;
 }
 
@@ -739,7 +731,6 @@ input.InputBtnStyle:hover {
 .MacroFiletItem{
     width: 7%;display: inline-block;
     box-sizing: border-box;
-    // margin: 0.8vw;
     margin-left: 1.8vw;
     margin-top: 0.9vw;
     text-overflow: ellipsis;
@@ -773,17 +764,13 @@ input.InputBtnStyle:hover {
     width: 15px;
 }
 #MacroContentArea::-webkit-scrollbar-button:vertical:decrement {
-    // background-image: url('./image/ColorSet/UpArrow.png');
     background: transparent;
     width: 0;
     height:0;
-    // background-repeat: no-repeats;
     
 }
 #MacroContentArea::-webkit-scrollbar-button:vertical:increment {
-    // background-image: url('./image/ColorSet/DownArrow.png');
-    // background-position: center;
-    // background-repeat: no-repeat;
+
     background: transparent;
     width: 0;
     height:0;
@@ -824,7 +811,6 @@ input[type="range"].PGInputRange:focus {
 
 /* chrome自定义滑动轨道 */
 input[type="range"].PGInputRange::-webkit-slider-runnable-track {
-    // height: 10px;
     /* border-radius: 15px; */
     /* background-color: rgb(47, 0, 255); */
     height: 250%;
@@ -837,7 +823,7 @@ input[type="range"].PGInputRange::-webkit-slider-thumb {
     height: 1.3vh;
     background: #808080;
     border-radius: 50%;
-    background-image: url('./image/P7/InputIcon.png');
+    background-image: url('/image/P7/InputIcon.png');
     transform: translateY(1px);
 }
 /*#endregion Page4:ProgramPage*/
@@ -847,37 +833,37 @@ input[type="range"].PGInputRange::-webkit-slider-thumb {
 
 
 .RBtn1cs{
-    background-image: url('./image/ScriptSet/Off/RBtn1.png');
+    background-image: url('/image/ScriptSet/Off/RBtn1.png');
 }
 
 .RBtn2cs{
-    background-image: url('./image/ScriptSet/Off/RBtn2.png');
+    background-image: url('/image/ScriptSet/Off/RBtn2.png');
 }
 .RBtn3cs{
-    background-image: url('./image/ScriptSet/Off/RBtn3.png');
+    background-image: url('/image/ScriptSet/Off/RBtn3.png');
 }
 .RBtn4cs{
-    background-image: url('./image/ScriptSet/Off/RBtn4.png');
+    background-image: url('/image/ScriptSet/Off/RBtn4.png');
 }
 
 .RBtn5cs{
-    background-image: url('./image/ScriptSet/Off/RBtn5.png');
+    background-image: url('/image/ScriptSet/Off/RBtn5.png');
 }
 .RBtn1cs:hover{
-    background-image: url('./image/ScriptSet/On/RBtn1.png');
+    background-image: url('/image/ScriptSet/On/RBtn1.png');
 }
 .RBtn2cs:hover{
-    background-image: url('./image/ScriptSet/On/RBtn2.png');
+    background-image: url('/image/ScriptSet/On/RBtn2.png');
 }
 .RBtn3cs:hover{
-    background-image: url('./image/ScriptSet/On/RBtn3.png');
+    background-image: url('/image/ScriptSet/On/RBtn3.png');
 }
 
 .RBtn4cs:hover{
-    background-image: url('./image/ScriptSet/On/RBtn4.png');
+    background-image: url('/image/ScriptSet/On/RBtn4.png');
 }
 .RBtn5cs:hover{
-    background-image: url('./image/ScriptSet/On/RBtn5.png');
+    background-image: url('/image/ScriptSet/On/RBtn5.png');
 }
 
 
@@ -974,7 +960,6 @@ input[type="range"].PGInputRange::-webkit-slider-thumb {
 .AdvancedEffectFrame{
     line-height: 3vh;
     width: 100%;height: 3vh;
-    // border-bottom: 1px solid #3E5C72;
     font-size: 1vw;
     margin-top:2%;
     margin-left:2%;
@@ -983,9 +968,9 @@ input[type="range"].PGInputRange::-webkit-slider-thumb {
 /*#endregion Animation*/
 
 #main-app{
-    // height: $window-height;
-    // width:  $window-width;
-    //background-image: url('./image/Share/AllBg.png');
+     /* height: $window-height;
+     width:  $window-width;
+    background-image: url('/image/Share/AllBg.png'); */
     height: 100%;
     width:  100%;
     position: absolute;
@@ -993,28 +978,29 @@ input[type="range"].PGInputRange::-webkit-slider-thumb {
     overflow: hidden;
     background: #1E1E1E;
 
-    .content{
-        height: 100%;
-        width:  100%;
-        position: absolute;
-        // background: black;
-        //background-image: url('./image/FirstPage/AllBg.png');
-        color:white;
-        .MainPageBtn1{
-            background-image: url('./image/FirstPage/BTN1.png');
 
-        }
-        .MainPageBtn2{
-            background-image: url('./image/FirstPage/BTN2.png');
+}
+.content{
+    height: 100%;
+    width:  100%;
+    position: absolute;
+    /* background: black;
+    background-image: url('/image/FirstPage/AllBg.png'); */
+    color:white;
 
-        }
-     
-        .MenuArea{
-            width: 1166px;
-            height: 285px;
-            background-color: #00f;
-            //margin-left: 5%;
+}
+.MainPageBtn1{
+    background-image: url('/image/FirstPage/BTN1.png');
 
-        }
-    }
+}
+.MainPageBtn2{
+    background-image: url('/image/FirstPage/BTN2.png');
+
+}
+
+.MenuArea{
+    width: 1166px;
+    height: 285px;
+    background-color: #00f;
+
 }

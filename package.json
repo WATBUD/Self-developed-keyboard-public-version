@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "serve": "ng serve",
+    "serve": "ng serve --port 8888",
     "start": "ng serve --proxy-config src/proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
@@ -30,8 +30,8 @@
     "core-js": "^2.5.4",
     "jquery": "^3.1.1",
     "ng-color": "^4.1.1",
-    "rxjs": "6.6.7",
-    "rxjs-compat": "^6.6.7",
+    "rxjs": "6.0.0",
+    "rxjs-compat": "^6.2.2",
     "systemjs": "^6.7.1",
     "zone.js": "~0.8.26"
   },

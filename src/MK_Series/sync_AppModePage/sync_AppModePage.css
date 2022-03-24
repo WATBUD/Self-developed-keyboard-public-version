@@ -20,7 +20,6 @@
     background-color: #0000;
     box-sizing: border-box;
     border-radius: 16%;
-    // border: 2px solid #ff0;
 }
 
 .RGBKeyBoardUITransparent{
@@ -29,7 +28,6 @@
     width: 100%;
     z-index: 7777;
     pointer-events: none;
-    //background-image: url(./image/Share/MK68M.png);
     background-repeat: no-repeat;
 
 
@@ -71,26 +69,26 @@
     height: 15px;
 }
 #ScrollArea::-webkit-scrollbar-button:vertical:decrement {
-    // background-image: url('./image/ColorSet/UpArrow.png');
+    /* background-image: url('/image/ColorSet/UpArrow.png'); */
     height: 0px;
     background-repeat: no-repeat;
     background-position: center;
 }
 #ScrollArea::-webkit-scrollbar-button:vertical:increment {
-    // background-image: url('./image/ColorSet/DownArrow.png');
+    /* background-image: url('/image/ColorSet/DownArrow.png'); */
     height: 0px;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #ScrollArea::-webkit-scrollbar-button:horizontal:decrement {
-    // background-image: url('./image/ColorSet/UpArrow.png');
+    /* background-image: url('/image/ColorSet/UpArrow.png'); */
     width: 0px;
     background-repeat: no-repeat;
     background-position: center;
 }
 #ScrollArea::-webkit-scrollbar-button:horizontal:increment {
-    // background-image: url('./image/ColorSet/DownArrow.png');
+    /* background-image: url('/image/ColorSet/DownArrow.png'); */
     width: 0px;
     background-repeat: no-repeat;
     background-position: center;

@@ -1,11 +1,19 @@
-import { Injectable } from '@angular/core';
-let electron_Instance = window['System']._nodeRequire('electron').remote; 
-@Injectable()
+let globalDB;
+let electron_Instance; 
+
+try {
+    globalDB = window['System']._nodeRequire('./backend/dbapi/AppDB.js');
+    electron_Instance = window['System']._nodeRequire('electron').remote; 
+}
+catch (error) {
+    //console.log('%c _nodeRequire_err','background: red; color: white',error);
+}
 export class DeviceService{
     pluginNoDeviceData =[];
     NoDeviceindex=0;
     pluginDeviceData=[];
-    dbService = electron_Instance.getGlobal('AppProtocol').deviceService.nedbObj
+    dbServiceBackEnd;
+    dbService;
     currentDevice = {
         "DeviceId": 0,
         "ModelType":2,
@@ -23,6 +31,15 @@ export class DeviceService{
     constructor(
     ) {
         DeviceService.instance=this;
+        try {
+            this.dbServiceBackEnd = electron_Instance.getGlobal('AppProtocol').deviceService.nedbObj;
+            this.dbService= globalDB.getInstance();
+        }
+        catch (error) {
+            console.log('%c _nodeRequire_err','background: red; color: white',error);
+        }
+        console.log('%c DeviceService_http','background: red; color: white');
+
     }
     static getInstance() {
         if (this.instance) {

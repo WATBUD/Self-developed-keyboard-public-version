@@ -31,9 +31,3 @@ export { FirewareManager } from './FirewareManager';
 export { M_Light_CS } from './M_Light_CS';
 
 export { DeviceService } from '../services/device/DeviceService';
-// export * from './EventManager';
-// export * from './AlertDevice';
-// export * from './FirewareManager';
-// export * from './i18n';
-// export * from './KeyShortcut';
-// export * from './EffectCenter';
