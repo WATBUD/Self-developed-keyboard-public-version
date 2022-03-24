@@ -92,8 +92,6 @@ export class AssociateManager {
                 });
                 
                 return this.AssociateArr[this.currentChooseIndex] ;
-                break;
-
             case "Delete":
                 if (this.currentChooseIndex > 0) {
                     var T = this.currentChooseIndex;

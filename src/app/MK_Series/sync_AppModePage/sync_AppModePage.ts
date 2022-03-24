@@ -7,7 +7,7 @@ import { protocolService } from '../../services/service/protocol.service';
 import { MouseMoveObjectManager } from './MouseMoveObject';
 import { MouseBoxSelection } from './MouseBoxSelection';
 import { CurrentColor,MacroScriptContent,MacroManager,Wave,APModeModule,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
-    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList,ColorOutput  
+    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList  
     ,count_boolean,CreateFakeArray,SharesFunction,ProgressBar,M_Light_CS,getMatchedCSS,DeviceService
 } from '../TSImportManager';
 let funcVar = System._nodeRequire('./backend/others/FunctionVariable');

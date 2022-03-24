@@ -28,7 +28,6 @@ export { ImgPathList } from './ImgPath';
 export { i18nManager } from './i18n';
 export { FirewareManager } from './FirewareManager';
 
-export { ColorOutput } from './layout/support/ngcolor';
 export { M_Light_CS } from './M_Light_CS';
 
 export { DeviceService } from '../services/device/DeviceService';

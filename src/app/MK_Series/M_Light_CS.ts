@@ -9,7 +9,7 @@ export class M_Light_CS {
     repeater;
     ledcoordinates: any = []
     AllBlockColor: any = [] //TOTAL NUMBER
-    lightData={
+    lightData:any={
         translate:'GloriousMode',
         PointEffectName:'GloriousMode',
         colorPickerValue:[255,0,0,1],

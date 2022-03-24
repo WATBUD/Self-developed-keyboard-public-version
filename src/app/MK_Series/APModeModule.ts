@@ -19,7 +19,6 @@
 // AudioCap 音樂
 import { BoxSelectionArea } from './BoxSelectionArea';
 import { Injectable } from '@angular/core';
-import { InnerSubscriber } from 'rxjs/InnerSubscriber';
 @Injectable()
 export class ModeParameter {
     frame_selection_range:any=[];  

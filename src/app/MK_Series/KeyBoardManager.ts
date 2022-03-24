@@ -1,4 +1,3 @@
-import { TOUCHEND_HIDE_DELAY } from "@angular/material";
 import { ElementRef } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { KB61Prohibit } from './KeyBoardData';
@@ -520,15 +519,10 @@ export class KeyBoard {
         switch (Type) {
             case 'LongTimePressValue':
                 return this.getNowModeTargetMatrixKey().LongTimePressValue;
-
-                break;
-
             case 'InstantPressValue':
                 return this.getNowModeTargetMatrixKey().InstantPressValue;
-                break;
             case 'NormalKeyPress':
                 return this.getNowModeTargetMatrixKey().value;
-                break;
 
         }
     }

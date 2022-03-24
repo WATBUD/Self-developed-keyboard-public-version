@@ -1,8 +1,3 @@
-import { first } from "rxjs/operator/first";
-
-
-
-
 export class BoxSelectionArea {
     EventCanBoxSelect: any = false;
     mouseOn: any = false;

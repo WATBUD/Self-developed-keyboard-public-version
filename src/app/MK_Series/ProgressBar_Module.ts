@@ -46,7 +46,8 @@ export class ProgressBar {
         //反正CSS3中的border-radius属性IE8是不支持了，所以这里就用新方法吧getElementsByClassName()走起
         //percent=TargetTs.percent_TSVar;
         console.log('setRoundProgress_js',percent);
-        Element.prototype.css= function (property, value) {
+        const element:any=Element;
+        element.prototype.css= function (property, value) {
 
             if (value) {
                 var index = property.indexOf('-');
@@ -60,7 +61,7 @@ export class ProgressBar {
             }
         }
 
-        Element.prototype.css3 = function (property, value) {
+        element.prototype.css3 = function (property, value) {
             if (value) {
                 property = capitalize(property.toLowerCase());
                 this.style['webkit' + property] = value;
@@ -90,13 +91,13 @@ export class ProgressBar {
         function setRoundProgress(percent) {
             console.log('setRoundProgress',percent);
 
-            var circleBar = document.getElementsByClassName('circle-bar')[0];
+            var circleBar:any = document.getElementsByClassName('circle-bar')[0];
 
 
             //percent      = parseInt(circleBar.getElementsByClassName('percent')[0].firstChild.nodeValue);
             var color = circleBar.css('background-color',null);
-            var left_circle = circleBar.getElementsByClassName('circle-bar-left')[0];
-            var right_circle = circleBar.getElementsByClassName('circle-bar-right')[0];
+            var left_circle:any = circleBar.getElementsByClassName('circle-bar-left')[0];
+            var right_circle:any = circleBar.getElementsByClassName('circle-bar-right')[0];
 
             if (percent == 0) {
                 //percent=percent>100?0:percent;

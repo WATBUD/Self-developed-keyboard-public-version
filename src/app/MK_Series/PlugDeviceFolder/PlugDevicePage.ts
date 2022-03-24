@@ -5,7 +5,7 @@ import { Component ,OnInit ,Output,Input ,EventEmitter, SimpleChange, OnChanges
 import { AppComponent } from '../app.component';
 import { protocolService } from '../../services/service/protocol.service';
 import { CurrentColor,MacroScriptContent,MacroManager,Wave,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
-    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList,ColorOutput  
+    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList  
     ,count_boolean,CreateFakeArray,SharesFunction,ProgressBar,getMatchedCSS,DeviceService,
 } from '../TSImportManager';
 let funcVar = System._nodeRequire('./backend/others/FunctionVariable');

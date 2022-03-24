@@ -1,9 +1,7 @@
 declare var System;
 import { Component ,OnInit, Input, Output, EventEmitter,ElementRef,ChangeDetectorRef, ViewChild} from '@angular/core';
 import {protocolService} from '../services/service/protocol.service';
-import {TranslateService} from 'ng2-translate';
-import {EmitService,ElectronEventService } from '../services/libs/electron/index';
-import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import {ElectronEventService } from '../services/libs/electron/index';
 import { Router } from '@angular/router';
 import {ControlValueAccessor,FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { Subscription } from "rxjs/Subscription";//Lag Edited
@@ -18,7 +16,7 @@ let { dialog } = remote;
 //let LouisTestDB = window['System']._nodeRequire('./backend/dbapi/LouisTestDB');
 let tool = System._nodeRequire('./backend/others/tool')
 import { CurrentColor,MacroScriptContent,MacroManager,Wave,APModeModule,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
-    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList,ColorOutput  
+    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList  
     ,count_boolean,CreateFakeArray,SharesFunction,ProgressBar,M_Light_CS,
 } from './TSImportManager';
 import { M_Built_ineffect } from './M_Built_ineffect';
@@ -85,7 +83,6 @@ export class AppComponent implements OnInit{
     switchEffectUI:boolean=false;
     conslogtestText="";
     subscription: Subscription;//Lag Edited
-    dialogAppSettings: MdDialogRef<any>;
     ShowPrompt:any=false;
     pageIconSet: any = [true, true, true, true];
     recordCustomLedindex: any =0;
@@ -154,9 +151,6 @@ export class AppComponent implements OnInit{
     }
 
     constructor(private protocol: protocolService,
-        private translate: TranslateService, 
-        private emitService: EmitService, 
-        private dialog: MdDialog, 
         private router: Router,
         private elementRef:ElementRef,
         private changeDetectorRef: ChangeDetectorRef){
@@ -275,14 +269,9 @@ export class AppComponent implements OnInit{
         }
         //this.setPageDataSelected=item;
     }
-    colorChange(result:ColorOutput){
-        
-        console.log("colorChange", result);
-        console.log("myColor", this.myColor);
-        //console.log("myColor2", this.myColor);
-      
 
-    }
+
+    
     colorTChange(){   
             
         console.log("colorTChange_myColor", this.myColor);
@@ -305,9 +294,7 @@ export class AppComponent implements OnInit{
                 return "url('./image/Share/mouseover/AdvanceEdit.png')"
             case "mousedown":
                     return "url('./image/Share/On/AdvanceEdit.png')"
-                // case "mouseup":
-  
-                break;
+            // case "mouseup": return
             case "mouseleave":
                 return "url('./image/Share/Off/AdvanceEdit.png')"
             case "":
@@ -552,7 +539,6 @@ export class AppComponent implements OnInit{
                     T_CS.mode_CycleBreath(inputColor,false);
                 }
                     break;
-                break;
             case 'NormallyOn':
                 if(target.Multicolor){
                     T_CS.mode_NormallyOnMulticolor(inputColor);    
@@ -861,7 +847,7 @@ export class AppComponent implements OnInit{
         this.i18nClickExcute();
         this.MacroManager.createMacroClass(this.i18nManager.getTarget('MACROTYPE'));
         this.MacroManager.createClassMacroFile(this.i18nManager.getTarget('MACRO'));
-        document.addEventListener('click', (e)=>{
+        document.addEventListener('click', (e:any)=>{
            //console.log('%c document_e.target','color:rgb(255,77,255)',  e.target);
             if (e.target.dataset.identity==undefined) {
                 this.showSetPageData = false;
@@ -899,7 +885,7 @@ export class AppComponent implements OnInit{
         // });
         //this.ProgressBarT.addProgressBarEvent();
         var mainapp= document.getElementById("main-app");
-        mainapp.addEventListener("mousedown", (e:MouseEvent)=> {
+        mainapp.addEventListener("mousedown", (e:any)=> {
                     // console.log("mainapp_mousedown=event.targetid=log: ",e); 
                     // console.dir("mainapp_mousedown=event.targetiddir: ",e);
                     // if(e.target["className"]!="KeyAssignUIStyle"&&e.target.id!="KeyAssignPrompt"
@@ -1224,7 +1210,6 @@ export class AppComponent implements OnInit{
                     //callback(data);
                 });
                 return;
-            break;
             case "Built-ineffects":
                 //JSON.parse(JSON.stringify(this.Built_ineffect)
                 toServerData=  JSON.parse(JSON.stringify(this.Built_ineffect))
@@ -1235,8 +1220,7 @@ export class AppComponent implements OnInit{
                     //callback(data);
                    console.log('%c updateBuilt_ineffectDB','background: black; color: white', data);  
                 });
-            return;
-                                                                    
+            return;                                           
         }
         var Obj4 = {
             Type: funcVar.FuncType.Device,
@@ -1795,23 +1779,22 @@ export class AppComponent implements OnInit{
         switch (this.CurrentPageName) {
             case "LIGHTINGSETTING":
                 typeName="APMode"
-                break
+                break;
             case "KEYBOARDSETTINGS":
                 typeName="KeyAssign"
-                break
+                break;
             case "MACROSETTINGS":
                 typeName="Macro"
-                break
+                break;
             case "RELATEDPROGRAM":
                 typeName= env.isMac? "app":"exe";
-                break
+                break;
             case "Custom Effect":
                 typeName="Advanced"
-                    break
+                break;
             default:
                 alert("typeNameu遺失"+this.CurrentPageName)
                 return;
-                break    
         }
         if (this.CurrentPageName == "RELATEDPROGRAM") {
             dialog.showOpenDialog(null, { defaultPath: '', filters: [{ name: typeName + ' File', extensions: [typeName] }] }, (fns) => {
