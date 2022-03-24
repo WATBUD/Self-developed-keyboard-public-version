@@ -1,0 +1,18 @@
+
+
+.DeviceItem{
+    transform: scale(0.8);
+    transition: 0.5s;
+    //transform: scale(0.8);
+    display: flex;
+    width: 35%;
+    height: 68%;
+    background-repeat: no-repeat;
+    /* background-image: url(./image/FirstPage/KB1Disconnect.png); */
+    // background: blue;
+}
+.DeviceItem:hover{
+    transform: scale(1);
+    transition: 0.5s;
+
+}
