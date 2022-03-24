@@ -1,5 +1,4 @@
 declare var System;
-var ConstantArray = System._nodeRequire('./backend/others/ConstantArray');
 var SupportData = System._nodeRequire('./backend/others/SupportData');
 export class MacroManager {
     radioOptions = 0;

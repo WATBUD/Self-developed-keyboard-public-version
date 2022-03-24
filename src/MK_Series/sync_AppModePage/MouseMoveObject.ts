@@ -1,11 +1,4 @@
-// /import {SharesFunction} = require('./SharesFunction.js');
-// declare var System;
-// var ConstantArray = System._nodeRequire('./backend/others/ConstantArray');
-// var SharesFunction =require('./SharesFunction.js');
-
-// var SharesFunction= require('./SharesFunction.js');
-//var SharesFunction= System._nodeRequire('./backend/others/ConstantArray');
-import { SharesFunction,getElementCSS,getMatchedCSS } from '../SharesFunction';
+import { getElementCSS,getMatchedCSS } from '../SharesFunction';
 
 // document.write('<script src="SharesFunction.js"></script>');
 export class MouseMoveObjectManager{

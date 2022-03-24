@@ -5,12 +5,11 @@ import { Component ,OnInit ,Output,Input ,EventEmitter, SimpleChange, OnChanges
 import { AppComponent } from '../app.component';
 import { MouseMoveObjectManager } from './MouseMoveObject';
 import { MouseBoxSelection } from './MouseBoxSelection';
-import { CurrentColor,MacroScriptContent,MacroManager,Wave,APModeModule,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
+import { CurrentColor,MacroScriptContent,Wave,APModeModule,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
     AssociateManager,EffectCenter,KeyShortcut,AlertDevice,i18nManager,FirewareManager,ImgPathList  
     ,count_boolean,CreateFakeArray,SharesFunction,ProgressBar,M_Light_CS,getMatchedCSS,DeviceService
 } from '../TSImportManager';
-let funcVar = System._nodeRequire('./backend/others/FunctionVariable');
-let remote = System._nodeRequire('electron').remote;
+
 //var this.MouseBoxSelectionFn=new MouseBoxSelection();AppComponent,
 var scaleConfig = {
     scaleMultipleConfig: [0.25, 0.5, 1, 2, 4],

@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core'
-import { identity } from 'lodash'
-import { KB61Prohibit } from './KeyBoardData'
-let AllFunctionMapping = window['System']._nodeRequire('./backend/others/SupportData').AllFunctionMapping
 @Injectable()
 export class KeyBoardStyle {
     nowTargetIndex = 0
     nowTargetKey='MK22';
     //BGImage:'url(./image/Share/KB1KeyerEffects.png)',
-
     keyBoardList = {
         'MK63': {
             ItemCss: [

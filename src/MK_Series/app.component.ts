@@ -107,27 +107,6 @@ export class AppComponent implements OnInit {
 
 
     }
-    TColor: any = {
-        hex: 10774118,
-        hexString: "#0000FF",
-        rgb: {
-            red: 100,
-            green: 100,
-            blue: 100,
-        },
-        hsl: {
-            hue: 100,
-            saturation: 100,
-            lightness: 100,
-        },
-
-
-    }
-    TTTrgb = {
-        red: 255,
-        green: 255,
-        blue: 255,
-    }
     dbService;
 
     modeNameTable: any = ['Static', 'Cycle', 'Breathing', 'Rainbow'];
@@ -263,13 +242,7 @@ export class AppComponent implements OnInit {
     colorTChange() {
 
         console.log("colorTChange_myColor", this.myColor);
-        //console.log("colorTChange");
-        //this.myColor.hexString="#00FF00";
-        var TColor2 = {
-            rgb: this.myColor.rgb
-        }
 
-        this.myColor = TColor2;
 
     }
     ReturnAdvancedBtnImage(Type = "") {
