@@ -1,11 +1,11 @@
 declare var System;
 import { Component ,OnInit, Input, Output, EventEmitter,ElementRef,ChangeDetectorRef, ViewChild} from '@angular/core';
-import {protocolService} from '../services/service/protocol.service';
-import {EmitService,ElectronEventService } from '../services/libs/electron/index';
+import { Electron_Service } from '../Module/Electron_Service';
 import { Router } from '@angular/router';
 import {ControlValueAccessor,FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
-import { Observable } from 'rxjs/Rx';
+import { Observable,fromEvent  } from 'rxjs';
+
 import { Subscription } from "rxjs/Subscription";//Lag Edited
 const {ipcRenderer} = System._nodeRequire('electron');
 let iro = System._nodeRequire('./js/iro.js');
@@ -13,10 +13,7 @@ let evtVar = System._nodeRequire('./backend/others/EventVariable');
 let funcVar = System._nodeRequire('./backend/others/FunctionVariable');
 let env = System._nodeRequire('./backend/others/env');
 let remote = System._nodeRequire('electron').remote;
-
 let { dialog } = remote;
-//let InterfaceJS = System._nodeRequire('./backend/protocol/Interface');
-//let LouisTestDB = window['System']._nodeRequire('./backend/dbapi/LouisTestDB');
 let tool = System._nodeRequire('./backend/others/tool')
 import { ColorModule,MacroScriptContent,MacroManager,Wave,APModeModule,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
     AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList,ColorOutput  
@@ -26,8 +23,8 @@ import { M_Built_ineffect } from './M_Built_ineffect';
 import { G_Built_ineffect } from './G_Built_ineffect';
 let path = window['System']._nodeRequire('path');
 
-import { DeviceService } from '../MK_Series/DeviceService';
-import { AppSettingService } from '../MK_Series/AppSettingService';
+import { DeviceService } from '../../MK_Series/DeviceService';
+import { AppSettingService } from '../../MK_Series/AppSettingService';
 let electron_Instance = window['System']._nodeRequire('electron').remote; 
 let electron_Instance2 = window['System']._nodeRequire('electron'); 
 let _nodeRequire_fs = window['System']._nodeRequire('fs'); 
@@ -44,7 +41,7 @@ let notifier = window['System']._nodeRequire('electron-notifications');
     './assets/css/MacroSetting.css',
     './assets/css/ColorTest.css',
     './assets/css/ProgramPage.css'],
-    providers: [protocolService]
+    providers: []
 })
 export class AppComponent implements OnInit{
 
@@ -80,6 +77,8 @@ export class AppComponent implements OnInit{
     EffectCenter=new EffectCenter();
     KeyShortcut=new KeyShortcut();
     AlertDevice=new AlertDevice();
+    Electron_Service=new Electron_Service();
+
     EM=new EventManager();
     FWManager=new FirewareManager();
     ImgPath=ImgPathList.getInstance();
@@ -135,9 +134,7 @@ export class AppComponent implements OnInit{
         }
     }
 
-    constructor(private protocol: protocolService,
-        private emitService: EmitService, 
-        private router: Router,
+    constructor(private router: Router,
         private elementRef:ElementRef,
         private changeDetectorRef: ChangeDetectorRef,
         private http:Http){
@@ -259,7 +256,9 @@ export class AppComponent implements OnInit{
         });
     }
  
-
+    public on(name: string): Observable<any> {
+        return fromEvent(window, name);
+    }
 
 
     getAssignURL_json(URL) :Observable<any>{
@@ -789,45 +788,8 @@ export class AppComponent implements OnInit{
         
     }
 
-    changeWinSystemTaskBar(InputData) {
-        const content ={
-            func:"ScreenSize",
-            width:1440,
-            height:900,
-        }
-        let DataContent = {
-            Type: funcVar.FuncType.System,
-            Func: funcVar.FuncName.ChangeWindowSize,//correspond electron.js in line 256 name register event 
-            Param: InputData
-        }
-        var objlog={
-            "dotype":InputData,
-            "obj2":DataContent,
-        }
-        console.log('changeWinSystemTaskBar:', objlog);
 
-        this.protocol.RunSetFunction(DataContent).then((data) => {//=>to AppProtocol=>electron.js
 
-            env.log('Hdpage', 'quit', 'finished');
-        });
-    }
-    quitApp() {
-        const content ={
-            func:"ScreenSize",
-            width:1440,
-            height:900,
-        }
-        let DataContent = {
-            Type: funcVar.FuncType.System,
-            Func: "QuitApp",//correspond electron.js in line 256 name register event 
-            Param: ""
-        }
-        console.log('changeWinSystemTaskBar:', DataContent);
-
-        this.protocol.RunSetFunction(DataContent).then((data) => {//=>to AppProtocol=>electron.js
-
-        });
-    }
     onRecordClick(){
         if(this.MacroManager.onRecord){
         this.MacroManager.onRecord=false;
