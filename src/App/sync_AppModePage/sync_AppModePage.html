@@ -1,0 +1,143 @@
+    
+    <div id="backHome" style="
+    background-color: transparent;
+    position: absolute;
+    margin-left: 2vw;margin-top: 2vh;" 
+    (click)="this.mainapp.setPageIndex('KEYBOARDSETTINGS')">
+    </div>
+    <div (mouseleave)="switchEffectUI=false" [style.display]="switchEffectUI?'block':'none'" id="LightModeList" style="z-index: 9990; background-color: #151516;   
+        color: #FFF; box-sizing: border-box;display: none;
+        position: absolute;width: 8vw;height: auto;border: 1px solid #91A9BF;">
+
+    </div>
+    <div id="LedModeSelect" style="width: 17.3vw;height:29vh;    margin-left: 0.8vw;" class="SelectTemplate">
+        <div class="LEDModeSelect" (click)="LEDModeSelect($event,i);"
+            *ngFor="let item of M_Light_APMode.recordModeArr ;let i = index"
+            [style.background-color]="(M_Light_APMode.currentModeIndex==i)?'rgb(255, 87, 0)':'rgb(44, 44, 44)'"
+            [style.color]="(M_Light_APMode.currentModeIndex==i)?'#000':'#DFE4E1'">
+            <img style="float: left;vertical-align: middle;text-align: center;
+                       margin-left: 5px;width: 22px;height: 100%;object-fit: none;"
+                [src]="(M_Light_APMode.currentModeIndex==i)?item.iconpath[1]:item.iconpath[0]">
+
+            <div style="float: left;line-height: 3.3vh;margin-left: 8px;">
+                {{i18nManager.getTarget('LED_MODE_NAME')[M_Light_APMode.recordModeArr[i].sortPosition]}}
+            </div>
+
+
+            <img (click)="OpenLeftDropDownListUI($event,i)"
+                style="float: right;margin-top: 0.2vh;margin-right: 2px;"
+                [src]="(M_Light_APMode.currentModeIndex==i)?ImgPath.SwitchIcon[1]:ImgPath.SwitchIcon[0]">
+
+            <img [src]="LEDModeEyeStatus(i)" (click)="RGBEyeClose(i);" style="float: right;
+                    margin-right: 0.2vw;">
+
+        </div>
+    </div>
+    <div id="BackToPreviousPage" style="position: absolute;
+        width: 181px;
+        height: 61px;
+        margin-left: 80.5%;
+        margin-top: 2%;;
+            ">
+        <div (click)="removeAllSyncEvent()" class="DemoUI" style="
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-image: url(./image/Share/AlternateKB1.png);">
+        </div>
+    </div>
+    <div id="ScrollArea" style=" position: absolute;
+    top: 10vh;
+    left: 20vw;
+    width: 80%;
+    height: 90%;
+    background-color: gray;
+    overflow: auto;"  >
+
+
+        <div id="ScrollContentArea" style="position: absolute;width: 820vw;height: 900vh;
+            transform: scale(0.5);transform-origin: left top;background-color: red;" 
+            [style.background-color]="MouseBoxSelectionFn.fnEanble?'gray':'red'">
+            <!-- <div id="KeyBoardUI" style="   position: absolute;
+                top: 200px;
+                left: 150px;
+                width: 300px;
+                height: 200px;
+                background-color: rgb(172, 255, 104);">
+                <div data-status="false" class="fileDiv"></div>
+                <div data-status="false" class="fileDiv"></div>
+                [style.pointer-events]="this.mainapp.M_Light_APMode.BSModule_L.EventCanBoxSelect ||this.mainapp.EffectCenter.selectEffectCenter?'auto':'none'">
+            </div> --> 
+            <div *ngFor="let item of DeviceData ;let i = index" class="KBUICommon" id="{{item.devicename}}">
+                <div *ngFor="let item of mainapp.KeyBoardStyle.getAssignTarget(item.devicename).keyMapping ;let i2 = index"
+                    class="SyncRGBColorBlockStyle"
+                    [style.background-color]="this.MouseBoxSelectionFn.compareObjectArr[i].allBlockColor[i2]"
+                    [attr.data-index]="i2">
+                </div>
+                <div [style.background-image]="KeyBoardStyle.getAssignTarget(item.devicename).BGImage"
+                    class="RGBKeyBoardUITransparent">
+                </div>
+
+            </div>
+            <!-- <div id="MK68M" class="KBUICommon">          
+                        <div id="RGBEffectCenter" style="width:15px;
+                                    height: 15px;z-index: 9990;
+                                    background: transparent;
+                                    position: absolute;
+                                    pointer-events: none;
+                                    background-image: url('./image/ColorSet/IconEffectCenter.png');"
+                            [style.display]="this.mainapp.EffectCenter.selectEffectCenter?'block': 'none'"
+                            [style.background-color]="'transparent'">
+        
+                        </div>
+                        <div *ngFor="let item of mainapp.KeyBoardStyle.getAssignTarget('MK68M').keyMapping ;let i = index"
+                            class="SyncRGBColorBlockStyle" [style.background-color]="this.MouseBoxSelectionFn.compareObjectArr[1].allBlockColor[i]"
+                            [attr.data-index]="i">
+                        </div>
+                        <div [style.background-image]="KeyBoardStyle.getAssignTarget('MK68M').BGImage" class="RGBKeyBoardUITransparent">
+                        </div>
+                    </div> -->
+        
+        
+        </div>
+    </div>
+    <div id="FunctionList" style="background: #0808ce57;width: 62vw;height: 3vh;left: 20vw;top: 7vh;position: absolute;">
+        <input id="SwitchMouseMove" type="button" value="MoveMouseEvent true" (mousedown)="switchMouseEvent('MME')">
+        <input id="SwitchMouseBoxSelection" type="button" value="MouseBoxSelection true"(mousedown)="switchMouseEvent('MBS');">
+        <input id="CenterBtn" type="button" value="Center" (mousedown)="CenterShow()">
+        <input id="AddEffect" type="button" value="AddEffect" (mousedown)="this.M_Light_APMode.addNewChoose()">
+        <input id="RemoveEffect" type="button" value="RemoveEffect" (mousedown)="this.M_Light_APMode.deleteChoose();
+        this.M_Light_APMode.updateframe_selection_range();">
+
+    </div>
+
+    <div [style.display]="this.M_Light_APMode.getTarget().name != 'Fire'?'block': 'none'"
+    id="color-picker-container" 
+    style="left: 1%;position: absolute;z-index: 2;top: 65.7%;height: 27.5%;width: 24.7%;display: block;">
+        <div id="LedColorPickingArea" class="PickingArea" 
+        style="position: absolute;height: 55%;width: 50%;background-size: 100% 100%;border-radius: 3px;" 
+        [style.background-color]="LedColor.gradientBGcolor">
+            <div id="LedColorCircle" class="circle">
+            </div>
+    
+        </div>
+        <input id="ColorSliderH" type="range" min="0" max="359" step="1" [(ngModel)]="LedColor.Hue"
+            (ngModelChange)='LedColorhueChange()'>
+            <ng-container >
+                <div style="position: absolute;top: 60%;width: 21%;"> {{i18nManager.getTarget('COLORS')}}
+                </div>
+                <input class="color_quantity" type="number" max="20" min="1"
+                    [style.pointer-events]="M_Light_APMode.getTarget().colors.length>1?'auto':'none'"
+                    [(ngModel)]="M_Light_APMode.getTarget().color_quantity" (change)="setAppModeToServer('插色數量')"
+                    onkeyup="value=value.replace(/[^\d]/g,'');if(value>20){value=20};if(value<1){value=1}">
+            </ng-container>
+       
+        <div class="colorBaseList">
+            <div *ngFor="let item of M_Light_APMode.getTarget().colors ;let i = index" class="colorBase"
+                (click)="LedColor.onclickColorDefault($event.target,i)" id="colorBase{{i}}"
+                [style.background-color]="M_Light_APMode.getTarget().colors[i]">
+            </div>
+        </div>
+        
+    
+    </div>

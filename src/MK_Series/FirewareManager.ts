@@ -1,60 +1,121 @@
 
 
-import { Injectable } from '@angular/core';
-@Injectable()
 export class FirewareManager {
     chooseDeviceIndex=0;
     FwServerData=[];
-    // FwServerData=[{
-    //     "Device": 5,
-    //     "OldVersion": 1.41,
-    //     "NewVersion": 1.41,
-    //     "SN": "0x1EA70x9005",
-    //     "devicename": "SoftWare",
-    //     "Text": "You Already Have Latest Version",
-    //     "FWUpdate": true,
-    //     "ReadReleasenote": [
-    //       "Fixed bugs:<br> 1. Added Report rate function, the first byte of 08 02.<br> 2. Modified the value of LED_Status, changed 3 segments to 1, 2, 3。",
-    //       "已修正问题：<br>1. 新增 FN2 FN2功能。"
-    //     ]
-    // }];
-    onFireWareUI: Boolean =false;
-    nowVersion:String="";
-    version:String="";
-    FWUpdating: Boolean =false;
-    updateContent:any=["連接失敗","連接失敗","連接失敗"];
-
-
+    forceUpgradeData=[];
+    forceUpgradeIndex=0;
+    UIStatus="";
+    update_UI_Status=false;
+    /*
+    * getNowTargetData
+    */
     getTarget(){
        if(this.FwServerData.length>0)
        return this.FwServerData[this.chooseDeviceIndex];
     }
-    getAssign(i){
-      
-        
+
+    /*
+    * getforceTarget
+    */
+    getforceTarget(){
+        return this.forceUpgradeData[this.forceUpgradeIndex];
+     }
+
+    /*
+    * reset Var
+    */
+    reset(){
+        this.chooseDeviceIndex=0;
+        this.FwServerData=[];
     }
+
+    /*
+    * checkHasUpdate
+    */
     checkHasUpdate(){
-        return this.FwServerData.some(x => x.FWUpdate==true); //false
-    }
-    checkHasDeviceName(){
-        if(this.FwServerData.length>0){
-            this.onFireWareUI=true;
+        for (let index = 0; index < this.FwServerData.length; index++) {
+            if(!this.FwServerData[index].tryToUpdate){     
+                return "YES"
+            } 
         }
-    }
-    InputFwServerData(inputData){
-      this.chooseDeviceIndex=0;
-      this.FwServerData=[];
-      for (let index = 0; index < inputData.length; index++) {
-          const element = inputData[index];
-          this.FwServerData.push(element);
-      }
-      if(this.checkHasUpdate()){
-        this.onFireWareUI=true;
-      }
-      
-      //var temp_data = this.KeyBoardStyle.getTarget();
-      console.log('%c InputFwServerData', 'color:rgb(0,0,255,1)', this.FwServerData);
+        return "NO"
     }
 
+    /**
+    *compare version
+    * @param version number:A version
+    * @param targetVersion number:B version
+    * @param exponent number:exponent 
+    * return result:
+    * 0: is equal to
+    * 1: is more than
+    * -1: is less than
+    */
+    versionCompare(version, targetVersion, exponent) {
+        var getVersionNumber, length;
+        exponent = exponent || 2;
+        if (!version || !targetVersion) {
+            console.log('Need two versions to compare!',version,targetVersion);
+            throw new Error('Need two versions to compare!');
+        }
+        if (version === targetVersion) {
+            return 0;
+        }
+        length = Math.max(version.split('.').length, targetVersion.split('.').length);
+        let self = this;
+        getVersionNumber = (function (length, exponent) {
+            return function (version) {
+                return self.versionToNumber(version, length, exponent);
+            };
+        })(length, exponent);
+        version = getVersionNumber(version);
+        targetVersion = getVersionNumber(targetVersion);
+        return version > targetVersion ? 1 : (version < targetVersion ? -1 : 0);
+    }
 
+    /*
+    * format version
+    */
+    versionToNumber(version, length, exponent) {
+        let arr;
+        if (arguments.length < 3) {
+            return 0;
+        }
+        arr = version.split('.');
+        version = 0;
+        arr.forEach(function (value, index, array) {
+            version += value * Math.pow(10, length * exponent - 1);
+            length--;
+        });
+        return version;
+    }
+        /**
+     * Type option
+     * 1.CHECK_DOWNLOAD
+     * 2.Downloading
+     * 3.ConfirmInstall
+     * 4.Installing
+     * 5.FailMessage
+     * 6.SuccessMessage
+     */
+    contentUIStatus="";
+    setUpdateUIStatus(TypeOption){
+        if(TypeOption==""){
+            this.setupdate_UI_Status(false);
+        }
+        else{
+            this.setupdate_UI_Status(true);
+        }
+        if(this.checkHasUpdate()=="NO"){
+            //this.getAppService.hasUpdateTip=false;
+        }
+        this.contentUIStatus=TypeOption;
+        console.log('this.setContentUI',this.contentUIStatus)
+
+    }
+    setupdate_UI_Status(value){
+        this.update_UI_Status=value;
+        console.log('this.update_UI_Status',this.update_UI_Status)
+    }
 }

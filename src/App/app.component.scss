@@ -1,0 +1,952 @@
+// @import '../assets/scss/app.variables';
+/*#region Share*/
+  #myProgress {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    background-color: #ddd;
+  }
+  
+  #myBar {
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    background-color: #4CAF50;
+  }
+  
+  #label {
+    text-align: center;
+    line-height: 30px;
+    color: white;
+  }
+
+
+#SettingPageCRUDBtn{
+    z-index: 9999;
+    position: absolute;
+    left: 307px;
+    width: 22px;
+    top: 127px;
+    height: 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./image/Share/SettingPageCRUDBtn.png);
+
+}
+
+#AdvancedBtnL0{
+    background-image: url('./image/Advanced/Off/LAdd.png');
+}
+#AdvancedBtnL0:hover{
+    background-image: url('./image/Advanced/On/LAdd.png');
+}
+#AdvancedBtnL1{
+    background-image: url('./image/Advanced/Off/LDelete.png');
+}
+#AdvancedBtnL1:hover{
+    background-image: url('./image/Advanced/On/LDelete.png');
+}
+#AdvancedBtnL2{
+    background-image: url('./image/Advanced/Off/LUp.png');
+}
+#AdvancedBtnL2:hover{
+    background-image: url('./image/Advanced/On/LUp.png');
+}
+#AdvancedBtnL3{
+    background-image: url('./image/Advanced/Off/LDown.png');
+}
+#AdvancedBtnL3:hover{
+    background-image: url('./image/Advanced/On/LDown.png');
+}
+#AdvancedBtnL4{
+    background-image: url('./image/Advanced/Off/LCopy.png');
+}
+#AdvancedBtnL4:hover{
+    background-image: url('./image/Advanced/On/LCopy.png');
+}
+
+
+#AdvancedBtnR0{
+    background-image: url('./image/Advanced/Off/RAdd.png');
+}
+#AdvancedBtnR0:hover{
+    background-image: url('./image/Advanced/On/RAdd.png');
+}
+#AdvancedBtnR1{
+    background-image: url('./image/Advanced/Off/RDelete.png');
+}
+#AdvancedBtnR1:hover{
+    background-image: url('./image/Advanced/On/RDelete.png');
+}
+#AdvancedBtnR2{
+    background-image: url('./image/Advanced/Off/RUp.png');
+}
+#AdvancedBtnR2:hover{
+    background-image: url('./image/Advanced/On/RUp.png');
+}
+#AdvancedBtnR3{
+    background-image: url('./image/Advanced/Off/RDown.png');
+}
+#AdvancedBtnR3:hover{
+    background-image: url('./image/Advanced/On/RDown.png');
+}
+#AdvancedBtnR4{
+    background-image: url('./image/Advanced/Off/RCopy.png');
+}
+#AdvancedBtnR4:hover{
+    background-image: url('./image/Advanced/On/RCopy.png');
+}
+
+
+
+
+
+
+
+#CloseProgram{
+    background-image: url('./image/Share/Off/CloseProgram.png');;
+}
+#CloseProgram:hover{
+    background-image: url('./image/Share/On/CloseProgram.png')
+}
+#Bell{
+    background-image: url('./image/Share/Off/Bell.png');
+}
+#Bell:hover{
+    background-image: url('./image/Share/On/Bell.png');
+}
+#SystemSettingIcon{
+    background-image: url('./image/Share/Off/SystemSettingIcon.png');
+}
+#SystemSettingIcon:hover{
+    background-image: url('./image/Share/On/SystemSettingIcon.png');
+
+}
+#ZoomOut{
+    background-image: url('./image/Share/Off/ZoomOut.png');
+}
+#ZoomOut:hover{
+    background-image: url('./image/Share/On/ZoomOut.png');
+}
+
+
+
+
+
+#DecreaseBrightness{
+    background-image: url('./image/Keyboard/Off/DecreaseBrightness.png');
+}
+#DecreaseBrightness:hover{
+    background-image: url('./image/Keyboard/On/DecreaseBrightness.png');
+}
+#IncreaseBrightness{//SwitchCustomMode
+    background-image: url('./image/Keyboard/Off/IncreaseBrightness.png');
+}
+#IncreaseBrightness:hover{
+    background-image: url('./image/Keyboard/On/IncreaseBrightness.png');
+}
+#SwitchCustomMode{
+    background-image: url('./image/Keyboard/Off/SwitchCustomMode.png');
+}
+#SwitchCustomMode:hover{
+    background-image: url('./image/Keyboard/On/SwitchCustomMode.png');
+}
+#SwitchLEDMode{
+    background-image: url('./image/Keyboard/Off/SwitchLEDMode.png');
+}
+#SwitchLEDMode:hover{
+    background-image: url('./image/Keyboard/On/SwitchLEDMode.png');
+}
+
+#SwitchLEDMode{
+        background-image: url('./image/Keyboard/Off/SwitchLEDMode.png');
+}
+#SwitchLEDMode:hover{
+        background-image: url('./image/Keyboard/On/SwitchLEDMode.png');
+}
+
+#DecreaseLEDSpeed{
+    background-image: url('./image/Keyboard/Off/DecreaseLEDSpeed.png');
+}
+#DecreaseLEDSpeed:hover{
+    background-image: url('./image/Keyboard/On/DecreaseLEDSpeed.png');
+}
+
+#IncreaseLEDSpeed{
+            background-image: url('./image/Keyboard/Off/IncreaseLEDSpeed.png');
+}
+#IncreaseLEDSpeed:hover{
+            background-image: url('./image/Keyboard/On/IncreaseLEDSpeed.png');
+}
+#BT1{
+    background-image: url('./image/Keyboard/Off/BT1.png');
+}
+#BT1:hover{
+    background-image: url('./image/Keyboard/On/BT1.png');
+}      
+#BT2{
+    background-image: url('./image/Keyboard/Off/BT2.png');
+}
+#BT2:hover{
+    background-image: url('./image/Keyboard/On/BT2.png');
+}         
+#BT3{
+    background-image: url('./image/Keyboard/Off/BT3.png');
+}
+#BT3:hover{
+    background-image: url('./image/Keyboard/On/BT3.png');
+}   
+#FNlock{
+    background-image: url('./image/Keyboard/Off/FNlock_C.png');
+}
+#FNlock:hover{
+    background-image: url('./image/Keyboard/On/FNlock_C.png');
+}    
+
+#CloseLED{
+    background-image: url('./image/Keyboard/Off/CloseLED.png');
+}
+#CloseLED:hover{
+    background-image: url('./image/Keyboard/On/CloseLED.png');
+}    
+
+#Endurance{
+    background-image: url('./image/Keyboard/Off/Endurance.png');
+}
+#Endurance:hover{
+    background-image: url('./image/Keyboard/On/Endurance.png');
+}   
+
+
+.KeyRightSetStyle{
+    /* margin-left: 5px; */
+    width: 50px;
+    height: 50px;
+    background-color: #0000;
+    float: left;
+}    
+
+
+
+
+
+/*#endregion Share*/
+
+
+
+
+
+
+/*#region Select*/
+
+
+
+
+
+
+
+.ProjectItem{
+    line-height: 3vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 3.9vh;
+    margin-bottom: 2%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: rgb(255,87,0);
+}
+// .ProjectItem:focus{
+// background-color: red;
+
+// }
+// .ProjectItem:active{
+//     background-color: green;
+// }
+// .ProjectItem:visited{
+//     background-color: blue;
+// }
+
+
+
+.ProjectSelect {
+    position: absolute;
+    height: 34vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 5vh;
+    width: 21.3vw;
+
+}
+
+
+
+
+
+#KeyBoardPage .KBMacroSettingOption{
+
+    position: absolute;
+    height: 3vh;
+    width: 21.3vw;
+    top: 615px; 
+    left: 0.1%;
+    font-size: 17px;
+}
+#MacroPage .MacroSettingOption{
+    position: absolute;
+    height: 9.7vh;
+    width: 31vh;
+    top: 38%;
+    left: 4%;
+    background-repeat: no-repeat;
+}
+    
+
+#KeyBoardMacroSearchSetting {
+    position: absolute;
+    height: 22vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 44.2vh;
+    width: 21.3vw;
+}
+
+
+#KeyBoardMacroSearchSetting::-webkit-scrollbar-track {
+
+    background-repeat: no-repeat;
+}
+#KeyBoardMacroSearchSetting::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);/* border: 1px solid yellow; */
+    background-repeat: no-repeat;
+    background-color: rgb(42, 42, 42);
+
+
+}
+#KeyBoardMacroSearchSetting::-webkit-scrollbar {
+    width: 15px;
+}
+#KeyBoardMacroSearchSetting::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url('./image/ColorSet/UpArrow.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 0;
+}
+#KeyBoardMacroSearchSetting::-webkit-scrollbar-button:vertical:increment {
+    background-image: url('./image/ColorSet/DownArrow.png');
+     height: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+
+
+
+
+
+#ScriptClassSelect {
+    position: absolute;
+    height: 32vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 18vh;
+    width: 21.3vw;
+
+}
+
+
+#ScriptClassSelect::-webkit-scrollbar-track {
+
+    background-repeat: no-repeat;
+}
+#ScriptClassSelect::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);/* border: 1px solid yellow; */
+    background-repeat: no-repeat;
+    background-color: rgb(42, 42, 42);
+
+
+}
+#ScriptClassSelect::-webkit-scrollbar {
+    width: 15px;
+}
+#ScriptClassSelect::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url('./image/ColorSet/UpArrow.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#ScriptClassSelect::-webkit-scrollbar-button:vertical:increment {
+    background-image: url('./image/ColorSet/DownArrow.png');
+
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+#MacroFileSelectList {
+    position: absolute;
+    width: 65vw;
+    height: 35vh;
+    margin-left: 23.6vw;
+    margin-top: 12.4vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+#MacroFileSelectList::-webkit-scrollbar-track {
+
+    background-repeat: no-repeat;
+}
+#MacroFileSelectList::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);/* border: 1px solid yellow; */
+    background-repeat: no-repeat;
+    background-color: rgb(42, 42, 42);
+
+
+}
+#MacroFileSelectList::-webkit-scrollbar {
+    width: 16px;
+}
+#MacroFileSelectList::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url('./image/ColorSet/UpArrow.png');
+    background-repeat: no-repeat;
+    background-position: center;
+        // background-size: 100% 100%;
+}
+#MacroFileSelectList::-webkit-scrollbar-button:vertical:increment {
+    background-image: url('./image/ColorSet/DownArrow.png');
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+#CRUDSettingBG{
+    position: absolute;
+    width: 273px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    background-image: url(./image/Share/CRUDSettingBG.png);
+    background-size: 100% 100%;
+
+}
+.DropListStyle{
+position: absolute;
+display: block;
+top: 31.8%;
+left: 46%;
+width: 11.8vw;
+text-align: center;
+
+}
+#SystemSettingDrop{
+    position: absolute;height: 21px;width: 151px;top: 12.6%;left: 34%;background: url(./image/Share/SystemSettingDropUI.png);
+    user-select: none;
+}
+
+.DropListStyle::-webkit-scrollbar-track {
+    /* border: 1px solid red;
+    padding: 2px 0;*/
+    background-repeat: no-repeat;
+}
+.DropListStyle::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);/* border: 1px solid yellow; */
+    background-repeat: no-repeat;
+    background-color: rgb(42, 42, 42);
+
+
+}
+.DropListStyle::-webkit-scrollbar {
+    width: 15px;
+}
+.DropListStyle::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url('./image/ColorSet/UpArrow.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 0;
+}
+.DropListStyle::-webkit-scrollbar-button:vertical:increment {
+    background-image: url('./image/ColorSet/DownArrow.png');
+     height: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+
+#ShareSelectList {
+    overflow-y: visible;
+    position: absolute;
+    width: 10vw;
+    margin-left: 0vw;
+    margin-top: 0vh;
+    height: 10vh;
+}
+
+
+
+
+/*#endregion Select*/
+
+/*#region WebInputUI*/
+// input[type="button"]{
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+//     appearance: none;
+//     margin: 0;
+// }
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+input[type="checkbox"].autoStartCheckBox{
+    //@extend: yellow;
+    width:1.5vh;
+    height: 1.5vh;
+    border: 2px solid #519BFF;
+}
+
+input[type="checkbox"].autoStartCheckBox:checked{
+    background: yellow;
+    width:1.5vh;
+    height: 1.5vh;
+    border: 2px solid #519BFF;
+}
+
+
+
+
+
+
+
+
+
+
+/*#endregion WebInputUI*/
+
+
+/*#region Page2:KeyAssign*/
+.CustomInputText{
+    color: inherit;
+    position: absolute;
+    border: 0;
+    outline: 0;
+    /* 關掉焦點外框 */
+    pointer-events: none;
+    /* 關閉功能 */
+    background: transparent;
+    padding: 0;
+    line-height: 3vh;
+    margin-left: 0.6vw;
+    text-overflow: ellipsis;
+    width: 86%; 
+}
+
+
+
+// input[type=number]::-webkit-outer-spin-button,
+// input[type=number]::-webkit-inner-spin-button {
+//     -webkit-appearance: none;
+//     margin: 0;
+// }
+// input[type=number]::-webkit-inner-spin-button,
+// input[type=number]::-webkit-outer-spin-button {
+//   opacity:0;
+//   pointer-events:none;
+// }
+
+
+
+input[type="range"].color_quantity::-webkit-inner-spin-button {
+    background-color: #f00;
+    width: 12px;
+    height: 41px;
+    cursor: pointer;
+    /* -webkit-appearance: none; */
+    opacity: 1;
+}
+
+input.InputBtnStyle:focus {
+    outline: none !important;
+}
+
+input.InputBtnStyle:hover {
+    background-color: rgb(87, 0, 0);
+}
+
+.InputBtnStyle{
+    position: absolute;
+    background-repeat: no-repeat;
+    border: none; 
+    width: 2.9vw;
+    height: 3.6vh;
+    font-size: 1.5vh;
+    background: rgb(87, 0, 0);
+    box-sizing: border-box;
+}
+.functionInputBtnStyle{
+    background-repeat: no-repeat;
+    margin-left: 0.3%;
+    padding: 0;
+    margin-top: 1%;
+    border: none;
+    width: 2.9vw;
+    height: 3.6vh;
+    font-size: 1.5vh;
+    background: rgb(87, 0, 0);
+    box-sizing: border-box;
+}
+input.functionInputBtnStyle:focus {
+    outline: none !important;
+}
+
+input.functionInputBtnStyle:hover {
+    background-color: rgb(87, 0, 0);
+}
+
+#KeyAssignPrompt{
+    height: 9.5vh;
+    position: absolute;
+    width: fit-content;
+    z-index: 9998;
+    line-height: 3.2vh;
+    border: 2px solid #4d5b6f;
+    border-radius: 0.4vw;
+    box-sizing: border-box;
+    background-color: #e4e2e2;    
+    pointer-events: none;
+    font-size: 1vw;
+}
+.KeyPageAssignBtnStyle{
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 28%;
+    width: 14%;
+    height: 100%;
+    margin-left: 2%;
+    font-size: 14px;
+    color: rgb(139, 139, 139);
+}
+.AdvancedBtnStyle{
+    position: absolute;
+    top: 92%;
+    width: 5.1vw;
+    height: 3.4vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    background-color: rgb(20,20,20);
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+/*#endregion Page2:KeyAssign*/
+
+
+/*#region Page3:Macro*/
+.MacroFiletItem{
+    width: 7%;display: inline-block;
+    box-sizing: border-box;
+    // margin: 0.8vw;
+    margin-left: 1.8vw;
+    margin-top: 0.9vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: rgb(200, 200, 200);
+    text-align: center;
+    height: 10vh;
+    white-space: nowrap;font-size: 1.9vh;
+}
+
+
+
+
+
+#MacroContentArea::-webkit-scrollbar-track {
+    /* border: 1px solid red;
+    padding: 2px 0;*/
+    background: transparent;
+    /*軌道的樣子*/
+}
+
+#MacroContentArea::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-repeat: no-repeat;
+    background-color: rgb(42, 42, 42);
+    
+
+}
+#MacroContentArea::-webkit-scrollbar {
+    width: 15px;
+}
+#MacroContentArea::-webkit-scrollbar-button:vertical:decrement {
+    // background-image: url('./image/ColorSet/UpArrow.png');
+    background: transparent;
+    width: 0;
+    height:0;
+    // background-repeat: no-repeats;
+    
+}
+#MacroContentArea::-webkit-scrollbar-button:vertical:increment {
+    // background-image: url('./image/ColorSet/DownArrow.png');
+    // background-position: center;
+    // background-repeat: no-repeat;
+    background: transparent;
+    width: 0;
+    height:0;
+}
+.MacroContentItem{
+    width: 100%;height: 14%;border-bottom: 2px rgb(100,100,100) solid;
+}
+
+
+.SystemPageBtnStyle{
+    position: absolute;
+    height: auto;
+    width: 90px;
+    text-align: center;
+    line-height: 31px;
+    font-size: 13px;
+    border: 0;
+    padding: 0;
+    user-select: none;
+}
+
+/*#endregion Macro*/
+
+/*#region Page4:ProgramPage*/
+#PGSettingOption {
+    position: absolute;
+    height: 29vh;
+    margin-top: 42vh;
+    width: 21.3vw;
+
+}
+input[type="range"].PGInputRange {
+    position: absolute;
+    margin-left: 15.6vw;
+    margin-top: 1.8vw;
+    -webkit-appearance: none; /* 去除默认样式 */
+    background: -webkit-linear-gradient(#2e9cfb, #2e9cfb) no-repeat, rgb(42, 42, 42);
+    background-size: 0 100%; 
+    width: 5vw;
+    height: 0.6vh;
+    border-radius: 15px;
+    vertical-align: middle;
+}
+/* 去除获取焦点时的边框 */
+input[type="range"].PGInputRange:focus {
+    outline: none;
+}
+
+/* chrome自定义滑动轨道 */
+input[type="range"].PGInputRange::-webkit-slider-runnable-track {
+    // height: 10px;
+    /* border-radius: 15px; */
+    /* background-color: rgb(47, 0, 255); */
+    height: 250%;
+}
+
+/* chrome自定义滑块 */
+input[type="range"].PGInputRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1.2vh;
+    height: 1.3vh;
+    background: #808080;
+    border-radius: 50%;
+    background-image: url('./image/P7/InputIcon.png');
+    transform: translateY(1px);
+}
+/*#endregion Page4:ProgramPage*/
+
+
+/*#region ColorPicker*/
+
+
+.RBtn1cs{
+    background-image: url('./image/ScriptSet/Off/RBtn1.png');
+}
+
+.RBtn2cs{
+    background-image: url('./image/ScriptSet/Off/RBtn2.png');
+}
+.RBtn3cs{
+    background-image: url('./image/ScriptSet/Off/RBtn3.png');
+}
+.RBtn4cs{
+    background-image: url('./image/ScriptSet/Off/RBtn4.png');
+}
+
+.RBtn5cs{
+    background-image: url('./image/ScriptSet/Off/RBtn5.png');
+}
+.RBtn1cs:hover{
+    background-image: url('./image/ScriptSet/On/RBtn1.png');
+}
+.RBtn2cs:hover{
+    background-image: url('./image/ScriptSet/On/RBtn2.png');
+}
+.RBtn3cs:hover{
+    background-image: url('./image/ScriptSet/On/RBtn3.png');
+}
+
+.RBtn4cs:hover{
+    background-image: url('./image/ScriptSet/On/RBtn4.png');
+}
+.RBtn5cs:hover{
+    background-image: url('./image/ScriptSet/On/RBtn5.png');
+}
+
+
+
+
+
+
+
+
+
+/*#endregion ColorPicker*/
+
+
+/*#region Animation*/
+
+
+
+
+#loading1 {
+    position: absolute;
+    color:white;
+    background: black;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.loadingImage {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: #2e98df;
+    border-radius: 50px;
+    animation: loadingImage 1.5s infinite linear;
+}
+
+.loadingImage::after {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-top: 10px solid #b160d1;
+    border-bottom: 10px solid #b160d1;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-radius: 50px;
+    content: '';
+    top: -20px;
+    left: -20px;
+    animation: loadingImage_after 1.5s infinite linear;
+}
+
+@keyframes loadingImage {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+        background: #2ecc71;
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loadingImage_after {
+    0% {
+        border-top: 10px solid #b160d1;
+        border-bottom: 10px solid #b160d1;
+    }
+
+    50% {
+        border-top: 10px solid #2e98df;
+        border-bottom: 10px solid #2e98df;
+    }
+
+    100% {
+        border-top: 10px solid #b160d1;
+        border-bottom: 10px solid #b160d1;
+    }
+}
+/*#endregion Animation*/
+
+/*#region 7:AdvancedEdit*/
+
+
+.AdvancedEffectFrame{
+    line-height: 3vh;
+    width: 100%;
+    height: 3vh;
+    display: flex;
+    align-items: center;
+    font-size: 1vw;
+    margin-top: 0.7vh;
+    margin-left: 0.5vw;
+}
+/*#endregion Animation*/
+
+#main-app{
+    background-image: url(./image/Share/AllBg.png);
+    background-size: 100% 100%;
+    height: 100%;
+    width:  100%;
+    position: absolute;
+    user-select: none;
+    overflow: hidden;
+    // background: rgb(30,30,30);
+
+    .content{
+        height: 100%;
+        width:  100%;
+        position: absolute;
+        // background: black;
+        //background-image: url('./image/FirstPage/AllBg.png');
+        color:white;
+        .MainPageBtn1{
+            background-image: url('./image/FirstPage/BTN1.png');
+
+        }
+        .MainPageBtn2{
+            background-image: url('./image/FirstPage/BTN2.png');
+
+        }
+     
+        .MenuArea{
+            width: 1166px;
+            height: 285px;
+            background-color: #00f;
+            //margin-left: 5%;
+
+        }
+    }
+}

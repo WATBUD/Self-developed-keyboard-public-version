@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetec
 import { ElectronEventService } from '../services/libs/electron/index';
 import { Router } from '@angular/router';
 import { Subscription } from "rxjs/Subscription";//Lag Edited
+import { Http, Response, Headers, RequestOptions } from '@angular/http'
 
 import {
     CurrentColor, MacroScriptContent, MacroManager, Wave, APModeModule, KeyBoardManager, KeyBoardStyle, LedChainFramesManager,
@@ -12,8 +13,8 @@ import {
 import { M_Built_ineffect } from './M_Built_ineffect';
 import { G_Built_ineffect } from './G_Built_ineffect';
 
-import { DeviceService } from '../services/device/DeviceService';
-import { AppSettingService } from '../services/device/AppSettingService';
+import { DeviceService } from './DeviceService';
+import { AppSettingService } from './AppSettingService';
 
 import { Electron_Service } from './Electron_Service';
 
@@ -54,7 +55,6 @@ export class AppComponent implements OnInit {
     M_Light_BuiltIn = new M_Light_CS(1)
     MacroManager = new MacroManager();
     KeyBoardStyle = new KeyBoardStyle();
-    DeviceService = new DeviceService();
     LedColor = new CurrentColor("LedColor");
     customLedColor = new CurrentColor("customLedColor");
     Built_inColor = new CurrentColor("Built_inColor");
@@ -70,6 +70,8 @@ export class AppComponent implements OnInit {
     ImgPath = ImgPathList.getInstance();
     i18nManager = i18nManager.getInstance();
     SharesFunction = SharesFunction.getInstance();
+    DeviceService= new DeviceService();
+
     //-----------------Class專用---------------------
     KBSPBUI: any = [false, false, false, false, false, false, false, false];
     switchEffectUI: boolean = false;
@@ -124,7 +126,8 @@ export class AppComponent implements OnInit {
     constructor(
         private router: Router,
         private elementRef: ElementRef,
-        private changeDetectorRef: ChangeDetectorRef) {
+        private changeDetectorRef: ChangeDetectorRef,
+        private http: Http) {
 
         ElectronEventService.on('icpEvent').subscribe((icpData: any) => {
             var icpObj = JSON.parse(icpData.detail);
