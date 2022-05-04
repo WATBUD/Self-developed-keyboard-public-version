@@ -1,50 +1,32 @@
-declare var System;
 import { Component ,OnInit, Input, Output, EventEmitter,ElementRef,ChangeDetectorRef, ViewChild} from '@angular/core';
 import { Electron_Service } from '../Module/Electron_Service';
 import { Router } from '@angular/router';
-import {ControlValueAccessor,FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import { Observable,fromEvent  } from 'rxjs';
-
+import { DeviceService } from './DeviceService';
 import { Subscription } from "rxjs/Subscription";//Lag Edited
-const {ipcRenderer} = System._nodeRequire('electron');
-let iro = System._nodeRequire('./js/iro.js');
-let evtVar = System._nodeRequire('./backend/others/EventVariable');
-let funcVar = System._nodeRequire('./backend/others/FunctionVariable');
-let env = System._nodeRequire('./backend/others/env');
-let remote = System._nodeRequire('electron').remote;
-let { dialog } = remote;
-let tool = System._nodeRequire('./backend/others/tool')
 import { ColorModule,MacroScriptContent,MacroManager,Wave,APModeModule,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
-    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList,ColorOutput  
-    ,count_boolean,CreateFakeArray,SharesFunction,ProgressBar,M_Light_CS,
+    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList,
+    count_boolean,CreateFakeArray,SharesFunction,ProgressBar,M_Light_CS,
 } from './TSImportManager';
 import { M_Built_ineffect } from './M_Built_ineffect';
 import { G_Built_ineffect } from './G_Built_ineffect';
-let path = window['System']._nodeRequire('path');
-
-import { DeviceService } from '../../MK_Series/DeviceService';
-import { AppSettingService } from '../../MK_Series/AppSettingService';
-let electron_Instance = window['System']._nodeRequire('electron').remote; 
-let electron_Instance2 = window['System']._nodeRequire('electron'); 
-let _nodeRequire_fs = window['System']._nodeRequire('fs'); 
-let notifier = window['System']._nodeRequire('electron-notifications');
+import { AppSettingService } from './AppSettingService';
 @Component({
-    selector: 'sm-app',
-    templateUrl : './components/app.component.html',
+    selector: 'app-selector',
+    templateUrl : './app.component.html',
     // template: '<h1>我的第一个 Angular 应用</h1>',
-    styleUrls: ['./components/app.component.css',
-    './assets/css/Circle_Bar_Style.css',
-    './assets/css/KeyBoardStyle.css',
-    './assets/css/Share.css',
-    './assets/css/M_Light_APMode.css',
-    './assets/css/MacroSetting.css',
-    './assets/css/ColorTest.css',
-    './assets/css/ProgramPage.css'],
+    styleUrls: ['./app.component.css',
+    './css/Circle_Bar_Style.css',
+    './css/KeyBoardStyle.css',
+    './css/Share.css',
+    './css/M_Light_APMode.css',
+    './css/MacroSetting.css',
+    './css/ColorTest.css',
+    './css/ProgramPage.css'],
     providers: []
 })
 export class AppComponent implements OnInit{
-
     // @ViewChild(sync_AppModePageComponent) child_sync:sync_AppModePageComponent;
     system={
         isMac:true,
@@ -68,7 +50,6 @@ export class AppComponent implements OnInit{
     M_Light_BuiltIn=new M_Light_CS(1)
     MacroManager=new MacroManager();
     KeyBoardStyle=new KeyBoardStyle();
-    DeviceService;
     LedColor=new ColorModule("LedColor");
     customLedColor=new ColorModule("customLedColor");
     Built_inColor=new ColorModule("Built_inColor");
@@ -120,7 +101,7 @@ export class AppComponent implements OnInit{
             lightness:100,
         },
     }
-    dbService = electron_Instance.getGlobal('AppProtocol').deviceService.nedbObj
+    dbService;
 
     modeNameTable:any=['Static','Cycle','Breathing','Rainbow'];
     static instance;
@@ -137,7 +118,9 @@ export class AppComponent implements OnInit{
     constructor(private router: Router,
         private elementRef:ElementRef,
         private changeDetectorRef: ChangeDetectorRef,
-        private http:Http){
+        private http:Http,
+        private DeviceService: DeviceService
+        ){
             console.log('%c  private http:Http','background: red; color: white',this.http);
         //開啟App時通知Electron 將系統icon load起來
         // ipcRenderer.send("AlertOSDMessage",{
@@ -146,12 +129,12 @@ export class AppComponent implements OnInit{
         //     imagePath:'/image/Share/Product_Logo.png',
         // });
         ///////////////////////////////////////////
-        ElectronEventService.on('icpEvent').subscribe((icpData:any) => {
+        this.on('icpEvent').subscribe((icpData: any) => {
             var icpObj = JSON.parse(icpData.detail);
             //console.log("icpObj_data",icpObj);
 
             //----------------SendSyncLED--------------------
-            if (icpObj.Func === evtVar.EventTypes.SendSyncLED) 
+            if (icpObj.Func === this.Electron_Service.getEvtVar().SendSyncLED) 
             {
                 //console.log("SendSyncLED",icpObj.Param.Data,this.M_Light_APMode.BSModule_L.EventCanBoxSelect);
                 if (this.CurrentPageName == "LIGHTINGSETTING"&&this.M_Light_APMode.BSModule_L.EventCanBoxSelect==false) {
@@ -161,7 +144,7 @@ export class AppComponent implements OnInit{
                 }
             }
             //----------------SendCustomLED--------------------
-            else if (icpObj.Func === evtVar.EventTypes.SendCustomLED) 
+            else if (icpObj.Func === this.Electron_Service.getEvtVar().SendCustomLED) 
             {   
                 if (this.CurrentPageName == "Custom Effect" && this.LCFM.performingCustomLED) {
                     //console.log("SendCustomLED",icpObj.Param.Data);
@@ -171,7 +154,7 @@ export class AppComponent implements OnInit{
                 }
             }
             //----------------SwitchProfile--------------------
-            else if (icpObj.Func === evtVar.EventTypes.SwitchProfile) {
+            else if (icpObj.Func === this.Electron_Service.getEvtVar().SwitchProfile) {
                 let Profile = icpObj.Param.Profile;
 
                 if (Profile != undefined) {
@@ -184,7 +167,7 @@ export class AppComponent implements OnInit{
                 }
             }
             //----------------SwitchDevice--------------------
-            else if (icpObj.Func === evtVar.EventTypes.RefreshDevice) 
+            else if (icpObj.Func === this.Electron_Service.getEvtVar().RefreshDevice) 
             {
                 console.log('%c RefreshDevice.Param:','color:rgb(255,0,0)',icpObj.Param);
                 this._RefreshDevice();
@@ -194,7 +177,7 @@ export class AppComponent implements OnInit{
                 this.setPassiveEffects(icpObj.Param.Key);
             }
             //----------------SendBatteryStats--------------------
-            else if (icpObj.Func === evtVar.EventTypes.SendBatteryStats) 
+            else if (icpObj.Func === this.Electron_Service.getEvtVar().SendBatteryStats) 
             {
                 console.log('BatteryStats:',icpObj.Param);
                 var target=icpObj.Param; 
@@ -206,7 +189,7 @@ export class AppComponent implements OnInit{
                 }
             }
             //----------------SendNotification--------------------
-            else if (icpObj.Func === evtVar.EventTypes.SendFWVersion) 
+            else if (icpObj.Func === this.Electron_Service.getEvtVar().SendFWVersion) 
             {
                 var DeviceFWdataArr=JSON.parse(JSON.stringify(icpObj.Param));  
                 console.log('SendFWVersion:',DeviceFWdataArr);
@@ -214,7 +197,7 @@ export class AppComponent implements OnInit{
                 this.changeDetectorRef.detectChanges();
             }
             //----------------SendFWUPDATE Stats--------------------
-            else if (icpObj.Func === evtVar.EventTypes.SendFWUPDATE) {
+            else if (icpObj.Func === this.Electron_Service.getEvtVar().SendFWUPDATE) {
                 var strFWUPDATEStats = icpObj.Param.Text;
                 var strFWUPDATEProcess = icpObj.Param.Process;
                 var elem = document.getElementById("myBar");
@@ -238,18 +221,21 @@ export class AppComponent implements OnInit{
         });
         AppComponent.instance=this;
         console.log('this.dbService', this.dbService);
-        let DataContent = {
-            Type: funcVar.FuncType.System,
-            Func: funcVar.FuncName.InitializeUIDone,
-            Param: ""
+        if (this.Electron_Service.inTheElectronFramework()) {
+            let DataContent = {
+                Type: this.Electron_Service.getFuncVar().FuncType.System,
+                Func: this.Electron_Service.getFuncVar().FuncName.InitializeUIDone,
+                Param: ""
+            }
+            this.Electron_Service.RunSetFunction(DataContent).then((data) => {//=>to AppProtocol=>electron.js
+            });
         }
-        this.protocol.RunSetFunction(DataContent).then((data) => {//=>to AppProtocol=>electron.js
-        });
-        //this.DeviceService.CheckforUpdates();
     }
     _RefreshDevice(){
         console.log('%c _RefreshDevice:','color:rgb(255,0,0)');
         this.onLoading=true;
+        this.dbService= this.Electron_Service.get_NeDB();
+
         this.DeviceService.getDevice().then(() => {      
             this.CurrentPageName="SelectDevice";      
             this.onLoading=false;
@@ -260,21 +246,6 @@ export class AppComponent implements OnInit{
         return fromEvent(window, name);
     }
 
-
-    getAssignURL_json(URL) :Observable<any>{
-        console.log('getAssignURL_json_URL',URL);
-		return this.http.get(URL)
-        .timeout(3000)
-        .map((res: Response) => {
-            console.log('getAssignURL_json_map',res);
-            let resJson = res.json();
-            return resJson;
-        })
-        .catch((error: Response) => {
-            console.log('getAssignURL_json_error',error);
-            return Observable.throw(error.json());
-        });     
-	} 
     switchsetPageData(item){
 
         if(item.enable){
@@ -283,27 +254,24 @@ export class AppComponent implements OnInit{
         }
         //this.setPageDataSelected=item;
     }
-    colorChange(result:ColorOutput){    
-        console.log("colorChange", result);
-        console.log("myColor", this.myColor);
-    }
+
     ReturnAdvancedBtnImage(Type = "") {
         if (this.CurrentPageName == "Custom Effect" && !this.onEqipBtn){
-            return "url('./image/Share/On/AdvanceEdit.png')"
+            return "url('/image/Share/On/AdvanceEdit.png')"
         }
 
         switch (Type) {
             case "mouseenter":
-                return "url('./image/Share/mouseover/AdvanceEdit.png')"
+                return "url('/image/Share/mouseover/AdvanceEdit.png')"
             case "mousedown":
-                    return "url('./image/Share/On/AdvanceEdit.png')"
-                // case "mouseup":
+                    return "url('/image/Share/On/AdvanceEdit.png')"
+            //case "mouseup":
   
-                break;
+            //break;
             case "mouseleave":
-                return "url('./image/Share/Off/AdvanceEdit.png')"
+                return "url('/image/Share/Off/AdvanceEdit.png')"
             case "":
-                return "url('./image/Share/Off/AdvanceEdit.png')"
+                return "url('/image/Share/Off/AdvanceEdit.png')"
 
 
         }
@@ -330,20 +298,20 @@ export class AppComponent implements OnInit{
 
     ReturnEqipBtnImage(Type = "") {
         if (this.onEqipBtn) {
-            return "url('./image/Share/On/AddEqip.png')"
+            return "url('/image/Share/On/AddEqip.png')"
         }
         //console.log("ReturnEqipBtnImage", Type);
         switch (Type) {
             case "mouseenter":
-                return "url('./image/Share/mouseover/AddEqip.png')"
+                return "url('/image/Share/mouseover/AddEqip.png')"
             case "mousedown":
             case "mouseup":
                 this.onEqipBtn = true;
                 break;
             case "mouseleave":
-                return "url('./image/Share/Off/AddEqip.png')"
+                return "url('/image/Share/Off/AddEqip.png')"
             case "":
-                return "url('./image/Share/Off/AddEqip.png')"
+                return "url('/image/Share/Off/AddEqip.png')"
 
         }
 
@@ -563,7 +531,6 @@ export class AppComponent implements OnInit{
                     T_CS.mode_CycleBreath(inputColor,false);
                 }
                     break;
-                break;
             case 'NormallyOn':
                 if(targetMulticolor){
                     T_CS.mode_NormallyOnMulticolor(inputColor);    
@@ -908,14 +875,21 @@ export class AppComponent implements OnInit{
                 this.pulldownable=false;
             }
         });
-        this.dbService.getAppSetting().then((data: any) => {
-            console.log('ReadDBDataFromServer_dbService.getAppSetting()', data);
-            if (data[0]!=undefined) {
-                this.i18nManager.ImportClassData(data[0]);
-                this.i18nClickExcute();//ngAfterViewInit
-            }
-            this.ReadAllDBPass.push('getAppSetting');
-        });
+        if (this.Electron_Service.inTheElectronFramework()) {
+            this.dbService.getAppSetting().then((data: any) => {
+                console.log('ReadDBDataFromServer_dbService.getAppSetting()', data);
+                if (data[0] != undefined) {
+                    this.i18nManager.ImportClassData(data[0]);
+                    this.i18nClickExcute();//ngAfterViewInit
+                }
+                this.ReadAllDBPass.push('getAppSetting');
+            });
+        }
+
+
+
+
+
         this.MacroManager.createMacroClass(this.i18nManager.getTarget('MACROTYPE'));
         this.MacroManager.createClassMacroFile(this.i18nManager.getTarget('MACRO'));
         // setTimeout(() => {
@@ -939,61 +913,27 @@ export class AppComponent implements OnInit{
                     }
         });
     }
-    //FB IG Mail 论坛 官网 推特 微信 微博
-    HyperLinkGO(index){
-        console.log("Enter_customHyper_Link",ipcRenderer.cp,ipcRenderer,ipcRenderer.remote);
-        switch (index) {
-            case 0:
-                ipcRenderer.send("customHyper_Link","https://www.facebook.com/");
-                break;
-            case 1:
-                ipcRenderer.send("customHyper_Link","https://www.instagram.com/");
-                break;
-            case 2:
-                ipcRenderer.send("customHyper_Link","mailto:market@email.com"); 
-                break;
-            case 3:
-                ipcRenderer.send("customHyper_Link","https://www.google.com");
-                break;
-            case 4:
-                ipcRenderer.send("customHyper_Link","https://google.com");
-                break;
-            case 5:
-                ipcRenderer.send("customHyper_Link","https://twitter.com");
-                break; 
-            case 6:
-                ipcRenderer.send("customHyper_Link","https://wx.qq.com/");
-                break;
-            case 7:
-                ipcRenderer.send("customHyper_Link","https://www.weibo.com/");
-                break;
 
-        }
-    }
     
-    LaunchFWUpdate(){
-        
-        this.FWManager.FWUpdating=true;
-        console.log('LaunchFWUpdate',this.FWManager.getTarget().SN);
-        
-        let Obj = {
-            Type: funcVar.FuncType.System,
-            Func: funcVar.FuncName.LaunchFWUpdate,
-            Param: {
-                SN:this.FWManager.getTarget().SN,
-            },
-            
+    LaunchFWUpdate() {
+        this.FWManager.FWUpdating = true;
+        console.log('LaunchFWUpdate', this.FWManager.getTarget().SN);
+        if (this.Electron_Service.inTheElectronFramework()) {
+            let Obj = {
+                Type: this.Electron_Service.getFuncVar().FuncType.System,
+                Func: this.Electron_Service.getFuncVar().FuncName.LaunchFWUpdate,
+                Param: {
+                    SN: this.FWManager.getTarget().SN,
+                },
+            }
+            this.Electron_Service.RunSetFunction(Obj).then((data) => {
+            })
         }
-        
-        //console.log('FWUpdate Function:',Obj.Func);
-        this.protocol.RunSetFunction(Obj).then((data) => {
-            
-        })
     }
     i18nClickExcute(){ 
         this.i18nManager.updateSettingValue();
         this.onSystemSetting=false;
-        this.system.isMac=env.isMac;
+        this.system.isMac=this.Electron_Service.getEnv().isMac;
     }
 
     i18nSave(){
@@ -1120,10 +1060,9 @@ export class AppComponent implements OnInit{
         }
         this.setPageIndex('KEYBOARDSETTINGS');
         this.onLoading = false;
-        if (_nodeRequire_fs.existsSync(process.env.APPDATA + "\\Development_SupportDB")) {
+        if (this.Electron_Service.get_nodeRequire_fs().existsSync(process.env.APPDATA + "\\Development_SupportDB")) {
             //var data={"devicename":'GMMK Pro'};
             var data = { "devicename": this.DeviceService.getCurrentDevice().devicename };
-            console.log('_nodeRequire_fs', _nodeRequire_fs, data);
             var setdata = {
                 "defaultProfile": JSON.parse(JSON.stringify(this.KeyBoardManager.KeyBoardArray)),
             }
@@ -1203,34 +1142,33 @@ export class AppComponent implements OnInit{
                                                                     
         }
         var Obj4 = {
-            Type: funcVar.FuncType.Device,
+            Type: this.Electron_Service.getFuncVar().FuncType.Device,
             Func: ToServerFunctionName,
             Param: devdata.Db_data,
             SN:this.DeviceService.getCurrentDevice().SN
         }
         console.log("ToServerFunctionName",Obj4);
 
-        this.protocol.RunSetFunction(Obj4).then((data) => {
+        this.Electron_Service.RunSetFunction(Obj4).then((data) => {
         });
 
     }
     setCustomPreviewToServer(sourceName) {     
-        //-----------------
         console.log("setCustomPreviewToServer:",this.LCFM.LedChainFrames[this.LCFM.currentChooseIndex]);
         let apmodesetting = {
             iDevice: 0,
             CustomDataObj: this.LCFM.LedChainFrames[this.LCFM.currentChooseIndex]
         }
+        if (this.Electron_Service.inTheElectronFramework()) {
+            let Obj3 = {
+                Type: this.Electron_Service.getFuncVar().FuncType.System,
+                Func: this.Electron_Service.getFuncVar().FuncName.SetLEDPreview,
+                Param: apmodesetting
+            }
 
-        let Obj3 = {
-            Type: funcVar.FuncType.System,
-            Func: funcVar.FuncName.SetLEDPreview,
-            Param: apmodesetting
+            this.Electron_Service.RunSetFunction(Obj3).then((data) => {
+            });
         }
-        
-        this.protocol.RunSetFunction(Obj3).then((data) => {
-        });
-        //-----------------
     };
 
     setPreviewOnOffToServer() {     
@@ -1240,14 +1178,15 @@ export class AppComponent implements OnInit{
             iMode: 1,//0:All Timer Off,1:AP Mode 2: Custom
             bStart: 2//0:Off,1,On,2:On But Not Preview
         }
-        let Obj3 = {
-            Type: funcVar.FuncType.System,
-            Func: funcVar.FuncName.SwitchSyncLEDPreview,
-            Param: apmodesetting
+        if (this.Electron_Service.inTheElectronFramework()) {
+            let Obj3 = {
+                Type: this.Electron_Service.getFuncVar().FuncType.System,
+                Func: this.Electron_Service.getFuncVar().FuncName.SwitchSyncLEDPreview,
+                Param: apmodesetting
+            }
+            this.Electron_Service.RunSetFunction(Obj3).then((data) => {
+            });
         }
-       
-        this.protocol.RunSetFunction(Obj3).then((data) => {
-        });
         //-----------------
     };
 
@@ -1277,42 +1216,41 @@ export class AppComponent implements OnInit{
             case "KEYBOARDSETTINGS":
                 ObjDB["KeyBoardManager"] = this.KeyBoardManager;
                 ObjDB["SetAll"]=SetAll;
-                FuncName = funcVar.FuncName.SetKeyMatrix;
+                FuncName = this.Electron_Service.getFuncVar().FuncName.SetKeyMatrix;
                 break;
             case "MACROSETTINGS":
                 ObjDB["MacroManager"] = this.MacroManager;
-                FuncName = funcVar.FuncName.SetKeyMatrix;
+                FuncName = this.Electron_Service.getFuncVar().FuncName.SetKeyMatrix;
                 this.onLoading = false;
                 this.setDBDataToServer('MacroManager');
                 return;
-                break;
             case "Custom Effect":
                 const iProfile =  this.KeyBoardManager.currentChooseKeyBoard;
                 ObjDB["Profile"] = iProfile;
                 ObjDB["custom"] = iProfile;
                 console.log("SWprofiles:",ObjDB);
-                FuncName = funcVar.FuncName.SetKeyMatrix;
+                FuncName = this.Electron_Service.getFuncVar().FuncName.SetKeyMatrix;
             break;
             case "RELATEDPROGRAM":
                 ObjDB["ObjSyncData"] = this.AssociateManager.AssociateArr;
-                FuncName = funcVar.FuncName.SetSyncProgram;
+                FuncName = this.Electron_Service.getFuncVar().FuncName.SetSyncProgram;
             break; 
             case "Built-ineffects":
                 this.KeyBoardManager.getTarget().lightData=JSON.parse(JSON.stringify(this.Built_ineffect.getTarget()))
                 ObjDB["KeyBoardManager"] = this.KeyBoardManager;
-                FuncName = funcVar.FuncName.SetLEDEffect;
+                FuncName = this.Electron_Service.getFuncVar().FuncName.SetLEDEffect;
             break;
 
         }
         
         let ObjDevice = {
-            Type: funcVar.FuncType.Device,
+            Type: this.Electron_Service.getFuncVar().FuncType.Device,
             Func: FuncName,
             Param: ObjDB,
             SN:this.DeviceService.getCurrentDevice().SN
         }
         console.log("setDeviceToServer_ObjDevice",ObjDevice );
-        this.protocol.RunSetFunction(ObjDevice).then((data) => {
+        this.Electron_Service.RunSetFunction(ObjDevice).then((data) => {
             this.onLoading = false;
             if(this.CurrentPageName=="Built-ineffects"){
                 this.setDBDataToServer('KeyAssign');
@@ -1345,13 +1283,15 @@ export class AppComponent implements OnInit{
         });
         //SetSyncLEDData
         console.log('SetAPModeLEDData:'+from, devdata);
-        let obj3 = {
-            Type: funcVar.FuncType.System,
-            Func: funcVar.FuncName.SetAPModeLEDData,
-            Param: devdata
+        if (this.Electron_Service.inTheElectronFramework()) {
+            let obj3 = {
+                Type: this.Electron_Service.getFuncVar().FuncType.System,
+                Func: this.Electron_Service.getFuncVar().FuncName.SetAPModeLEDData,
+                Param: devdata
+            }
+            this.Electron_Service.RunSetFunction(obj3).then((data) => {
+            })
         }
-        this.protocol.RunSetFunction(obj3).then((data) => {
-        })
     };
     RGBEffectCenterEventArr:any=[];
     setPageIndex(pageName=""){
@@ -1394,7 +1334,7 @@ export class AppComponent implements OnInit{
                 this.addColor_PickerEvent();
                 this.refreshM_Light_BuiltIn();
                 this.pageIconSet = [false, false, false, false];
-                if(_nodeRequire_fs.existsSync(process.env.APPDATA + "\\L_tsetEffect")){
+                if(this.Electron_Service.get_nodeRequire_fs().existsSync(process.env.APPDATA + "\\L_tsetEffect")){
                     document.addEventListener("keyup",(evemt2)=>{
                         this.setPassiveEffects(37);
                     });
@@ -1536,14 +1476,16 @@ export class AppComponent implements OnInit{
             let apmodesetting={
                 DeviceBtnAxis:this.M_Light_APMode.ledcoordinates
             }
-            let obj={
-                Type:funcVar.FuncType.System,
-                Func:funcVar.FuncName.SetDeviceBtnAxis,
+        if (this.Electron_Service.inTheElectronFramework()) {
+            let obj = {
+                Type: this.Electron_Service.getFuncVar().FuncType.System,
+                Func: this.Electron_Service.getFuncVar().FuncName.SetDeviceBtnAxis,
                 Param: apmodesetting
             }
-            this.protocol.RunSetFunction(obj).then((data)=>{
+            this.Electron_Service.RunSetFunction(obj).then((data) => {
                 console.log('SetDeviceBtnAxis Finish');
             });
+        }
 
 
     }
@@ -1828,23 +1770,11 @@ export class AppComponent implements OnInit{
          
     }
     notifyMessage(setIndex) {
-        ipcRenderer.send("AlertOSDMessage",{
+        this.Electron_Service.getElectronSelf().send("AlertOSDMessage",{
             functionName:"notifyMessage",
             index:setIndex,
             imagePath:'/image/Share/Product_Logo.png',
         });
-        // let DataContent = {
-        //     Type: funcVar.FuncType.System,
-        //     Func: funcVar.FuncName.fastAppointFunction,
-        //     Param: {
-        //         functionName:"notifyMessage",
-        //         index:setIndex,
-        //         imagePath:'/image/Share/Product_Logo.png',
-        //     },
-        // }
-        // this.protocol.RunSetFunction(DataContent).then((data) => {//=>to AppProtocol=>electron.js
-        //     env.log('notifyMessage', setIndex, 'finished');
-        // });
     }
     project_select(event,index){
         console.log("project_select: ", event, index);
@@ -1857,12 +1787,12 @@ export class AppComponent implements OnInit{
             }
             console.log('ProfileID:', apmodesetting);
             let obj3 = {
-                Type: funcVar.FuncType.Device,
-                Func: funcVar.FuncName.SetProfile,
+                Type: this.Electron_Service.getFuncVar().FuncType.Device,
+                Func: this.Electron_Service.getFuncVar().FuncName.SetProfile,
                 SN: this.DeviceService.getCurrentDevice().SN,
                 Param: apmodesetting
             }
-            this.protocol.RunSetFunction(obj3).then((data) => {
+            this.Electron_Service.RunSetFunction(obj3).then((data) => {
             })
         }
     }
@@ -1881,7 +1811,7 @@ export class AppComponent implements OnInit{
                 typeName="Macro"
                 break
             case "RELATEDPROGRAM":
-                typeName= env.isMac? "app":"exe";
+                typeName= this.Electron_Service.getEnv().isMac? "app":"exe";
                 break
             case "Custom Effect":
                 typeName="Advanced"
@@ -1889,15 +1819,14 @@ export class AppComponent implements OnInit{
             default:
                 alert("typeNameu遺失"+this.CurrentPageName)
                 return;
-                break    
         }
         if (this.CurrentPageName == "RELATEDPROGRAM") {
-            dialog.showOpenDialog(null, { defaultPath: '', filters: [{ name: typeName + ' File', extensions: [typeName] }] }, (fns) => {
+            this.Electron_Service.getElectron_Instance().dialog.showOpenDialog(null, { defaultPath: '', filters: [{ name: typeName + ' File', extensions: [typeName] }] }, (fns) => {
                 console.log('showOpenDialog:', typeName, fns);
                 if (fns != undefined) {
                     console.log('讀取路徑fns', fns[0]);
                     //var TestText = "C:\\Users\\Louis\\Desktop\\5555.Macro";                    
-                    var index = env.isMac? fns[0].lastIndexOf("/"):fns[0].lastIndexOf("\\");
+                    var index = this.Electron_Service.getEnv().isMac? fns[0].lastIndexOf("/"):fns[0].lastIndexOf("\\");
                     
                     var dot = fns[0].lastIndexOf(".");
                     var exePath = fns[0].substring(index + 1);
@@ -1920,7 +1849,7 @@ export class AppComponent implements OnInit{
         }
 
         
-        dialog.showOpenDialog(null, 
+        this.Electron_Service.getElectron_Instance().dialog.showOpenDialog(null, 
             { 
             defaultPath: '', 
             filters: [{ name: typeName + ' File', extensions: [typeName] }] 
@@ -1929,7 +1858,7 @@ export class AppComponent implements OnInit{
             if (fns != undefined) {
                 console.log('讀取路徑fns', fns[0]);
                 //var TestText = "C:\\Users\\Louis\\Desktop\\5555.Macro";
-                var index = env.isMac? fns[0].lastIndexOf("/"):fns[0].lastIndexOf("\\");
+                var index = this.Electron_Service.getEnv().isMac? fns[0].lastIndexOf("/"):fns[0].lastIndexOf("\\");
                 var dot = fns[0].lastIndexOf(".");
                 var exeName = fns[0].substring(index + 1);
                 var ProcessString = fns[0].substring(index + 1, dot);
@@ -1938,82 +1867,83 @@ export class AppComponent implements OnInit{
                 let obj = {
                     Path: fns[0],
                 }
-
-                let obj2 = {
-                    Type: funcVar.FuncType.System,
-                    Func: funcVar.FuncName.ImportProfile,
-                    Param: obj
+                if (this.Electron_Service.inTheElectronFramework()) {
+                    let obj2 = {
+                        Type: this.Electron_Service.getFuncVar().FuncType.System,
+                        Func: this.Electron_Service.getFuncVar().FuncName.ImportProfile,
+                        Param: obj
+                    }
+                    this.Electron_Service.RunSetFunction(obj2).then((data) => {
+                        console.log('ImportProfile:', data);
+                        this.onAppImportExport = false;
+                        this.changeDetectorRef.detectChanges();
+                        if (data != null) {
+                            if (data['filename'] != this.DeviceService.getCurrentDevice().SN + '_Profile' && this.CurrentPageName != 'MACROSETTINGS') {
+                                alert("鍵盤資料錯誤  請匯入正確裝置資料")
+                                return;
+                            }
+                            switch (this.CurrentPageName) {
+                                case "LIGHTINGSETTING":
+                                    var temp = data['value']["Light_Export"];
+                                    if (temp != undefined) {
+                                        temp = JSON.parse(JSON.stringify(temp));
+                                        this.M_Light_APMode.recordModeArr = JSON.parse(JSON.stringify(temp));
+                                        this.M_Light_APMode.currentModeIndex = 0;
+                                        this.APModeData = this.M_Light_APMode.getTarget();
+                                        this.setAppModeToServer();//by LIGHTINGSETTING
+                                    }
+                                    else {
+                                        console.log('%c 匯入資料有誤', 'background: black; color: white', data);
+                                    }
+                                    break;
+                                case "KEYBOARDSETTINGS":
+                                    var temp = data['value']["Keyboard_Export"];
+                                    if (temp != undefined) {
+                                        temp = JSON.parse(JSON.stringify(temp));
+                                        var nowLCFM = this.LCFM.LedChainFrames;
+                                        var MCI = this.MacroManager.getAllMacroFileData();
+                                        this.KeyBoardManager.getTarget().ImportClassData(temp);
+                                        this.KeyBoardManager.getTarget().clearLostLCFM(nowLCFM);
+                                        this.KeyBoardManager.getTarget().clearLostMacro(MCI);
+                                        this.Built_ineffect.importModeClass(this.KeyBoardManager.getTarget().lightData);
+                                        this.setDBDataToServer('KeyAssign');
+                                    }
+                                    else {
+                                        console.log('%c 匯入資料有誤', 'background: black; color: white', data);
+                                    }
+                                    break;
+                                case "MACROSETTINGS":
+                                    var temp = data['value']["Macro_Export"];
+                                    if (temp != undefined) {
+                                        temp = JSON.parse(JSON.stringify(temp));
+                                        console.log('data[value][Macro_Export]', temp);
+                                        temp.name = this.MacroManager.createNotRepeatName(ProcessString);
+                                        this.MacroManager.getClass().ImportFileCreateData(temp);
+                                        this.setDBDataToServer('MacroManager');
+                                    }
+                                    else {
+                                        console.log('%c 匯入資料有誤', 'background: black; color: white', data);
+                                    }
+                                    break;
+                                case "Custom Effect":
+                                    var temp = data['value']["Custom_Export"];
+                                    if (temp != undefined) {
+                                        temp = JSON.parse(JSON.stringify(temp));
+                                        temp.projectName = this.LCFM.createNotRepeatClassName(ProcessString);
+                                        this.LCFM.ImportClassCreateData(temp);
+                                        this.setDBDataToServer('CustomData');
+                                    }
+                                    else {
+                                        console.log('%c 匯入資料有誤', 'background: black; color: white', data);
+                                    }
+                                    break;
+                            }
+                        }
+                        else {
+                            alert("檔案有誤 請重新輸入");
+                        }
+                    });
                 }
-                this.protocol.RunSetFunction(obj2).then((data) => {
-                    console.log('ImportProfile:', data);
-                    this.onAppImportExport = false;
-                    this.changeDetectorRef.detectChanges();
-                    if (data != null) {
-                        if(data['filename']!=this.DeviceService.getCurrentDevice().SN+'_Profile'&&this.CurrentPageName!='MACROSETTINGS'){
-                            alert("鍵盤資料錯誤  請匯入正確裝置資料")
-                            return;
-                        }
-                        switch (this.CurrentPageName) {
-                            case "LIGHTINGSETTING":
-                                var temp=data['value']["Light_Export"];
-                                if (temp != undefined) {
-                                    temp=JSON.parse(JSON.stringify(temp));
-                                    this.M_Light_APMode.recordModeArr= JSON.parse(JSON.stringify(temp));
-                                    this.M_Light_APMode.currentModeIndex=0;
-                                    this.APModeData=this.M_Light_APMode.getTarget();
-                                    this.setAppModeToServer();//by LIGHTINGSETTING
-                                }
-                                else{
-                                    console.log('%c 匯入資料有誤','background: black; color: white',data);
-                                }
-                                break;
-                            case "KEYBOARDSETTINGS":
-                                var temp=data['value']["Keyboard_Export"];
-                                if (temp != undefined) {
-                                    temp=JSON.parse(JSON.stringify(temp));
-                                    var nowLCFM =this.LCFM.LedChainFrames;
-                                    var MCI = this.MacroManager.getAllMacroFileData();
-                                    this.KeyBoardManager.getTarget().ImportClassData(temp);
-                                    this.KeyBoardManager.getTarget().clearLostLCFM(nowLCFM);    
-                                    this.KeyBoardManager.getTarget().clearLostMacro(MCI);  
-                                    this.Built_ineffect.importModeClass(this.KeyBoardManager.getTarget().lightData);
-                                    this.setDBDataToServer('KeyAssign');
-                                }
-                                else{
-                                    console.log('%c 匯入資料有誤','background: black; color: white',data);
-                                }
-                                break;
-                            case "MACROSETTINGS":
-                                var temp=data['value']["Macro_Export"];
-                                if (temp != undefined) {
-                                    temp=JSON.parse(JSON.stringify(temp));
-                                    console.log('data[value][Macro_Export]', temp);
-                                    temp.name = this.MacroManager.createNotRepeatName(ProcessString);
-                                    this.MacroManager.getClass().ImportFileCreateData(temp);
-                                    this.setDBDataToServer('MacroManager');
-                                }
-                                else{
-                                    console.log('%c 匯入資料有誤','background: black; color: white',data);
-                                }
-                                break;
-                            case "Custom Effect":
-                                var temp=data['value']["Custom_Export"];
-                                if (temp != undefined) {
-                                    temp=JSON.parse(JSON.stringify(temp));
-                                    temp.projectName = this.LCFM.createNotRepeatClassName(ProcessString);
-                                    this.LCFM.ImportClassCreateData(temp);
-                                    this.setDBDataToServer('CustomData');
-                                }
-                                else{
-                                    console.log('%c 匯入資料有誤','background: black; color: white',data);
-                                }
-                                break;
-                        }
-                    }
-                    else {
-                        alert("檔案有誤 請重新輸入");
-                    }
-                });
 
             }
             else {
@@ -2051,7 +1981,7 @@ export class AppComponent implements OnInit{
                     break
         }
 
-        dialog.showSaveDialog(null, { 
+        this.Electron_Service.getElectron_Instance().dialog.showSaveDialog(null, { 
             defaultPath: defaultName, 
             filters: [{ name: typeName+' File', extensions: [typeName] }] 
         }, (fns) => {
@@ -2088,14 +2018,14 @@ export class AppComponent implements OnInit{
                 // }
 
                 // let obj2 = {
-                //     Type: funcVar.FuncType.System,
-                //     Func: funcVar.FuncName.ExportProfile,
+                //     Type: this.Electron_Service.getFuncVar().FuncType.System,
+                //     Func: this.Electron_Service.getFuncVar().FuncName.ExportProfile,
                 //     Param: obj
                 // }
                 // console.log('ExportProfile:', data);
-                // this.protocol.RunSetFunction(obj2).then((data) => {   
+                // this.Electron_Service.RunSetFunction(obj2).then((data) => {   
                 // });
-                tool.SaveFile(this.DeviceService.getCurrentDevice().SN + '_Profile', data, fns, (err, result) => {
+                this.Electron_Service.getTool().SaveFile(this.DeviceService.getCurrentDevice().SN + '_Profile', data, fns, (err, result) => {
                     if (err) return
                 },this.AppSettingService.AppSetingObj.version)
             }

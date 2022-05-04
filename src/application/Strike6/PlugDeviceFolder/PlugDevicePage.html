@@ -4,7 +4,7 @@ position: absolute;
 left: 3%;
 width: 1.72vw;
 height: 3.1vh;
-background-image: url(./image/Share/ModeArrowL.png);
+background-image: url(/image/Share/ModeArrowL.png);
 ">
 </div>
 <div  class="RightArrow" style="
@@ -13,13 +13,13 @@ height: 25px;
 display: flex;
 position: absolute;
 right: 3%;
-background-image: url(./image/Share/ModeArrowR.png);
+background-image: url(/image/Share/ModeArrowR.png);
 ">
 </div>
 <!-- [ngStyle]="{
     width: this.DeviceService.pluginDeviceData.length === 1 ? '100%' : 'none',
     height: this.DeviceService.pluginDeviceData.length === 1 ? '80%' : 'none'
-    [style.background-image]="item[i]?'url(./image/FirstPage/KB1Connect.png)':'url(./image/FirstPage/KB1Disconnect.png)' "
+    [style.background-image]="item[i]?'url(/image/FirstPage/KB1Connect.png)':'url(/image/FirstPage/KB1Disconnect.png)' "
 }" -->
 <div id="DeviceList" style="display: flex;
 width: 76%;
@@ -43,7 +43,7 @@ height: 80%;">
     </div>
     <div id="NoDevice" *ngFor="let item of this.DeviceService.getDevicePageindex()" 
     [style.display]="item?'flex':'none'"
-    class="DeviceItem" style="background-image: url(./image/Share/NotConnction.png);
+    class="DeviceItem" style="background-image: url(/image/Share/NotConnction.png);
     color: white;
     align-items: center;
     justify-content: center;">

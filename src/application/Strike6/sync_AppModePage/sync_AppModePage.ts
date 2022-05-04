@@ -1,17 +1,11 @@
-declare var System;
-import { Component ,OnInit ,Output,Input ,EventEmitter, SimpleChange, OnChanges
-    , ViewEncapsulation, forwardRef,ChangeDetectorRef, ViewChild
-,Injectable} from '@angular/core';
+import { Component ,OnInit ,ChangeDetectorRef,Injectable} from '@angular/core';
 import { AppComponent } from '../app.component';
-import { protocolService } from '../../services/service/protocol.service';
 import { MouseMoveObjectManager } from './MouseMoveObject';
 import { MouseBoxSelection } from './MouseBoxSelection';
-import { ColorModule,MacroManager,Wave,APModeModule,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
-    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList,ColorOutput  
-    ,count_boolean,CreateFakeArray,SharesFunction,ProgressBar,M_Light_CS,getMatchedCSS,DeviceService
+import { DeviceService } from '../DeviceService';
+
+import { ColorModule,APModeModule,KeyBoardStyle,i18nManager,ImgPathList,SharesFunction,getMatchedCSS
 } from '../TSImportManager';
-let funcVar = System._nodeRequire('./backend/others/FunctionVariable');
-let remote = System._nodeRequire('electron').remote;
 //var this.MouseBoxSelectionFn=new MouseBoxSelection();AppComponent,
 var scaleConfig = {
     scaleMultipleConfig: [0.25, 0.5, 1, 2, 4],
@@ -19,8 +13,8 @@ var scaleConfig = {
 }
 @Component({
     selector: 'sync_AppModePage',
-    templateUrl : './components/sync_AppModePage/sync_AppModePage.html',
-    styleUrls: ['./components/sync_AppModePage/sync_AppModePage.css','./assets/css/Share.css'],
+    templateUrl : './sync_AppModePage.html',
+    styleUrls: ['./sync_AppModePage.css','../css/Share.css'],
     providers: [
         
         // {
@@ -51,8 +45,7 @@ export class sync_AppModePageComponent implements OnInit{
     private onChangeCallback: (_: any) => void;
     private onTouchedCallback: () => void;
     //private zz: AlertDevice
-    constructor(private mainapp: AppComponent,private changeDetectorRef: ChangeDetectorRef,
-        private protocol: protocolService){
+    constructor(private mainapp: AppComponent,private changeDetectorRef: ChangeDetectorRef,){
         //this.MouseMoveObjectFn.addMoveObject('KeyBoardUI2');                                                                                                                                                                                                                                                                                                 
         
         
@@ -256,23 +249,21 @@ export class sync_AppModePageComponent implements OnInit{
          
     }
 
-    setSyncColorDataToServer(from="未設置") {
-        console.log("setAppModeToServer_"+from);
+    // setSyncColorDataToServer(from="未設置") {
+    //     console.log("setAppModeToServer_"+from);
 
-        //---------------SyncLEDData------------
-        // this.changeDetectorRef.detectChanges();
-        let apmodesetting = {
-            EffectLibrary: this.M_Light_APMode.recordModeArr
+    //     let apmodesetting = {
+    //         EffectLibrary: this.M_Light_APMode.recordModeArr
             
-        }
-        let obj3 = {
-            Type: 'SyncColorData',
-            Func: 'setSyncColorDataToServer',
-            Param: apmodesetting
-        }
-        this.protocol.RunSetFunction(obj3).then((data) => {
-        })
-    }
+    //     }
+    //     let obj3 = {
+    //         Type: 'SyncColorData',
+    //         Func: 'setSyncColorDataToServer',
+    //         Param: apmodesetting
+    //     }
+    //     this.protocol.RunSetFunction(obj3).then((data) => {
+    //     })
+    // }
     // public writeValue(obj: any): void {
     //     // throw new Error("Method not implemented.");
     //     var lcsekected;

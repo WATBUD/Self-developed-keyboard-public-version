@@ -5,6 +5,9 @@ import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {CommonModule} from '@angular/common';
 // app routes
+import { HttpClientModule } from '@angular/common/http';
+import { DeviceService } from './application/Strike6/DeviceService';
+
 import { routes } from './application/Strike6/app.routes';
 let routerModule = RouterModule.forRoot(routes);
 import { HttpModule ,Http} from '@angular/http';
@@ -22,6 +25,7 @@ routerModule = RouterModule.forRoot(routes, {useHash: true});
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
+        HttpClientModule,
         sync_AppModePageModule,
         routerModule,
         HttpModule,
@@ -36,6 +40,7 @@ routerModule = RouterModule.forRoot(routes, {useHash: true});
         AppComponent,
     ],
     providers: [
+        DeviceService,
         {
             provide: APP_BASE_HREF,
             useValue: '<%= APP_BASE %>'

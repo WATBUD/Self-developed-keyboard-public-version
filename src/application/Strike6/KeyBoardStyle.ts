@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core'
-import { identity } from 'lodash'
-import { KB61Prohibit } from './KeyBoardData'
-let AllFunctionMapping = window['System']._nodeRequire('./backend/others/SupportData').AllFunctionMapping
 @Injectable()
 export class KeyBoardStyle {
     nowTargetIndex = 0
     nowTargetKey='';
-    //BGImage:'url(./image/Share/KB1KeyerEffects.png)',
+    //BGImage:'url(/image/Share/KB1KeyerEffects.png)',
 
     keyBoardList = {
         'MK63': {
@@ -77,8 +74,8 @@ export class KeyBoardStyle {
             ],
             keyMapping: ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace", "Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Backslash", "CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Enter", "ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "ShiftRight", "ArrowUp", "Slash", "ControlLeft", "MetaLeft", "AltLeft", "Space", "AltRight", "Custom_Fnkey", "ArrowLeft", "ArrowDown", "ArrowRight"],
             cssText: 'position: absolute;height: 100%;width: 100%;pointer-events: none;',
-            BGImage: "url(./image/Share/MK63.png)",
-            BGImageKeyerEffects: "url(./image/Share/KB1White.png)",
+            BGImage: "url(/image/Share/MK63.png)",
+            BGImageKeyerEffects: "url(/image/Share/KB1White.png)",
             qigong_Step1_Range: [0, 9, 24, 37, 49, 61],
             qigong_Step2_Range: [20, 21, 31, 49, 50, 35],
             centerBlockPoint: 36,
@@ -159,8 +156,8 @@ export class KeyBoardStyle {
             ],
             keyMapping: ["Escape", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace", "Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Backslash", "CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Enter", "ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "Slash", "ShiftRight", "ControlLeft", "MetaLeft", "AltLeft", "Space", "ArrowLeft", "ArrowDown", "ArrowRight", "Custom_Fnkey"],
             cssText: 'position: absolute;height: 100%;width: 100%;pointer-events: none;',
-            BGImage: "url(./image/Share/Strike6.png)",
-            BGImageKeyerEffects: "url(./image/Share/KB1White.png)",
+            BGImage: "url(/image/Share/Strike6.png)",
+            BGImageKeyerEffects: "url(/image/Share/KB1White.png)",
             qigong_Step1_Range: [0, 14, 28, 40, 52, 60],
             qigong_Step2_Range: [20, 21, 33, 35, 46, 47],
             centerBlockPoint: 34,
@@ -332,8 +329,8 @@ export class KeyBoardStyle {
             ],
             keyMapping: ["Escape", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace", "Pause", "Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Backslash", "Delete", "CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Enter", "PageUp", "ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "Slash", "ShiftRight", "ArrowUp", "PageDown", "ControlLeft", "MetaLeft", "AltLeft", "Space", "AltRight", "Custom_Fnkey", "ControlRight", "ArrowLeft", "ArrowDown", "ArrowRight"],
             cssText: 'position: absolute;height: 100%;width: 100%;pointer-events: none;',
-            BGImage: "url(./image/Share/MK68M.png)",
-            BGImageKeyerEffects: "url(./image/Share/KB1White.png)",
+            BGImage: "url(/image/Share/MK68M.png)",
+            BGImageKeyerEffects: "url(/image/Share/KB1White.png)",
             qigong_Step1_Range: [0, 15, 30, 43, 57, 67],
             qigong_Step2_Range: [21, 22, 37, 49, 50, 35],
             centerBlockPoint: 36,

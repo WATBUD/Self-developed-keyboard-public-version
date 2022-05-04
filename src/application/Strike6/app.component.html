@@ -1,25 +1,12 @@
 <!-- <router-outlet></router-outlet> -->
-<!-- <ng-color-circle (ngModelChange)="colorChange($event)" [(ngModel)]="myColor">
-</ng-color-circle>
-<input max="255" min="0" type="range" style="width: 42.5%;height: 20%;"(ngModelChange)="colorTChange()" [(ngModel)]="myColor.rgb.red">
 
-<input max="255" min="0" type="range" style="width: 42.5%;height: 20%;"(ngModelChange)="colorTChange()" [(ngModel)]="myColor.rgb.green">
-
-<input max="255" min="0" type="range" style="width: 42.5%;height: 20%;"(ngModelChange)="colorTChange()" [(ngModel)]="myColor.rgb.blue">
-
-<input max="360" min="0" type="range" style="width: 42.5%;height: 20%;"(ngModelChange)="colorTChange()" [(ngModel)]="myColor.hsl.hue">
-
-<input max="100" min="0" type="range" style="width: 42.5%;height: 20%;"(ngModelChange)="colorTChange()" [(ngModel)]="myColor.hsl.Saturation">
-
-<input max="100" min="0" type="range" style="width: 42.5%;height: 20%;"(ngModelChange)="colorTChange()" [(ngModel)]="myColor.hsl.lightness">
- -->
  <div id="拖曳視窗" class="dragableArea" style="background-color: transparent;">
 </div>
 
 <!-- <div class="ModeBG" style="position: absolute;
     width: 233px;height: 63px;right: 40vw;
     top: 24vh;z-index: 9999;
-    background-image: url(./image/Share/AlternateKB1.png);
+    background-image: url(/image/Share/AlternateKB1.png);
     background-repeat: no-repeat;" (click)="this._RefreshDevice()">
 </div> -->
 
@@ -57,12 +44,10 @@ pointer-events: none;">
 
     </div>
 </div>
-<div id="ShowLoadingMessage" style="position: absolute;height: 100vh;z-index: 9999;width: 100vw;  
-margin-top: 0;background: #0000008a;" [style.display]="onLoading?'block':'none'">
-    <img src="./image/Share/Loading.gif" alt="Loading.gif" style="position: absolute;left: 48vw;top: 47vh;" />
+<div id="ShowLoadingMessage" [style.display]="onLoading?'flex':'none'">
+    <img src="image/Share/Loading.gif" alt="Loading.gif" />
 </div>
-<div id="ShowMyProgressMessage" style="position: absolute;height: 100vh;z-index: 9999;width: 100vw;  
-margin-top: 0;background: #0000008a;" [style.display]="FWManager.FWUpdating?'block':'none'">
+<div id="ShowMyProgressMessage" [style.display]="FWManager.FWUpdating?'block':'none'">
 
     <div class="circle-bar">
         <div class="circle-bar-left"></div>
@@ -72,13 +57,6 @@ margin-top: 0;background: #0000008a;" [style.display]="FWManager.FWUpdating?'blo
             <span class="percent">40%</span>
         </div>
     </div>
-
-
-    <!-- <div id="myProgress">
-        <div id="myBar">
-            <div id="label">10%</div>
-        </div>
-    </div> -->
 </div>
 
 <div *ngIf="CurrentPageName=='KEYBOARDSETTINGS'" class="SelectTemplate" id="ShowAdvancedList"
@@ -125,7 +103,7 @@ margin-top: 0;background: #0000008a;" [style.display]="FWManager.FWUpdating?'blo
         </div> -->
         <!-- <div id="P7_4Parameter" style="height: 2.5vh;position: absolute;width: 12vw;
                             margin-left: 6%;margin-top: 6%;font-size: 1vw;">
-            <img src="./image/P7/Sleep.png" style="width: 1.3vw;height: 1.3vw;float: left;">
+            <img src="image/P7/Sleep.png" style="width: 1.3vw;height: 1.3vw;float: left;">
             <div style="line-height: 100%;float: left;text-align: left;margin-top: 2%;margin-left:0.5vw">
                 {{this.i18nManager.getTarget('SLEEP')}}</div>
             <div style="width: 2vw;height: 1.1vw;
@@ -143,7 +121,7 @@ margin-top: 0;background: #0000008a;" [style.display]="FWManager.FWUpdating?'blo
         margin-top: 4%;
         z-index: 9998;
         font-size: 1vw;">
-            <img src="./image/P7/WinLock2.png" style="width: 1.3vw;height: 1.3vw;float: left;">
+            <img src="image/P7/WinLock2.png" style="width: 1.3vw;height: 1.3vw;float: left;">
             <div style="margin-left:0.5vw;margin-right: 1vw;">
                 {{this.i18nManager.getTarget('WINKEYSETTING')}}</div>
             {{i18nManager.getTarget('OFF')}}
@@ -167,7 +145,7 @@ margin-top: 0;background: #0000008a;" [style.display]="FWManager.FWUpdating?'blo
             margin-top: 4%;
             z-index: 9998;
             font-size: 1vw;">
-            <img src="./image/P7/DirectionSwitch.png" style="width: 1.3vw;height: 1.3vw;float: left;">
+            <img src="image/P7/DirectionSwitch.png" style="width: 1.3vw;height: 1.3vw;float: left;">
             <div style="margin-left:0.5vw;margin-right: 1vw;">
                 {{this.i18nManager.getTarget('ARROWKEYSWITCH')}}</div>
             <!-- <img  style="margin-top: 5px;margin-left: 11px;"
@@ -221,7 +199,7 @@ background-color:rgba(0, 0, 0, 0.54);
 <div id="ShowAlertMessage" style="position: absolute;height: 100vh;z-index: 9999;width: 100vw;  
 margin-top: 0;background: #0000008a;" [style.display]="alertMessageBool?'block':'none'">
     <div style="position: absolute;color: #f00;
-background: url(./image/DarkAlert.jpg);
+background: url(/image/DarkAlert.jpg);
 background-size: 100% 100%;
 width: 100vw;font-size: 3vw;
 height: 100vh;">
@@ -241,7 +219,7 @@ height: 100vh;">
 <!-- [style.display]="this.FWManager.onFireWareUI?'block':'none'" -->
 <div *ngIf="this.FWManager.onFireWareUI" id="FireWareUpdate"
     style="position: absolute; z-index: 9999; height: 100vh; width: 100vw; background-color: rgba(0, 0, 0, 0.78); display: block;">
-    <img alt="不存在" src="./image/Share/SystemSettingBG.png"
+    <img alt="不存在" src="image/Share/SystemSettingBG.png"
         style="position: absolute;top: 50%;left: 50%;margin-top: -222px;margin-left: -163px;">
     <div style="position: absolute;margin-left: 39.2vw;margin-top: 24.9vh;">
         {{i18nManager.getTarget('VERSION')+" :"+this.FWManager.getTarget().CurVersion}}
@@ -263,7 +241,7 @@ height: 100vh;">
         height: 38vw;" [innerHtml]="this.FWManager.getTarget().ReadReleasenote[i18nManager.onUsingLangindex]">
     </div>
     <input id="serverFwDataDropDown" style="position: absolute;height: 21px;width: 151px;border: 0;top: 24.9%;left: 49%;
-        background: url(./image/Share/SystemSettingDropUI.png);           
+        background: url(/image/Share/SystemSettingDropUI.png);           
         " type="button" (click)="serverFwDataPullDownable=!serverFwDataPullDownable"
         [value]="FWManager.getTarget().DeviceName">
 
@@ -290,7 +268,7 @@ height: 100vh;">
             left: 37.3%;
             
             height: 26px;
-            background: url(./image/Share/SystemSettingBtn.png);
+            background: url(/image/Share/SystemSettingBtn.png);
             width: 71px;
             border: 0;
             " type="button" value="Update" [value]="i18nManager.getTarget('UPDATE')">
@@ -303,7 +281,7 @@ height: 100vh;">
                 left: 44.3%;
                 
                 height: 26px;
-                background: url(./image/Share/SystemSettingBtn.png);
+                background: url(/image/Share/SystemSettingBtn.png);
                 width: 71px;
                 border: 0;
                 " type="button" value="Cancel" [value]="i18nManager.getTarget('CANCEL')">
@@ -314,13 +292,13 @@ height: 100vh;">
 
 
 </div>
-<!-- background-image: url(./image/Share/SystemSettingBtn.png); -->
+<!-- background-image: url(/image/Share/SystemSettingBtn.png); -->
 <div id="SystemSettingPage" [style.display]="onSystemSetting?'block':'none'" style="
 position: absolute;z-index: 9999;height: 100vh;width: 100vw;
 background-color:rgba(0, 0, 0, 0.78);
 ">
 
-    <div src="./image/Share/SystemSettingBG.png" style="position: absolute;top: 50%;left: 50%;margin-top: -222px;    width: 40vh;
+    <div src="image/Share/SystemSettingBG.png" style="position: absolute;top: 50%;left: 50%;margin-top: -222px;    width: 40vh;
                 height: 54vh;margin-left: -163px;
                 background-color:rgb(60, 60, 60);
                 background-size: 100% 100%;background-repeat: no-repeat;display: flex;" class="">
@@ -358,7 +336,7 @@ background-color:rgba(0, 0, 0, 0.78);
             </div>
         </div>
     
-        <img src="./image/Share/SystemSettingClose.png" alt="不存在" style="position: absolute;
+        <img src="image/Share/SystemSettingClose.png" alt="不存在" style="position: absolute;
                 top: 4%;
                 right: 4%;" (click)="i18nManager.back();onSystemSetting=false;">
         <div id="SystemSettingDrop" data-identity="pulldownable_Id" (click)="pulldownable=!pulldownable">
@@ -375,7 +353,7 @@ background-color:rgba(0, 0, 0, 0.78);
             </div>
         </div>
         <!-- [style.background-image]="this.ReturnBackBtnImage(isActive)" -->
-        <div id="SystemDefault" class="SystemPageBtnStyle" style="bottom: 5%;left: 8%;background: url(./image/Share/SystemSettingBtn1.png);" (mouseenter)="isActive='mouseenter'" (mouseup)="isActive='mouseup'" (mouseleave)="isActive='mouseleave'" 
+        <div id="SystemDefault" class="SystemPageBtnStyle" style="bottom: 5%;left: 8%;background: url(/image/Share/SystemSettingBtn1.png);" (mouseenter)="isActive='mouseenter'" (mouseup)="isActive='mouseup'" (mouseleave)="isActive='mouseleave'" 
         [style.color]="isActive=='mouseenter'?'rgb(180, 180, 180)':'rgb(255, 255, 255)'"
             (click)="i18nManager.recovery[0]=true;i18nSave();">
             {{this.i18nManager.getTarget('DEFAULT')}}
@@ -383,12 +361,12 @@ background-color:rgba(0, 0, 0, 0.78);
         <input class="SystemPageBtnStyle"  
         (mouseenter)="SystemPageBtnSave='mouseenter'" (mouseup)="SystemPageBtnSave='mouseup'" (mouseleave)="SystemPageBtnSave='mouseleave'" 
         [style.color]="SystemPageBtnSave=='mouseenter'?'rgb(180, 180, 180)':'rgb(255, 255, 255)'"
-        style="bottom: 5%;left: 36%;background: url(./image/Share/SystemSettingBtn1.png);
+        style="bottom: 5%;left: 36%;background: url(/image/Share/SystemSettingBtn1.png);
                 " type="button" (click)="i18nSave();" [value]="i18nManager.getTarget('SAVE')" value="Save">
         <input class="SystemPageBtnStyle" 
         (mouseenter)="SystemPageBtnCancel='mouseenter'" (mouseup)="SystemPageBtnCancel='mouseup'" (mouseleave)="SystemPageBtnCancel='mouseleave'" 
         [style.color]="SystemPageBtnCancel=='mouseenter'?'rgb(180, 180, 180)':'rgb(255, 255, 255)'"
-        style="bottom: 5%;left: 64%;background: url(./image/Share/SystemSettingBtn1.png);
+        style="bottom: 5%;left: 64%;background: url(/image/Share/SystemSettingBtn1.png);
                 " type="button" (click)="i18nManager.back();onSystemSetting=false"
                 
             [value]="i18nManager.getTarget('CANCEL')" value="Cancel">
@@ -417,7 +395,7 @@ background-color:rgba(0, 0, 0, 0.78);
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                background-image: url(./image/Share/AlternateKB1.png);
+                background-image: url(/image/Share/AlternateKB1.png);
                 background-repeat: no-repeat;">
         </div>
     </div>
@@ -478,17 +456,17 @@ background-color:rgba(0, 0, 0, 0.78);
     (mousemove)="this.SharesFunction.TipUIMessage(i18nManager.getTarget('SETTING'),$event)">
     </div>
     <div id="CRUD" class="mainStyleBackround" [style.display]="CRUDCheck?'flex': 'none'"> 
-        <div class="ItemClass" style="background-image: url(./image/Share/CRUD_Add.png);" 
+        <div class="ItemClass" style="background-image: url(/image/Share/CRUD_Add.png);" 
         (click)="addHtmlDomElement();"[style.display]="pageIconSet[0]?'flex': 'none'"
         (mousemove)="this.SharesFunction.TipUIMessage(i18nManager.getTarget('CREATE'),$event)"></div>
-        <div class="ItemClass" style="background-image: url(./image/Share/CRUD_UpLoad.png);" 
+        <div class="ItemClass" style="background-image: url(/image/Share/CRUD_UpLoad.png);" 
         (click)="ExportProfile();" [style.display]="pageIconSet[1]?'flex': 'none'"
         (mousemove)="this.SharesFunction.TipUIMessage(i18nManager.getTarget('EXPORT'),$event)"></div>
-        <div class="ItemClass" style="background-image: url(./image/Share/CRUD_DownLoad.png);" 
+        <div class="ItemClass" style="background-image: url(/image/Share/CRUD_DownLoad.png);" 
         (click)="ImportProfile();"
         [style.display]="pageIconSet[2]?'flex': 'none'"
         (mousemove)="this.SharesFunction.TipUIMessage(i18nManager.getTarget('IMPORT'),$event)"></div>
-        <div class="ItemClass" style="background-image: url(./image/Share/CRUD_Delete.png);" 
+        <div class="ItemClass" style="background-image: url(/image/Share/CRUD_Delete.png);" 
         (click)="deleteHtmlDomElement();"
         [style.display]="pageIconSet[3]?'flex': 'none'"
         (mousemove)="this.SharesFunction.TipUIMessage(i18nManager.getTarget('DELETE'),$event)">
@@ -579,7 +557,7 @@ background-color:rgba(0, 0, 0, 0.78);
         
             <div style="background: rgba(255, 0, 0, 1);" class="NowSelected" (click)="showSetPageData=!showSetPageData">
                 <div id="SaveToKeyBoard"
-                    style="position: absolute;right: -3px;height: 100%;background-position: center center;width: 3.7vw;background-image: url(&quot;./image/Share/PageDropDownIcon.png&quot;);background-repeat: no-repeat;pointer-events: none;">
+                    style="position: absolute;right: -3px;height: 100%;background-position: center center;width: 3.7vw;background-image: url(&quot;image/Share/PageDropDownIcon.png&quot;);background-repeat: no-repeat;pointer-events: none;">
                 </div>
                 <div class="Selected_item" data-identity="SelecListUI">
                     {{i18nManager.getTarget(this.CurrentPageName)}}
@@ -610,14 +588,14 @@ background-color:rgba(0, 0, 0, 0.78);
         background-position: center center;
         width: 3.7vw;
         background-repeat: no-repeat;
-        background-image: url(./image/Keyboard/Off/SaveCN.png);
+        background-image: url(/image/Keyboard/Off/SaveCN.png);
         background-repeat: no-repeat;" 
         (mousemove)="this.SharesFunction.TipUIMessage(i18nManager.getTarget('SAVE'),$event)"
         (mousedown)="stb='mouseenter'" 
         (mouseenter)="stb='mouseenter'" 
         (mouseup)="stb='mouseup'"
         (mouseleave)="stb='mouseleave'"
-        [style.background-image]="stb=='mouseenter'?'url(./image/Keyboard/On/SaveCN.png)':'url(./image/Keyboard/Off/SaveCN.png)'">
+        [style.background-image]="stb=='mouseenter'?'url(/image/Keyboard/On/SaveCN.png)':'url(/image/Keyboard/Off/SaveCN.png)'">
         </div>
         <div id="TitleCH">{{this.i18nManager.getTarget(this.CurrentPageName)}}</div>
         <section *ngIf="CurrentPageName=='Custom Effect'" id="AdvancedEditColorPage">
@@ -937,7 +915,7 @@ background-color:rgba(0, 0, 0, 0.78);
                     [style.background-color]="KeyBoardManager.currentChooseKeyBoard==i?'rgb(255, 87, 0)':'rgb(44, 44, 44)'"
                     [style.color]="KeyBoardManager.currentChooseKeyBoard==i?'rgb(255, 255, 255)':'rgb(255, 87, 0)'"
                     >
-                    <!-- <img style="margin-left: 9px;" src="./image/Keyboard/pointIcon.png"> -->
+                    <!-- <img style="margin-left: 9px;" src="image/Keyboard/pointIcon.png"> -->
                     <div class="mainStyleColor" style="width: 80%;margin-left: 1vw;white-space: nowrap;" class="">
                     {{i18nManager.getTarget('HARDWARECONFIGURATION')+'&nbsp;&nbsp;'+(i+1)}}</div>
                     <!-- <input (blur)="clickEdit=false"
@@ -955,13 +933,13 @@ background-color:rgba(0, 0, 0, 0.78);
                 <div class="ProjectItem" *ngFor="let item of KeyBoardManager.getTarget().fiveDefaultLedCode ;let i = index">
                     <div style="width: 75%;margin-left: 1.7vw;">{{item.projectName}}
                     </div>
-                    <div style="width: 8%;height: 90%;background-image: url(./image/Keyboard/KeyAddLEDIcon.png);background-size: 100% 100%;"
+                    <div style="width: 8%;height: 90%;background-image: url(/image/Keyboard/KeyAddLEDIcon.png);background-size: 100% 100%;"
                         (click)="on_AdvancedFive=true;ShowAdvancedList=true;KeyBoardManager.getTarget().fiveRecordIndex=i;"
                         (mousemove)="this.SharesFunction.TipUIMessage(i18nManager.getTarget('CREATE'),$event)">
                     </div>
                     <div id="KeybordFiveRecycle" style="width: 1vw;
                                     height: 58%;
-                                    background-image: url(./image/Keyboard/Off/P_S_OSettingOpen.png);
+                                    background-image: url(/image/Keyboard/Off/P_S_OSettingOpen.png);
                                     background-size: 100% 100%;
                                     margin-left: 0.2vw;
                                         " (click)="KeyBoardManager.getTarget().resetAssignFive(i)"
@@ -1095,7 +1073,7 @@ background-color:rgba(0, 0, 0, 0.78);
             <section class="BottomArea"
                 style="background-size: 100% 100%; position: absolute;margin-left: 28%; margin-top: 47vh;height: 27.9vh;width: 62.6vw;">
                 <div id="基本功能" [style.display]="KeyBoardSetPageBtn==1?'block': 'none'" style="position: absolute;">
-                    <!-- <img src="./image/Keyboard/Test1.png"  alt=""
+                    <!-- <img src="image/Keyboard/Test1.png"  alt=""
                     style="background-repeat: no-repeat;position: absolute;height: 27.9vh;width: 100vh;"> -->
                     <input (click)="setSelectionKeyData($event)" class="functionInputBtnStyle" data-index="K11" style="margin-left: 0.4%;margin-top: 1%;" type="button" value="ESC">
                     <input (click)="setSelectionKeyData($event)" class="functionInputBtnStyle" data-index="K12"  type="button" value="⊘">
@@ -1435,7 +1413,7 @@ background-color:rgba(0, 0, 0, 0.78);
             <section name="leftArea">
                 <div class="MacroClassTitle" >
                     <img id="TitleIcon" style="margin-left: 3%;margin-right: 4%;" 
-                    src="./image/ScriptSet/MacroClassTitle.png">
+                    src="image/ScriptSet/MacroClassTitle.png">
                     {{i18nManager.getTarget('MACROTYPE')}}
                 </div>
                 <div id="ScriptClassSelect" class="mainStyleBackround">
@@ -1509,7 +1487,7 @@ background-color:rgba(0, 0, 0, 0.78);
                             height: 4.5vw;
                             background-repeat: no-repeat;
                             background-position: center;
-                            background-image: url(./image/ScriptSet/FileIconOn.png);">
+                            background-image: url(/image/ScriptSet/FileIconOn.png);">
                         </div>{{item.name}}
                     </div>
                 </div>
@@ -1640,7 +1618,7 @@ background-color:rgba(0, 0, 0, 0.78);
                         margin-top: 3vh;
                         display: flex;
                         align-items: center;">
-                <img style="margin-left: 5px;" src="./image/P7/PGIcon.png">
+                <img style="margin-left: 5px;" src="image/P7/PGIcon.png">
                 <div style="margin-left: 3%;font-size: 1.9vh;font-weight: bold;">{{this.i18nManager.getTarget('RELATEDPROGRAM')}}
                 </div>
             </div>
@@ -1836,7 +1814,7 @@ background-color:rgba(0, 0, 0, 0.78);
                             background: transparent;
                             position: absolute;
                             pointer-events: none;
-                            background-image: url('./image/ColorSet/IconEffectCenter.png');"
+                            background-image: url('/image/ColorSet/IconEffectCenter.png');"
                 [style.display]="EffectCenter.selectEffectCenter?'block': 'none'"
                 [style.background-color]="'transparent'">
             </div>
@@ -1873,7 +1851,7 @@ background-color:rgba(0, 0, 0, 0.78);
                     <div data-from="NormalKeyPress_Delete" style="
                                             width: 18px;
                                             height: 18px;
-                                            background-image: url(./image/Keyboard/On/P_S_OSettingOpen.png);
+                                            background-image: url(/image/Keyboard/On/P_S_OSettingOpen.png);
                                             background-repeat: no-repeat;
                                             pointer-events: auto;
                                             margin-right: 7px;

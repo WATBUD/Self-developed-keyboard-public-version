@@ -1,7 +1,6 @@
-declare var System;
-var SupportData = System._nodeRequire('./backend/others/SupportData');
-var SupportData_KeyMapping = System._nodeRequire('./backend/others/SupportData').AllFunctionMapping;
-var SupportData_MouseMapping = System._nodeRequire('./backend/others/SupportData').MouseMapping;
+
+import { AllFunctionMapping } from './SupportData';
+
 
 export class MacroManager {
     radioOptions = 0;
@@ -12,9 +11,11 @@ export class MacroManager {
     macroClassItem: any = [
         //new MacroClass("i18nName"),
     ]
+    SupportData_KeyMapping = AllFunctionMapping;
+    SupportData_MouseMapping = AllFunctionMapping;
     constructor() {
-        console.log('SupportData_KeyMapping',  SupportData_KeyMapping);
-        console.log('SupportData_MouseMapping',  SupportData_MouseMapping);
+        console.log('SupportData_KeyMapping', this.SupportData_KeyMapping,AllFunctionMapping);
+        console.log('SupportData_MouseMapping', this.SupportData_MouseMapping);
         this.RSEventArr[0] = (event) => {
             console.log('keydown_event', event)
             this.recordSimulationPressdown(event)
@@ -52,9 +53,9 @@ export class MacroManager {
         //console.log('recordSimulationPressdown', event.type);
         var recordValue = '0'
         if (event.type == 'keydown') {
-            recordValue = SupportData_KeyMapping.find((x) => x.keyCode == event.keyCode).keyCode
+            recordValue = this.SupportData_KeyMapping.find((x) => x.keyCode == event.keyCode).keyCode
         } else if (event.type == 'mousedown') {
-            recordValue = SupportData_MouseMapping.find((x) => x.keyCode == event.button).keyCode // 0 為 左鍵點擊,1 為 中鍵點擊,2 為 右鍵點擊,
+            recordValue = this.SupportData_MouseMapping.find((x) => x.keyCode == event.button).keyCode // 0 為 左鍵點擊,1 為 中鍵點擊,2 為 右鍵點擊,
         }
         console.log('recordSimulationPressdown', recordValue, event.type)
         //console.log("是否存在",this.getTarget(recordValue));
@@ -79,9 +80,9 @@ export class MacroManager {
         }
         var recordValue = '0'
         if (event.type == 'keyup') {
-            recordValue = SupportData_KeyMapping.find((x) => x.keyCode == event.keyCode).keyCode
+            recordValue = this.SupportData_KeyMapping.find((x) => x.keyCode == event.keyCode).keyCode
         } else if (event.type == 'mouseup') {
-            recordValue = SupportData_MouseMapping.find((x) => x.keyCode == event.button).keyCode // 0 為 左鍵點擊,1 為 中鍵點擊,2 為 右鍵點擊,
+            recordValue = this.SupportData_MouseMapping.find((x) => x.keyCode == event.button).keyCode // 0 為 左鍵點擊,1 為 中鍵點擊,2 為 右鍵點擊,
         }
         console.log('recordSimulationPressUp', recordValue, event.type)
         this.allRecordKeys[recordValue].isDown=false

@@ -1,19 +1,20 @@
 
 declare var System;
-var SupportData = System._nodeRequire('./backend/others/SupportData');
 import { Injectable } from '@angular/core';
-let AllFunctionMapping = System._nodeRequire('./backend/others/SupportData').AllFunctionMapping
+import { AllFunctionMapping } from './SupportData';
 
 @Injectable()
 export class EventManager{
+    AllFunctionMapping = AllFunctionMapping;
+
     getkeyCodeTxt(keyCode) {
         //console.log('getkeyCodeTxt', keyCode);
-        let index = AllFunctionMapping.findIndex(
+        let index = this.AllFunctionMapping.findIndex(
             (x) => x.keyCode == keyCode
         )
         if (index != -1) {
             //console.log('AllFunctionMapping_index', index);
-            return AllFunctionMapping[index].translate;
+            return this.AllFunctionMapping[index].translate;
         }
     
     }

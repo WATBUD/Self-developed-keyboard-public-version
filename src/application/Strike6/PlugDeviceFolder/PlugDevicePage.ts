@@ -3,13 +3,9 @@ import { Component ,OnInit ,Output,Input ,EventEmitter, SimpleChange, OnChanges
     , ViewEncapsulation, forwardRef,ChangeDetectorRef, ViewChild
 ,Injectable} from '@angular/core';
 import { AppComponent } from '../app.component';
-import { protocolService } from '../../services/service/protocol.service';
-import { ColorModule,MacroManager,Wave,KeyBoardManager,KeyBoardStyle,LedChainFramesManager,
-    AssociateManager,EffectCenter,KeyShortcut,AlertDevice,EventManager,i18nManager,FirewareManager,ImgPathList,ColorOutput  
-    ,count_boolean,CreateFakeArray,SharesFunction,ProgressBar,getMatchedCSS,DeviceService,
-} from '../TSImportManager';
-let funcVar = System._nodeRequire('./backend/others/FunctionVariable');
-let remote = System._nodeRequire('electron').remote;
+import { i18nManager,ImgPathList} from '../TSImportManager';
+import { DeviceService } from '../DeviceService';
+
 //var this.MouseBoxSelectionFn=new MouseBoxSelection();AppComponent,
 var scaleConfig = {
     scaleMultipleConfig: [0.25, 0.5, 1, 2, 4],
@@ -17,8 +13,8 @@ var scaleConfig = {
 }
 @Component({
     selector: 'PlugDevicePage',
-    templateUrl : './components/PlugDeviceFolder/PlugDevicePage.html',
-    styleUrls: ['./components/PlugDeviceFolder/PlugDevicePage.css','./assets/css/Share.css'],
+    templateUrl : './PlugDevicePage.html',
+    styleUrls: ['./PlugDevicePage.css','../css/Share.css'],
     providers: [],
 })
 @Injectable()
@@ -30,13 +26,13 @@ export class PlugDevicePageComponent implements OnInit{
     mainApp= AppComponent.getInstance();
     i18nManager=i18nManager.getInstance();
     ImgPath=ImgPathList.getInstance();
-    DeviceService=DeviceService.getInstance();
+    DeviceService;
     private onChangeCallback: (_: any) => void;
     private onTouchedCallback: () => void;
-    constructor(private changeDetectorRef: ChangeDetectorRef,
-        private protocol: protocolService){
+    constructor(private changeDetectorRef: ChangeDetectorRef,){
         //this.MouseMoveObjectFn.addMoveObject('KeyBoardUI2')
         console.log('%c PlugDevicePageComponentInitial','background: red; color: white');
+        this.DeviceService=DeviceService.getInstance();
 
     }
     ngAfterViewInit(){
