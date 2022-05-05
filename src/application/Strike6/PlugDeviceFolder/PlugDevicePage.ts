@@ -36,8 +36,16 @@ export class PlugDevicePageComponent implements OnInit{
 
     }
     ngAfterViewInit(){
+        if(!this.mainApp.Electron_Service.inTheElectronFramework()){
+            this.mainApp.enterAssignDevicePage('Strike6');
+            this.mainApp.setPageIndex('KEYBOARDSETTINGS');
+            this.mainApp.onLoading = false;
+        }
 
-        
+
+        //SelectDevice
+        //KEYBOARDSETTINGS('Strike6');
+
     }
     ngOnInit(){  
     }

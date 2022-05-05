@@ -78,6 +78,8 @@ export class AppComponent implements OnInit{
     alertMessageBool: Boolean=false;
     onSystemSetting: Boolean=false;
     CurrentPageName="SelectDevice";
+    //SelectDevice
+    //KEYBOARDSETTINGS
     KeyBoardSetPageBtn:any=1;
     onEqipBtn: Boolean =false;
     onAppImportExport: Boolean =false;
@@ -331,7 +333,7 @@ export class AppComponent implements OnInit{
         this.onLoading=true;
         console.log('%c enterAssignDevicePage', 'color:rgb(255,0,0)', checkName,this.DeviceService);
 
-        if (this.DeviceService.checkDeviceExists(checkName)) {
+        //if (this.DeviceService.checkDeviceExists(checkName)) {
             this.KeyBoardStyle.nowTargetKey = checkName;
             if (this.KeyBoardStyle.getTarget() === undefined) {
                 console.log('%c KeyBoardStyle.undefined', 'color:rgb(255,75,255,1)', checkName);
@@ -420,7 +422,7 @@ export class AppComponent implements OnInit{
             // else {
                 this.ReadDBDataFromServer();
             //}
-        }
+        //}
     }
     boxSelectionStart() {
         this.M_Light_APMode.BSModule_L.EventCanBoxSelect = !this.M_Light_APMode.BSModule_L.EventCanBoxSelect;
@@ -976,6 +978,9 @@ export class AppComponent implements OnInit{
     }
     ReadAllDBPass=[]
     ReadDBDataFromServer() {
+        if(!this.Electron_Service.inTheElectronFramework()){
+              return;
+        }
         var waitingSynchronization = 1;
         this.ReadAllDBPass = [];
         //var getDevice_data = this.dbService.AllDBtempData.pluginDeviceData;
@@ -1101,6 +1106,9 @@ export class AppComponent implements OnInit{
 
     setDBDataToServer(sourceName) 
     {
+        if(!this.Electron_Service.inTheElectronFramework()){
+            return;
+        }
         var devdata = {
             'SN': this.DeviceService.getCurrentDevice().SN,
             'devicename': this.DeviceService.getCurrentDevice().devicename,
@@ -1302,7 +1310,7 @@ export class AppComponent implements OnInit{
         this.CurrentPageName=pageName;
         this.changeDetectorRef.detectChanges();
         switch (pageName) {
-            case "SelectDevice": 
+            case "SelectDevice":
                 break;
             case "Custom Effect":
                 this.pageIconSet = [true, true, true, true];

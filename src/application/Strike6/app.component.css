@@ -225,7 +225,7 @@
 :host {
     overflow: hidden;
     height: 800px;
-    width: 1200px;
+    width: 1280px;
     user-select: none;
     position: absolute;
     /* margin-top: 29px; */
@@ -288,7 +288,7 @@ background-color: red;}
     overflow-y: scroll;
     overflow-x: hidden;
     margin-top: 5vh;
-    width: 21.3vw;
+    width: 272.63px;
 
 }
 
@@ -300,7 +300,7 @@ background-color: red;}
 
     position: absolute;
     height: 3vh;
-    width: 21.3vw;
+    width: 272.63px;
     top: 615px; 
     left: 0.1%;
     font-size: 17px;
@@ -317,11 +317,11 @@ background-color: red;}
 
 #KeyBoardMacroSearchSetting {
     position: absolute;
-    height: 22vh;
+    height: 176px;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin-top: 44.2vh;
-    width: 21.3vw;
+    margin-top: 353.6px;
+    width: 272.63px;
 }
 
 
@@ -366,7 +366,7 @@ background-color: red;}
     overflow-y: scroll;
     overflow-x: hidden;
     margin-top: 18vh;
-    width: 21.3vw;
+    width: 272.63px;
 
 }
 
@@ -612,8 +612,8 @@ input.InputBtnStyle:hover {
     padding: 0;
     margin-top: 1%;
     border: none;
-    width: 2.9vw;
-    height: 3.6vh;
+    width: 37.109px;
+    height: 28.797px;
     font-size: 1.5vh;
     background: rgb(87, 0, 0);
     box-sizing: border-box;
@@ -637,7 +637,7 @@ input.functionInputBtnStyle:hover {
     box-sizing: border-box;
     background-color: #e4e2e2;    
     pointer-events: none;
-    font-size: 1vw;
+    font-size: 12.8px;
 }
 .KeyPageAssignBtnStyle{
     background-repeat: no-repeat;
@@ -746,7 +746,7 @@ input.functionInputBtnStyle:hover {
     position: absolute;
     height: 29vh;
     margin-top: 42vh;
-    width: 21.3vw;
+    width: 272.63px;
 
 }
 input[type="range"].PGInputRange {
@@ -923,7 +923,7 @@ input[type="range"].PGInputRange::-webkit-slider-thumb {
     height: 3vh;
     display: flex;
     align-items: center;
-    font-size: 1vw;
+    font-size: 12.8px;
     margin-top: 0.7vh;
     margin-left: 0.5vw;
 }

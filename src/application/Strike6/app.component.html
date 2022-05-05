@@ -102,7 +102,7 @@ pointer-events: none;">
             {{KeyBoardManager.getTarget().getHibernateStepTime()}}
         </div> -->
         <!-- <div id="P7_4Parameter" style="height: 2.5vh;position: absolute;width: 12vw;
-                            margin-left: 6%;margin-top: 6%;font-size: 1vw;">
+                            margin-left: 6%;margin-top: 6%;font-size: 12.8px;">
             <img src="image/P7/Sleep.png" style="width: 1.3vw;height: 1.3vw;float: left;">
             <div style="line-height: 100%;float: left;text-align: left;margin-top: 2%;margin-left:0.5vw">
                 {{this.i18nManager.getTarget('SLEEP')}}</div>
@@ -120,7 +120,7 @@ pointer-events: none;">
         margin-left: 4%;
         margin-top: 4%;
         z-index: 9998;
-        font-size: 1vw;">
+        font-size: 12.8px;">
             <img src="image/P7/WinLock2.png" style="width: 1.3vw;height: 1.3vw;float: left;">
             <div style="margin-left:0.5vw;margin-right: 1vw;">
                 {{this.i18nManager.getTarget('WINKEYSETTING')}}</div>
@@ -144,7 +144,7 @@ pointer-events: none;">
             margin-left: 4%;
             margin-top: 4%;
             z-index: 9998;
-            font-size: 1vw;">
+            font-size: 12.8px;">
             <img src="image/P7/DirectionSwitch.png" style="width: 1.3vw;height: 1.3vw;float: left;">
             <div style="margin-left:0.5vw;margin-right: 1vw;">
                 {{this.i18nManager.getTarget('ARROWKEYSWITCH')}}</div>
@@ -294,14 +294,15 @@ height: 100vh;">
 </div>
 <!-- background-image: url(/image/Share/SystemSettingBtn.png); -->
 <div id="SystemSettingPage" [style.display]="onSystemSetting?'block':'none'" style="
-position: absolute;z-index: 9999;height: 100vh;width: 100vw;
+position: absolute;z-index: 9999;    
+height: 100%;
+width: 100%;
 background-color:rgba(0, 0, 0, 0.78);
 ">
 
-    <div src="image/Share/SystemSettingBG.png" style="position: absolute;top: 50%;left: 50%;margin-top: -222px;    width: 40vh;
-                height: 54vh;margin-left: -163px;
-                background-color:rgb(60, 60, 60);
-                background-size: 100% 100%;background-repeat: no-repeat;display: flex;" class="">
+    <div src="image/Share/SystemSettingBG.png" style="position: absolute;top: 50%;left: 50%;margin-top: -222px;    width:320px; height: 432px;
+    margin-left: -163px;background-color:rgb(60, 60, 60);
+    background-size: 100% 100%;background-repeat: no-repeat;display: flex;" class="">
         <div style="position: absolute;margin-left: 8%;margin-top: 5%;font-size: 22px;font-weight: bold;">
             {{i18nManager.getTarget('SETTING')}}
         </div>
@@ -310,18 +311,18 @@ background-color:rgba(0, 0, 0, 0.78);
         </div>
         <div id="SettingUIArea" style="margin-left: 8%;margin-top: 29%;
                                             width: 74%;height: 45%;
-                                                    font-size: 1vw;
+                                                    font-size: 12.8px;
                                                     /* background: red; */
                                                     ">
-            <div style="width: 100%;font-size: 1.2vw;margin-bottom: 5%;/* background: blue; */">
+            <div style="width: 100%;font-size: 15.36px;margin-bottom: 5%;/* background: blue; */">
                 {{i18nManager.getTarget('SW_Version')+':'+i18nManager.SW_Version}}
             </div>
-            <div style="width: 100%;font-size: 1.2vw;margin-bottom: 5%;/* background: blue; */
+            <div style="width: 100%;font-size: 15.36px;margin-bottom: 5%;/* background: blue; */
                                                     ">
                 {{i18nManager.getTarget('FW_Version')+':'+this.DeviceService.getCurrentDevice().version}}
     
             </div>
-            <div style="width: 100%;font-size: 1.2vw;display: flex;align-items: center;">
+            <div style="width: 100%;font-size: 15.36px;display: flex;align-items: center;">
                 {{i18nManager.getTarget('OFF')}}
                 <div class="autoStartCheckBox" data-index="Kcombination" class="ShareOptionStyle"
                     [style.background-image]="i18nManager.autoStart[0]?ImgPath.ShareOption[1]:ImgPath.ShareOption[0]"
@@ -329,8 +330,8 @@ background-color:rgba(0, 0, 0, 0.78);
                 </div>
                 {{i18nManager.getTarget('ON')}}
             </div>
-            <div style="width: 100%;font-size: 1.2vw;display: flex;align-items: center;margin-top:1%;">
-                <div style="width: auto;height: 14px;font-size: 1vw;">
+            <div style="width: 100%;font-size: 15.36px;display: flex;align-items: center;margin-top:1%;">
+                <div style="width: auto;height: 14px;font-size: 12.8px;">
                     {{i18nManager.getTarget('AUTOSTART')}}
                 </div>
             </div>
@@ -409,7 +410,7 @@ background-color:rgba(0, 0, 0, 0.78);
     border-radius: 0.4vw;
     box-sizing: border-box;
     pointer-events: none;
-    font-size: 1vw;">
+    font-size: 12.8px;">
         {{i18nManager.getTarget('HASNEWVERSION')}}
     </div>
 
@@ -896,7 +897,7 @@ background-color:rgba(0, 0, 0, 0.78);
                 (mouseenter)="FActive3='mouseenter'" (mouseup)="FActive3='mouseup'" (mouseleave)="FActive3='mouseleave'"
                 [src]="KeyBoardManager.getTarget().fnModeMartrix[2]||FActive3=='mouseenter'?ImgPath.FNIcon3[1]:ImgPath.FNIcon3[0]"> -->
             <div id="KeyBoardMacroSearchSettingTitle" class="mainStyleBackround" style="position: absolute;
-                    height: 3.7vh;width: 21.3vw;left: 0vw;margin-top: 40vh;
+                    height: 29.59px;width: 272.63px;left: 0px;margin-top: 320px;
                                         ">
                 <div class="mainStyleColor" style="
                             margin-left: 5%;
@@ -905,10 +906,9 @@ background-color:rgba(0, 0, 0, 0.78);
                 </div>
             </div>
             <div id="KeyBoardProjectSelect" class="mainStyleBackround SelectTemplate" style="height:29vh;
-                    margin-top: 5vh;
+                    margin-top: 40px;
                     position: absolute;
                     overflow-y: auto;
-                    width: 21.3vw;
                     border-bottom: 2px solid rgb(100, 100, 100);">
                 <div class="ProjectItem"
                     *ngFor="let item of KeyBoardManager.KeyBoardArray ;let i = index" (click)="project_select($event,i)"
@@ -929,7 +929,7 @@ background-color:rgba(0, 0, 0, 0.78);
             <!-- <div id="KeyBoardFiveLedProject" class="mainStyleBackround" style="height: 19vh;display: block;
                     margin-top: 20.4vh;
                     position: absolute;
-                    width: 21.3vw;">
+                    width: 272.63px;">
                 <div class="ProjectItem" *ngFor="let item of KeyBoardManager.getTarget().fiveDefaultLedCode ;let i = index">
                     <div style="width: 75%;margin-left: 1.7vw;">{{item.projectName}}
                     </div>
@@ -993,7 +993,7 @@ background-color:rgba(0, 0, 0, 0.78);
 
             </div>
             <div data-Note="BottomSwitchBtn"
-                style="display: flex;position: absolute;margin-left: 28%;margin-top: 38vh;height: 7.5vh;width: 800px;">
+                style="display: flex;position: absolute;margin-left: 28%;margin-top: 304px;height: 60px;width: 800px;">
                 <div id="1" (click)="KeyBoardSetPageBtn=1" class="KeyPageAssignBtnStyle" (mouseover)="KBSPBUI[0]=true"
                     (mouseleave)="KBSPBUI[0]=false"
                     [ngStyle]="{'background-image': KeyBoardSetPageBtn==1 ||KBSPBUI[0] ? ImgPath.KBottomBtn[1]:ImgPath.KBottomBtn[0]}">
@@ -1071,7 +1071,8 @@ background-color:rgba(0, 0, 0, 0.78);
 
 
             <section class="BottomArea"
-                style="background-size: 100% 100%; position: absolute;margin-left: 28%; margin-top: 47vh;height: 27.9vh;width: 62.6vw;">
+                style="background-size: 100% 100%; position: absolute;margin-left: 28%; margin-top: 376px;
+                height: 223.19px;width: 801.27px;">
                 <div id="基本功能" [style.display]="KeyBoardSetPageBtn==1?'block': 'none'" style="position: absolute;">
                     <!-- <img src="image/Keyboard/Test1.png"  alt=""
                     style="background-repeat: no-repeat;position: absolute;height: 27.9vh;width: 100vh;"> -->

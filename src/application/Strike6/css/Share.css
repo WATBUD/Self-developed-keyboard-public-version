@@ -5,14 +5,12 @@
     overflow-y: scroll;
     overflow-x: hidden;
     margin-top: 14.5vh;
-    width: 21.3vw;
+    width: 272.63px;
     background-size: 100% 100%;
     background: transparent;
 
 }
-
-
-.SelectTemplate ::-webkit-scrollbar-track {
+.SelectTemplate::-webkit-scrollbar-track {
     /* border: 1px solid red;*/
     background-repeat: no-repeat;
 }
@@ -26,18 +24,25 @@
 .SelectTemplate::-webkit-scrollbar {
     width: 15px;
 }
+.SelectTemplate::-webkit-scrollbar-button {
+    background-image: url('/image/ColorSet/UpArrow.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
 .SelectTemplate::-webkit-scrollbar-button:vertical:decrement {
     background-image: url('/image/ColorSet/UpArrow.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 .SelectTemplate::-webkit-scrollbar-button:vertical:increment {
-    background-image: url('/image/ColorSet/DownArrow.png');
+    /* background-image: url('/image/ColorSet/DownArrow.png'); */
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#backHome{
+#backHome {
     position: absolute;
     height: 58px;
     width: 260px;

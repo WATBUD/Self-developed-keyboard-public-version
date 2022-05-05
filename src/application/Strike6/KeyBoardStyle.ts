@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 @Injectable()
 export class KeyBoardStyle {
     nowTargetIndex = 0
-    nowTargetKey='';
+    nowTargetKey='Strike6';
     //BGImage:'url(/image/Share/KB1KeyerEffects.png)',
 
     keyBoardList = {
