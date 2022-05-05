@@ -10,7 +10,7 @@
         position: absolute;width: 8vw;height: auto;border: 1px solid #91A9BF;">
 
     </div>
-    <div id="LedModeSelect" style="width: 17.3vw;height:232px;    margin-left: 0.8vw;" class="SelectTemplate">
+    <div id="LedModeSelect" style="width: 17.3vw;height:232px;    margin-left: calc(var(--CustomWidth)*0.8);" class="SelectTemplate">
         <div class="LEDModeSelect" (click)="LEDModeSelect($event,i);"
             *ngFor="let item of M_Light_APMode.recordModeArr ;let i = index"
             [style.background-color]="(M_Light_APMode.currentModeIndex==i)?'rgb(255, 87, 0)':'rgb(44, 44, 44)'"
@@ -25,11 +25,11 @@
 
 
             <img (click)="OpenLeftDropDownListUI($event,i)"
-                style="float: right;margin-top: 0.2vh;margin-right: 2px;"
+                style="float: right;margin-top: calc(var(--CustomHeight)*0.2);margin-right: 2px;"
                 [src]="(M_Light_APMode.currentModeIndex==i)?ImgPath.SwitchIcon[1]:ImgPath.SwitchIcon[0]">
 
             <img [src]="LEDModeEyeStatus(i)" (click)="RGBEyeClose(i);" style="float: right;
-                    margin-right: 0.2vw;">
+                    margin-right: calc(var(--CustomWidth)*0.2);">
 
         </div>
     </div>
@@ -47,15 +47,15 @@
         </div>
     </div>
     <div id="ScrollArea" style=" position: absolute;
-    top: 10vh;
-    left: 20vw;
+    top: calc(var(--CustomHeight)*10);
+    left: calc(var(--CustomWidth)*20);
     width: 80%;
     height: 90%;
     background-color: gray;
     overflow: auto;"  >
 
 
-        <div id="ScrollContentArea" style="position: absolute;width: 820vw;height: 900vh;
+        <div id="ScrollContentArea" style="position: absolute;width: 820%;height: 900%;
             transform: scale(0.5);transform-origin: left top;background-color: red;" 
             [style.background-color]="MouseBoxSelectionFn.fnEanble?'gray':'red'">
             <!-- <div id="KeyBoardUI" style="   position: absolute;
@@ -101,7 +101,7 @@
         
         </div>
     </div>
-    <div id="FunctionList" style="background: #0808ce57;width: 62vw;height: 3vh;left: 20vw;top: 7vh;position: absolute;">
+    <div id="FunctionList" style="background: #0808ce57;width: calc(var(--CustomWidth)*62);height:24px;left: calc(var(--CustomWidth)*20);top: 7vh;position: absolute;">
         <input id="SwitchMouseMove" type="button" value="MoveMouseEvent true" (mousedown)="switchMouseEvent('MME')">
         <input id="SwitchMouseBoxSelection" type="button" value="MouseBoxSelection true"(mousedown)="switchMouseEvent('MBS');">
         <input id="CenterBtn" type="button" value="Center" (mousedown)="CenterShow()">

@@ -1318,7 +1318,6 @@ export class AppComponent implements OnInit{
             case "Custom Effect":
                 this.pageIconSet = [true, true, true, true];
                 // var CRUDDom = document.getElementById("CRUD");
-                // CRUDDom.style.height = 2.5*num + "vh";
                 this.page7_custom_box_selectionJs();
                 this.page7_custom_square_color_picker();
                 this.LCFM.refreshRange();
@@ -1355,7 +1354,6 @@ export class AppComponent implements OnInit{
                 this.pageIconSet = [false, true, true, false];
                 var num = count_boolean(this.pageIconSet, true);
                 // var CRUDDom = document.getElementById("CRUD");
-                // CRUDDom.style.height = 2.5*num + "vh";
                 var KeyAssignUIStyleList = this.elementRef.nativeElement.querySelectorAll(".KeyAssignUIStyle");
                 //console.log("KeyAssignUIStyleList",KeyAssignUIStyleList);    
                 this.KeyBoardStyle.applyStyles(KeyAssignUIStyleList);

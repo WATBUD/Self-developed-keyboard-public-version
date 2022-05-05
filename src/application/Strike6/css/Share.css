@@ -165,7 +165,7 @@ input[type="range"].LedOptionInputRange::-webkit-slider-thumb {
     position: absolute;
     height: 51px;
     width: 72%; 
-    margin-left: 10vw;
+    margin-left: calc(var(--CustomWidth)*10);
     /* margin-left: 5%; */
     /* margin-right: 5%; */
     -webkit-app-region: drag;
@@ -217,7 +217,7 @@ input[type="range"].LedOptionInputRange::-webkit-slider-thumb {
 .BottomArea{
     position: absolute;
     margin-left: 30%;
-    margin-top: 54vh;
+    margin-top: calc(var(--CustomHeight)*54);
     height: 27.9vh;
     width: 63.7vw;
     background-size: 100% 100%;

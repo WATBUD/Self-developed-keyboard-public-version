@@ -224,11 +224,13 @@
 
 :host {
     overflow: hidden;
-    height: 800px;
-    width: 1280px;
     user-select: none;
+    
+    --CustomWidth: 12.8px;
+    --CustomHeight: 8.0px;
     position: absolute;
-    /* margin-top: 29px; */
+    width: calc(var(--CustomWidth)*100);
+    height: calc(var(--CustomHeight)*100);
 }
 
 #ShowLoadingMessage{
@@ -263,7 +265,7 @@ margin-top: 0;background: #0000008a;
 
 
 .ProjectItem{
-    line-height: 3vh;
+    line-height:24px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -284,7 +286,7 @@ background-color: red;}
 
 .ProjectSelect {
     position: absolute;
-    height: 34vh;
+    height: calc(var(--CustomHeight)*34);
     overflow-y: scroll;
     overflow-x: hidden;
     margin-top: 5vh;
@@ -299,7 +301,7 @@ background-color: red;}
 #KeyBoardPage .KBMacroSettingOption{
 
     position: absolute;
-    height: 3vh;
+    height:24px;
     width: 272.63px;
     top: 615px; 
     left: 0.1%;
@@ -308,7 +310,7 @@ background-color: red;}
 #MacroPage .MacroSettingOption{
     position: absolute;
     height: 9.7vh;
-    width: 31vh;
+    width: calc(var(--CustomHeight)*31);
     top: 38%;
     left: 4%;
     background-repeat: no-repeat;
@@ -362,10 +364,10 @@ background-color: red;}
 
 #ScriptClassSelect {
     position: absolute;
-    height: 32vh;
+    height: calc(var(--CustomHeight)*32);
     overflow-y: scroll;
     overflow-x: hidden;
-    margin-top: 18vh;
+    margin-top: calc(var(--CustomHeight)*18);
     width: 272.63px;
 
 }
@@ -402,9 +404,9 @@ background-color: red;}
 
 #MacroFileSelectList {
     position: absolute;
-    width: 65vw;
-    height: 35vh;
-    margin-left: 23.6vw;
+    width: 832px;
+    height: calc(var(--CustomHeight)*35);
+    margin-left: 302.08px;
     margin-top: 12.4vh;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -497,10 +499,10 @@ text-align: center;
 #ShareSelectList {
     overflow-y: visible;
     position: absolute;
-    width: 10vw;
+    width: calc(var(--CustomWidth)*10);
     margin-left: 0vw;
     margin-top: 0vh;
-    height: 10vh;
+    height: calc(var(--CustomHeight)*10);
 }
 
 
@@ -558,8 +560,8 @@ input[type="checkbox"].autoStartCheckBox:checked{
     /* 關閉功能 */
     background: transparent;
     padding: 0;
-    line-height: 3vh;
-    margin-left: 0.6vw;
+    line-height:24px;
+    margin-left: calc(var(--CustomWidth)*0.6);
     text-overflow: ellipsis;
     width: 86%; 
 }
@@ -633,7 +635,7 @@ input.functionInputBtnStyle:hover {
     z-index: 9998;
     line-height: 3.2vh;
     border: 2px solid #4d5b6f;
-    border-radius: 0.4vw;
+    border-radius: calc(var(--CustomWidth)*0.4);
     box-sizing: border-box;
     background-color: #e4e2e2;    
     pointer-events: none;
@@ -673,14 +675,14 @@ input.functionInputBtnStyle:hover {
 .MacroFiletItem{
     width: 7%;display: inline-block;
     box-sizing: border-box;
-    /* margin: 0.8vw; */
+    /* margin: calc(var(--CustomWidth)*0.8); */
     margin-left: 1.8vw;
-    margin-top: 0.9vw;
+    margin-top: calc(var(--CustomWidth)*0.9);
     text-overflow: ellipsis;
     overflow: hidden;
     color: rgb(200, 200, 200);
     text-align: center;
-    height: 10vh;
+    height: calc(var(--CustomHeight)*10);
     white-space: nowrap;font-size: 1.9vh;
 }
 
@@ -745,7 +747,7 @@ input.functionInputBtnStyle:hover {
 #PGSettingOption {
     position: absolute;
     height: 232px;
-    margin-top: 42vh;
+    margin-top: calc(var(--CustomHeight)*42);
     width: 272.63px;
 
 }
@@ -757,7 +759,7 @@ input[type="range"].PGInputRange {
     background: -webkit-linear-gradient(#2e9cfb, #2e9cfb) no-repeat, rgb(42, 42, 42);
     background-size: 0 100%; 
     width: 5vw;
-    height: 0.6vh;
+    height: calc(var(--CustomHeight)*0.6);
     border-radius: 15px;
     vertical-align: middle;
 }
@@ -918,14 +920,14 @@ input[type="range"].PGInputRange::-webkit-slider-thumb {
 
 
 .AdvancedEffectFrame{
-    line-height: 3vh;
+    line-height:24px;
     width: 100%;
-    height: 3vh;
+    height:24px;
     display: flex;
     align-items: center;
     font-size: 12.8px;
-    margin-top: 0.7vh;
-    margin-left: 0.5vw;
+    margin-top: calc(var(--CustomHeight)*0.7);
+    margin-left: calc(var(--CustomWidth)*0.5);
 }
 /*#endregion Animation*/
 

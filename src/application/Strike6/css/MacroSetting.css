@@ -1,7 +1,7 @@
 #MacroSetting {
     position: absolute;
-    height: 28.3vh;
-    margin-top: 52vh;
+    height: 226.391px;
+    margin-top: 416px;
     width: 272.63px;
 
 }
@@ -19,7 +19,7 @@
     position: absolute;
     height: 4.7vh;
     width: 272.63px;
-    margin-top: 13vh;
+    margin-top: calc(var(--CustomHeight)*13);
     /* background: red; */
     display: flex;
     align-items: center;
@@ -29,8 +29,8 @@
     position: absolute;
     left: 0px;
     top: -12%;
-    height: 3vh;
-    width: 14vw;
+    height:24px;
+    width: calc(var(--CustomWidth)*14);
     display: flex;
     align-items: center;
 }
@@ -44,8 +44,13 @@
 
 [data-name="Macro_UseButton"]
 {
-    leFt: 225.28px;;top: 26.88px;;position: absolute;
+    leFt: 225.28px;top: 26.88px;;position: absolute;
     background-repeat: no-repeat;border: none;width: 37.1px;height: 28.8px;font-size: 12.8px;
+}
+
+[data-Macro_BottomArea]
+{
+    position: absolute;margin-left: 302.08px; margin-top: 416px;height: 226.391px;width: 832px;
 }
 
 

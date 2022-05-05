@@ -33,9 +33,9 @@
 
 }
 .LEDModeSelect{
-    line-height: 3vh;
+    line-height:24px;
     width: 100%;
-    height: 3vh;
+    height:24px;
     font-size: 12.8px;
     font-weight: bold;
     margin-top: 2%;

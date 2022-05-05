@@ -67,3 +67,15 @@
     background-position: center;
 }
  */
+
+
+ #PGSelectTitle{
+    position: absolute;
+    height: 32.8px;
+    width: 271.359px;
+    background-color: rgb(29,29,29);
+    color: rgb(112,112,112);
+    margin-top:24px;
+    display: flex;
+    align-items: center;
+ }
