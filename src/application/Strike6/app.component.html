@@ -1,21 +1,10 @@
 <!-- <router-outlet></router-outlet> -->
-
  <div id="拖曳視窗" class="dragableArea" style="background-color: transparent;">
 </div>
-
-<!-- <div class="ModeBG" style="position: absolute;
-    width: 233px;height: 63px;right: 40vw;
-    top: 24vh;z-index: 9999;
-    background-image: url(/image/Share/AlternateKB1.png);
-    background-repeat: no-repeat;" (click)="this._RefreshDevice()">
-</div> -->
-
-
-
 <sync_AppModePage *ngIf="CurrentPageName=='Sync Device'" style="z-index: 9999;
 position: absolute;
-width: 100vw;
-height: 100vh;
+width: 100%;
+height: 100%;
 margin: 0;
 padding: 0;
 user-select: none;
@@ -25,7 +14,7 @@ background: #2c3d32;"></sync_AppModePage>
 style="display: flex;
 z-index: 9998;
 position: absolute;
-width: 100vw;
+width: 100%;
 height: 90vh;
 margin: 0;
 align-items: center;
@@ -60,9 +49,9 @@ pointer-events: none;">
 </div>
 
 <div *ngIf="CurrentPageName=='KEYBOARDSETTINGS'" class="SelectTemplate" id="ShowAdvancedList"
-    style="position: absolute;height: 100vh;z-index: 9999;width: 100vw;  margin-top: 0;background: rgba(0, 0, 0, 0.78);"
+    style="position: absolute;height: 100%;z-index: 9999;width: 100%;  margin-top: 0;background: rgba(0, 0, 0, 0.78);"
     [style.display]="ShowAdvancedList?'block': 'none'">
-    <div id="RecordLedUI" class="SelectTemplate" style="height: 33vh;width: 19vw;margin-top: 33vh;left: 42vw;">
+    <div id="RecordLedUI" class="SelectTemplate" style="height: 264px;width: 19vw;margin-top: 264px;left: 42vw;">
         <div class="AdvancedEffectFrame" *ngFor="let item of LCFM.LedChainFrames ;let i = index"
             (click)="recordCustomLedindex=i;"
             [style.background-color]="(recordCustomLedindex==i)?'rgb(255, 87, 0)':'rgb(44, 44, 44)'">
@@ -80,15 +69,8 @@ pointer-events: none;">
 </div>
 
 
-<div *ngIf="this.P_S_OSetting" id="ProfileSettingOption"
-    style="position: absolute;height: 100vh;z-index: 9999;width: 100vw;  margin-top: 0;background: rgba(0, 0, 0, 0.78);">
-    <div id="RecordPSOUI" class="mainStyleBackround" style="height: 33vh;
-    width: 23vw;
-    margin-top: 33vh;
-    left: 42vw;
-    position: absolute;
-    display: flex;
-    flex-direction: column;">
+<div *ngIf="this.P_S_OSetting" data-ProfileSettingOption>
+    <div data-RecordPSOUI class="mainStyleBackround">
     
         <!-- <input class="PGInputRange" step="1" max="3" min="0" type="range"
             [(ngModel)]="KeyBoardManager.getTarget().hibernateTime">
@@ -106,21 +88,14 @@ pointer-events: none;">
             <img src="image/P7/Sleep.png" style="width: 1.3vw;height: 1.3vw;float: left;">
             <div style="line-height: 100%;float: left;text-align: left;margin-top: 2%;margin-left:0.5vw">
                 {{this.i18nManager.getTarget('SLEEP')}}</div>
-            <div style="width: 2vw;height: 1.1vw;
+            <div style="width: 25.6px;height: 1.1vw;
                                        float: right;margin-top: 2%;background-size: 100% 100%;"
                 [style.background-image]="KeyBoardManager.getTarget().hibernate? ImgPath.ShareOption[1]:ImgPath.ShareOption[0]"
                 (click)="KeyBoardManager.getTarget().hibernate=!KeyBoardManager.getTarget().hibernate;">
             </div>
 
         </div> -->
-        <div id="P7_4Parameter" style="height:25px;
-        width: auto;
-        display: flex;
-        align-items: center;
-        margin-left: 4%;
-        margin-top: 4%;
-        z-index: 9998;
-        font-size: 12.8px;">
+        <div data-ProfileSettingParameter>
             <img src="image/P7/WinLock2.png" style="width: 1.3vw;height: 1.3vw;float: left;">
             <div style="margin-left:0.5vw;margin-right: 1vw;">
                 {{this.i18nManager.getTarget('WINKEYSETTING')}}</div>
@@ -136,15 +111,7 @@ pointer-events: none;">
             (click)="KeyBoardManager.getTarget().winLock=!KeyBoardManager.getTarget().directionSwitch;"> -->
         </div>
 
-        <div id="P7_4Parameter"
-            style="height:25px;
-            width: auto;
-            display: flex;
-            align-items: center;
-            margin-left: 4%;
-            margin-top: 4%;
-            z-index: 9998;
-            font-size: 12.8px;">
+        <div data-ProfileSettingParameter>
             <img src="image/P7/DirectionSwitch.png" style="width: 1.3vw;height: 1.3vw;float: left;">
             <div style="margin-left:0.5vw;margin-right: 1vw;">
                 {{this.i18nManager.getTarget('ARROWKEYSWITCH')}}</div>
@@ -183,26 +150,25 @@ pointer-events: none;">
                 1000HZ</div>
         </div> -->
     </div>
-    <input data-index="確定index" class="InputBtnStyle" type="button" value="保存" (click)="this.P_S_OSetting=false"
-        [value]="i18nManager.getTarget('Apply')"
-        style="top: 66.3vh;left: 51.3vw;width: 5.1vw;position: absolute;background-color: #77609729;">
+    <input data-name="確定index" class="InputBtnStyle" type="button" value="保存" (click)="this.P_S_OSetting=false"
+        [value]="i18nManager.getTarget('Apply')">
 </div>
 
 <div id="ImportExportMask" [style.display]="onAppImportExport?'block':'none'" style="
 position: absolute;
 z-index: 9999;
-height: 100vh;
-width: 100vw;
+height: 100%;
+width: 100%;
 background-color:rgba(0, 0, 0, 0.54);
 ">
 </div>
-<div id="ShowAlertMessage" style="position: absolute;height: 100vh;z-index: 9999;width: 100vw;  
+<div id="ShowAlertMessage" style="position: absolute;height: 100%;z-index: 9999;width: 100%;  
 margin-top: 0;background: #0000008a;" [style.display]="alertMessageBool?'block':'none'">
     <div style="position: absolute;color: #f00;
 background: url(/image/DarkAlert.jpg);
 background-size: 100% 100%;
-width: 100vw;font-size: 3vw;
-height: 100vh;">
+width: 100%;font-size: 3vw;
+height: 100%;">
         <div style="position: absolute;left: 25vw;top: 25vh;
         color: #fcfcfc;background-size: 100% 100%;
         text-align: center;font-size: 3vw;
@@ -218,7 +184,7 @@ height: 100vh;">
 
 <!-- [style.display]="this.FWManager.onFireWareUI?'block':'none'" -->
 <div *ngIf="this.FWManager.onFireWareUI" id="FireWareUpdate"
-    style="position: absolute; z-index: 9999; height: 100vh; width: 100vw; background-color: rgba(0, 0, 0, 0.78); display: block;">
+    style="position: absolute; z-index: 9999; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.78); display: block;">
     <img alt="不存在" src="image/Share/SystemSettingBG.png"
         style="position: absolute;top: 50%;left: 50%;margin-top: -222px;margin-left: -163px;">
     <div style="position: absolute;margin-left: 39.2vw;margin-top: 24.9vh;">
@@ -390,8 +356,8 @@ background-color:rgba(0, 0, 0, 0.78);
     <div class="ModeBG" style="position: absolute;
     width: 233px;
     height: 63px;
-    right: 2vw;
-    top: 11vh;z-index: 9998;">
+    right: 25.6px;
+    top: 88px;z-index: 9998;">
         <div (click)="setPageIndex('SelectDevice')" class="DemoUI" style="
                 position: absolute;
                 width: 100%;
@@ -437,8 +403,8 @@ background-color:rgba(0, 0, 0, 0.78);
     <div id="MacroPageMask" [style.display]="MacroManager.onRecord ||macroContentInEdit?'block':'none'" style="
         position: absolute;
         z-index: 9990;
-        height: 100vh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
         background-color: rgba(0, 0, 0, 0.30);
         ">
     </div>
@@ -557,9 +523,6 @@ background-color:rgba(0, 0, 0, 0.78);
                 font-weight: bold;">
         
             <div style="background: rgba(255, 0, 0, 1);" class="NowSelected" (click)="showSetPageData=!showSetPageData">
-                <div id="SaveToKeyBoard"
-                    style="position: absolute;right: -3px;height: 100%;background-position: center center;width: 3.7vw;background-image: url(&quot;image/Share/PageDropDownIcon.png&quot;);background-repeat: no-repeat;pointer-events: none;">
-                </div>
                 <div class="Selected_item" data-identity="SelecListUI">
                     {{i18nManager.getTarget(this.CurrentPageName)}}
                 </div>
@@ -581,16 +544,9 @@ background-color:rgba(0, 0, 0, 0.78);
             </div>
         </div> -->
         <!-- [style.background-image]="stb=='mouseenter'?i18nManager.getTarget().saveImg[1]:i18nManager.getTarget().saveImg[0]" -->
-        <div *ngIf="this.CurrentPageName!='LIGHTINGSETTING'" id="SaveToKeyBoard" (click)="saveDeviceSettingToKeyBoard('fromUI')" style="    
-        margin-left: 25.5vw;
-        margin-top: 4.4vh;
-        position: absolute;
-        height: 5.7vh;
-        background-position: center center;
-        width: 3.7vw;
-        background-repeat: no-repeat;
-        background-image: url(/image/Keyboard/Off/SaveCN.png);
-        background-repeat: no-repeat;" 
+        <div *ngIf="this.CurrentPageName!='LIGHTINGSETTING'"
+        data-name="SaveToKeyBoard_Button"
+        (click)="saveDeviceSettingToKeyBoard('fromUI')"
         (mousemove)="this.SharesFunction.TipUIMessage(i18nManager.getTarget('SAVE'),$event)"
         (mousedown)="stb='mouseenter'" 
         (mouseenter)="stb='mouseenter'" 
@@ -600,7 +556,7 @@ background-color:rgba(0, 0, 0, 0.78);
         </div>
         <div id="TitleCH">{{this.i18nManager.getTarget(this.CurrentPageName)}}</div>
         <section *ngIf="CurrentPageName=='Custom Effect'" id="AdvancedEditColorPage">
-            <div id="AdvancedSelect" class="SelectTemplate" style="height: 33vh;">
+            <div id="AdvancedSelect" class="SelectTemplate" style="height: 264px;">
                 <div id="AdvancedEffectFrame" class="AdvancedEffectFrame"
                     (click)="LCFM.projectSelect(i);setCustomPreviewToServer('byAdvancedSelect');"
                     *ngFor="let item of LCFM.LedChainFrames ;let i = index"
@@ -679,8 +635,8 @@ background-color:rgba(0, 0, 0, 0.78);
                         [style.background-color]="(LCFM.getClass().currentFramesIndex==i)?'rgb(255, 87, 0)':'rgb(44, 44, 44)'">
                         <div
                             style="margin-left: 1.6vw;
-                            width: 2vw;
-                            height: 2vw;
+                            width: 25.6px;
+                            height: 25.6px;
                             text-align: center;">
                             {{i}}</div>
                         <div style="margin-left: 33%;">
@@ -701,7 +657,7 @@ background-color:rgba(0, 0, 0, 0.78);
                         [style.background-color]="(LCFM.getClass().currentModeIndex==i)?'rgb(255, 87, 0)':'rgb(44, 44, 44)'"
                         style="background-color: transparent; ">
                         <div
-                            style="position: absolute;left: 30px;width: 2vw;height: 2vw;text-align: center;">
+                            style="position: absolute;left: 30px;width: 25.6px;height: 25.6px;text-align: center;">
                             {{i}}</div>
                         <div style="position: absolute;left: 9.6vw;">
                             {{LCFM.getClass().matrix_ColorMode[i].modeName}}</div>
@@ -882,18 +838,18 @@ background-color:rgba(0, 0, 0, 0.78);
         </section>
         <section *ngIf="CurrentPageName=='KEYBOARDSETTINGS'" id="KeyBoardPage" style="margin-top: 9vh;">
             <!-- <img id="FNModeUI1" (click)="KeyBoardManager.getTarget().setFnModeMartrix(0);" alt=""
-                style="position: absolute;left: 29.8vw;top: 3.6vh;" (mousedown)="FActive1='mouseenter'"
+                style="position: absolute;left: 29.8vw;top: 28.8px;" (mousedown)="FActive1='mouseenter'"
                 (mouseenter)="FActive1='mouseenter'" (mouseup)="FActive1='mouseup'" (mouseleave)="FActive1='mouseleave'"
                 [src]="KeyBoardManager.getTarget().fnModeMartrix[0]||FActive1=='mouseenter'?ImgPath.FNIcon1[1]:ImgPath.FNIcon1[0]"> -->
             <!-- <img id="FNModeUI2" [style.display]="!checkAssignDeviceisSN('0x195D0x2061')?'block': 'none'"
                 (click)="KeyBoardManager.getTarget().setFnModeMartrix(1);" alt=""
-                style="position: absolute;left: 33.8vw;top: 3.6vh;" (mousedown)="FActive2='mouseenter'"
+                style="position: absolute;left: 33.8vw;top: 28.8px;" (mousedown)="FActive2='mouseenter'"
                 (mouseenter)="FActive2='mouseenter'" (mouseup)="FActive2='mouseup'" (mouseleave)="FActive2='mouseleave'"
                 [src]="KeyBoardManager.getTarget().fnModeMartrix[1]||FActive2=='mouseenter'?ImgPath.FNIcon2[1]:ImgPath.FNIcon2[0]">
 
             <img id="FNModeUI3" [style.display]="!checkAssignDeviceisSN('0x195D0x2061')?'block': 'none'"
                 (click)="KeyBoardManager.getTarget().setFnModeMartrix(2);" alt=""
-                style="position: absolute;left: 37.8vw;top: 3.6vh;" (mousedown)="FActive3='mouseenter'"
+                style="position: absolute;left: 37.8vw;top: 28.8px;" (mousedown)="FActive3='mouseenter'"
                 (mouseenter)="FActive3='mouseenter'" (mouseup)="FActive3='mouseup'" (mouseleave)="FActive3='mouseleave'"
                 [src]="KeyBoardManager.getTarget().fnModeMartrix[2]||FActive3=='mouseenter'?ImgPath.FNIcon3[1]:ImgPath.FNIcon3[0]"> -->
             <div id="KeyBoardMacroSearchSettingTitle" class="mainStyleBackround" style="position: absolute;
@@ -905,7 +861,7 @@ background-color:rgba(0, 0, 0, 0.78);
                             height: 100%;">{{i18nManager.getTarget('MACROSETTINGS')}}
                 </div>
             </div>
-            <div id="KeyBoardProjectSelect" class="mainStyleBackround SelectTemplate" style="height:29vh;
+            <div id="KeyBoardProjectSelect" class="mainStyleBackround SelectTemplate" style="height:232px;
                     margin-top: 40px;
                     position: absolute;
                     overflow-y: auto;
@@ -966,7 +922,7 @@ background-color:rgba(0, 0, 0, 0.78);
                         [(ngModel)]="KeyBoardManager.radioOptions" [value]="65534">
                     <input id="CustomFrequency" placeholder="次數" style="
                                                      width: 17%;
-                                                     height: 2vh;text-align: center;
+                                                     height: 16px;text-align: center;
                                                      background-color: transparent;
                                                      border: 0; " type="text" [(ngModel)]="KeyBoardManager.radioOptionsFrequency"
                         [style.pointer-events]="KeyBoardManager.radioOptions==65534?'auto':'none'"
@@ -986,8 +942,8 @@ background-color:rgba(0, 0, 0, 0.78);
                         [(ngModel)]="KeyBoardManager.radioOptions"
                         [value]="65536">{{this.i18nManager.getTarget('PRESSAGAINTOSTOP')}} 
                 </div>
-                <input class="InputBtnStyle" style="leFt: 17.6vw;top: 2.1vw;position: absolute;
-                background-repeat: no-repeat;border: none;width: 2.9vw;height: 3.6vh;font-size: 1.6vh;" type="button"
+                <input data-name="Macro_UseButton" class="InputBtnStyle" 
+                 type="button"
                   [style.pointer-events]="MacroManager.hasClass()?'auto':'none'" (click)="setSelectionKeyMacro()"
                   value="使用" [value]="i18nManager.getTarget('USE')">
 
@@ -1075,7 +1031,7 @@ background-color:rgba(0, 0, 0, 0.78);
                 height: 223.19px;width: 801.27px;">
                 <div id="基本功能" [style.display]="KeyBoardSetPageBtn==1?'block': 'none'" style="position: absolute;">
                     <!-- <img src="image/Keyboard/Test1.png"  alt=""
-                    style="background-repeat: no-repeat;position: absolute;height: 27.9vh;width: 100vh;"> -->
+                    style="background-repeat: no-repeat;position: absolute;height: 27.9vh;width: 100%;"> -->
                     <input (click)="setSelectionKeyData($event)" class="functionInputBtnStyle" data-index="K11" style="margin-left: 0.4%;margin-top: 1%;" type="button" value="ESC">
                     <input (click)="setSelectionKeyData($event)" class="functionInputBtnStyle" data-index="K12"  type="button" value="⊘">
                     <input (click)="setSelectionKeyData($event)" class="functionInputBtnStyle" data-index="K13"  type="button" value="F1">
@@ -1387,8 +1343,8 @@ background-color:rgba(0, 0, 0, 0.78);
                     </div>
                     <input id="combinationkey" placeholder="組合鍵" maxlength="1" style="width: 47%;
                                     
-                                    height: 3.8vh;
-                                    margin-top: 2vh;
+                                    height: 32.39px;
+                                    margin-top: 16px;
                                     text-align: center;
                                     background-color: #26503b99;
                                     border: 0; " type="text"
@@ -1396,15 +1352,7 @@ background-color:rgba(0, 0, 0, 0.78);
                         [(ngModel)]="KeyBoardManager.combinationkey" (keyup)="combinationkey($event.keyCode)">
 
 
-                    <input class="InputBtnStyle" style="position: absolute;
-                                    background-repeat: no-repeat;
-                                    border: none;
-                                    width: 2.9vw;
-                                    height: 3.9vh;
-                                    margin-top: 2.1vh;
-                                    margin-left: 1vw;
-                                    font-size: 1.6vh;
-                                    box-sizing: border-box;" type="button" (click)="setSelectionKeyCombination()"
+                    <input data-name="KeyAssign_UseButton" class="InputBtnStyle"  type="button" (click)="setSelectionKeyCombination()"
                         value="使用" [value]="i18nManager.getTarget('USE')">
                 </div>
             </section>
@@ -1445,7 +1393,7 @@ background-color:rgba(0, 0, 0, 0.78);
                 <ng-container *ngIf="MacroManager.hasClass()">
                 <div id="MacroSetting" class="mainStyleBackround">
                     <span
-                        style="position: absolute;top: 3%;left: 4%;font-size: 2vh;">{{i18nManager.getTarget('MACRONAME')}}</span>
+                        style="position: absolute;top: 3%;left: 4%;font-size: 16px;">{{i18nManager.getTarget('MACRONAME')}}</span>
                     <input id="FileName" type="text" name="firstname" placeholder="" 
                     (keypress)="EM.regexCustom($event);"
                     [style.display]="this.MacroManager.getClass().hasFile()?'block': 'none'" 
@@ -1454,7 +1402,7 @@ background-color:rgba(0, 0, 0, 0.78);
                         [(ngModel)]="MacroManager.nowEditName">
                     <span style="position: absolute;
                     top: 27%;
-                    left: 4%;font-size: 2vh;
+                    left: 4%;font-size: 16px;
                     ">{{i18nManager.getTarget('DELAYMODE')}}</span>
                     <div class="MacroSettingOption">
                         <input type="radio" name="紀錄延遲"
@@ -1470,7 +1418,7 @@ background-color:rgba(0, 0, 0, 0.78);
                             [(ngModel)]="MacroManager.radioOptions" [value]="2">
                         <input id="customMs" placeholder="" style="
                     width: 17%;
-                    height: 2vh;text-align: center;
+                    height: 16px;text-align: center;
                     background-color: transparent;
                     border: 0; " type="text" value="0"
                             onkeyup="value=value.replace(/[^\d]/g,'');if(value>32767){value=32767}if(value<1){value=0}">
@@ -1484,8 +1432,8 @@ background-color:rgba(0, 0, 0, 0.78);
                 <div id="MacroFileSelectList">
                     <div class="MacroFiletItem" *ngFor="let item of MacroManager.getClass().MacroFiletItem ;let i = index">
                         <div [style.background-image]="MacroManager.getClass().currentChooseMacro==i?ImgPath.FileIcon[1]:ImgPath.FileIcon[0]"
-                            (click)="switch_current_script(i);" style="width: 4.5vw;
-                            height: 4.5vw;
+                            (click)="switch_current_script(i);" style="width: 57.6px;
+                            height: 57.6px;
                             background-repeat: no-repeat;
                             background-position: center;
                             background-image: url(/image/ScriptSet/FileIconOn.png);">
@@ -1610,7 +1558,7 @@ background-color:rgba(0, 0, 0, 0.78);
             </div>
             </ng-container>
         </section> 
-        <section *ngIf="CurrentPageName=='RELATEDPROGRAM'" id="ProgramPage" style="margin-top: 11vh;">
+        <section *ngIf="CurrentPageName=='RELATEDPROGRAM'" id="ProgramPage" style="margin-top: 88px;">
             <div id="PGSelectTitle" style="position: absolute;
                         height: 4.1vh;
                         width: 21.2vw;
@@ -1638,7 +1586,7 @@ background-color:rgba(0, 0, 0, 0.78);
             <div id="ProgramBottomArea" style="position: absolute;
                 margin-left: 28.5%;
                 margin-top: 41.8vh;
-                height: 29vh;
+                height: 232px;
                 width: 58.3vw;
                 background-size: 100% 100%;">
                 <div id="ProgramDownSelect1" class="ProgramSelectTemplate" style="height: 100%;
@@ -1700,7 +1648,7 @@ background-color:rgba(0, 0, 0, 0.78);
         </div>
     </div>
 
-        <div id="LedModeSelect" style="left: 4.5vw;" class="SelectTemplate">
+        <div id="LedModeSelect" style="left: 57.6px;" class="SelectTemplate">
             <div data-identity="switchAPModeEffect" class="LEDModeSelect" (click)="checkAPPModeClick($event,i);"
                 *ngFor="let item of M_Light_APMode.recordModeArr ;let i = index"
                 [style.background-color]="(M_Light_APMode.currentModeIndex==i)?'rgb(255, 87, 0)':'rgb(44, 44, 44)'"
@@ -1758,7 +1706,7 @@ background-color:rgba(0, 0, 0, 0.78);
     </section>
 
     <section *ngIf="CurrentPageName=='Built-ineffects'" id="Builtin_ColorPage">
-        <div id="Built_ineffect" style="left: 4.5vw;" class="SelectTemplate">
+        <div id="Built_ineffect" style="left: 57.6px;" class="SelectTemplate">
             <div class="Built_inModeSelect" (click)="showBuilt_inEffectsLight($event,i);"
                 *ngFor="let item of Built_ineffect.ListData ;let i = index"
                 [style.background-color]="(Built_ineffect.getTarget().translate==item.translate)?'rgb(255, 87, 0)':'rgb(44, 44, 44)'"

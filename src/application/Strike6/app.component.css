@@ -244,7 +244,7 @@ justify-content: center;
 }
 
 #ShowMyProgressMessage{
-    position: absolute;height: 100vh;z-index: 9999;width: 100vw;  
+    position: absolute;height: 100%;z-index: 9999;width: 100%;  
 margin-top: 0;background: #0000008a;
 }
 /*#endregion Share*/
@@ -523,15 +523,15 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"].autoStartCheckBox{
-    width:1.5vh;
-    height: 1.5vh;
+    width:12px;
+    height: 12px;
     border: 2px solid #519BFF;
 }
 
 input[type="checkbox"].autoStartCheckBox:checked{
     background: yellow;
-    width:1.5vh;
-    height: 1.5vh;
+    width:12px;
+    height: 12px;
     border: 2px solid #519BFF;
 }
 
@@ -600,9 +600,9 @@ input.InputBtnStyle:hover {
     position: absolute;
     background-repeat: no-repeat;
     border: none; 
-    width: 2.9vw;
-    height: 3.6vh;
-    font-size: 1.5vh;
+    width: 37.1px;
+    height: 28.8px;
+    font-size: 12px;
     background: rgb(87, 0, 0);
     box-sizing: border-box;
 }
@@ -614,7 +614,7 @@ input.InputBtnStyle:hover {
     border: none;
     width: 37.109px;
     height: 28.797px;
-    font-size: 1.5vh;
+    font-size: 12px;
     background: rgb(87, 0, 0);
     box-sizing: border-box;
 }
@@ -744,7 +744,7 @@ input.functionInputBtnStyle:hover {
 /*#region Page4:ProgramPage*/
 #PGSettingOption {
     position: absolute;
-    height: 29vh;
+    height: 232px;
     margin-top: 42vh;
     width: 272.63px;
 

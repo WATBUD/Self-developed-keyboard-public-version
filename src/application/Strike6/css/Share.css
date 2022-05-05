@@ -1,10 +1,10 @@
 /*#region Select*/
 .SelectTemplate {
     position: absolute;
-    height: 68vh;
+    height: 544px;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin-top: 14.5vh;
+    margin-top: 116px;
     width: 272.63px;
     background-size: 100% 100%;
     background: transparent;
@@ -80,8 +80,8 @@ align-items: center;
 /* 
 .InputObjectBlock input[type="checkbox"]{
     display: inline-flex;
-    width:1.5vh;
-    height: 1.5vh;
+    width:12px;
+    height: 12px;
     border: 2px solid #FFF;
 } */
 
@@ -153,8 +153,8 @@ input[type="range"].LedOptionInputRange::-webkit-slider-runnable-track {
 /* chrome自定義滑塊 */
 input[type="range"].LedOptionInputRange::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 1.6vh;
-    height: 1.6vh;
+    width: 12.8px;
+    height: 12.8px;
     margin-top: 4px;
     background: rgb(255, 0, 0);
     border-radius: 50%;
@@ -242,7 +242,7 @@ input {
 #TitleCH{
     position: absolute;
     height: 27px;
-    width: 37vw;
+    width: 473.594px;
     margin-left: 28.6%;
     line-height: 23px;
     color: rgb(255, 255, 255);

@@ -2,7 +2,7 @@
     <div id="backHome" style="
     background-color: transparent;
     position: absolute;
-    margin-left: 2vw;margin-top: 2vh;" 
+    margin-left: 25.6px;margin-top: 16px;" 
     (click)="this.mainapp.setPageIndex('KEYBOARDSETTINGS')">
     </div>
     <div (mouseleave)="switchEffectUI=false" [style.display]="switchEffectUI?'block':'none'" id="LightModeList" style="z-index: 9990; background-color: #151516;   
@@ -10,7 +10,7 @@
         position: absolute;width: 8vw;height: auto;border: 1px solid #91A9BF;">
 
     </div>
-    <div id="LedModeSelect" style="width: 17.3vw;height:29vh;    margin-left: 0.8vw;" class="SelectTemplate">
+    <div id="LedModeSelect" style="width: 17.3vw;height:232px;    margin-left: 0.8vw;" class="SelectTemplate">
         <div class="LEDModeSelect" (click)="LEDModeSelect($event,i);"
             *ngFor="let item of M_Light_APMode.recordModeArr ;let i = index"
             [style.background-color]="(M_Light_APMode.currentModeIndex==i)?'rgb(255, 87, 0)':'rgb(44, 44, 44)'"

@@ -1161,32 +1161,34 @@ export class AppComponent implements OnInit{
         });
 
     }
-    setCustomPreviewToServer(sourceName) {     
+    setCustomPreviewToServer(sourceName) {
+        if(!this.Electron_Service.inTheElectronFramework()){
+            return;
+        }
         console.log("setCustomPreviewToServer:",this.LCFM.LedChainFrames[this.LCFM.currentChooseIndex]);
         let apmodesetting = {
             iDevice: 0,
             CustomDataObj: this.LCFM.LedChainFrames[this.LCFM.currentChooseIndex]
         }
-        if (this.Electron_Service.inTheElectronFramework()) {
-            let Obj3 = {
+        let Obj3 = {
                 Type: this.Electron_Service.getFuncVar().FuncType.System,
                 Func: this.Electron_Service.getFuncVar().FuncName.SetLEDPreview,
                 Param: apmodesetting
             }
 
             this.Electron_Service.RunSetFunction(Obj3).then((data) => {
-            });
-        }
+        });
     };
 
     setPreviewOnOffToServer() {     
-        //-----------------
+        if(!this.Electron_Service.inTheElectronFramework()){
+            return;
+        }
         //console.log("One CustomData:",this.LCFM.LedChainFrames[this.LCFM.currentChooseIndex]);     
         let apmodesetting = {
             iMode: 1,//0:All Timer Off,1:AP Mode 2: Custom
             bStart: 2//0:Off,1,On,2:On But Not Preview
         }
-        if (this.Electron_Service.inTheElectronFramework()) {
             let Obj3 = {
                 Type: this.Electron_Service.getFuncVar().FuncType.System,
                 Func: this.Electron_Service.getFuncVar().FuncName.SwitchSyncLEDPreview,
@@ -1194,8 +1196,6 @@ export class AppComponent implements OnInit{
             }
             this.Electron_Service.RunSetFunction(Obj3).then((data) => {
             });
-        }
-        //-----------------
     };
 
     
@@ -1203,6 +1203,9 @@ export class AppComponent implements OnInit{
 
     saveDeviceSettingToKeyBoard(sourceName,SetAll=false) 
     {
+        if(!this.Electron_Service.inTheElectronFramework()){
+            return;
+        }
         console.log("saveDeviceSettingToKeyBoard:",sourceName);
         this.onLoading=true;
         let ObjDB = {

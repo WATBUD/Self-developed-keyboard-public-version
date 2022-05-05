@@ -7,6 +7,90 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="indexTitleIcon.png">
+  <style>  
+    @font-face {
+    font-family: 'mywebfont';
+    src: url('./segoeui.ttf');
+    }
+    * {
+        font-family: 'mywebfont'
+    }
+    body {  
+        width:100%; 
+        height:100%;
+        position: absolute;
+        overflow: hidden;  
+        margin:0px
+    }
+    #loading {
+        background: black;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+    }
+    
+    .loadingImage {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        background: #2e98df;
+        border-radius: 50px;
+        animation: loadingImage 1.5s infinite linear;
+    }
+
+    .loadingImage::after {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-top: 10px solid #b160d1;
+        border-bottom: 10px solid #b160d1;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-radius: 50px;
+        content: '';
+        top: -20px;
+        left: -20px;
+        animation: loadingImage_after 1.5s infinite linear;
+    }
+
+    @keyframes loadingImage {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+            background: #2ecc71;
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes loadingImage_after {
+        0% {
+            border-top: 10px solid #b160d1;
+            border-bottom: 10px solid #b160d1;
+        }
+
+        50% {
+            border-top: 10px solid #2e98df;
+            border-bottom: 10px solid #2e98df;
+        }
+
+        100% {
+            border-top: 10px solid #b160d1;
+            border-bottom: 10px solid #b160d1;
+        }
+    }
+</style>  
 </head>
 <body>
   <app-selector style="color: rgb(112, 112, 112);"></app-selector>
