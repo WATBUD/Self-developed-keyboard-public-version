@@ -46,8 +46,8 @@
     position: absolute;
     height: 58px;
     width: 260px;
-    margin-left: 5vw;
-    margin-top: 2.1vh;
+    margin-left:calc(var(--CustomWidth)* 5);
+    margin-top: calc(var(--CustomHeight)*2.1);
 }
 
 /*#endregion Select*/
@@ -91,7 +91,7 @@ align-items: center;
 #CRUD{
         z-index: 9991;
         position: absolute;
-        left: 26.4vw;
+        left: calc(var(--CustomWidth)*26.4);
         width: 30px;
         margin-top: 3px;
         display: flex;
@@ -105,7 +105,7 @@ align-items: center;
     width: 18px;
     height: 18px;
     background-repeat: repeat;
-    margin-top: 1vh;
+    margin-top:calc(var(--CustomHeight)* 1);
     /* background: red; */
 }
 
@@ -218,8 +218,8 @@ input[type="range"].LedOptionInputRange::-webkit-slider-thumb {
     position: absolute;
     margin-left: 30%;
     margin-top: calc(var(--CustomHeight)*54);
-    height: 27.9vh;
-    width: 63.7vw;
+    height: calc(var(--CustomHeight)*27.9);
+    width: calc(var(--CustomWidth)*63.7);
     background-size: 100% 100%;
 }
 

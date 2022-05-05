@@ -35,7 +35,7 @@ export class KeyBoardStyle {
                 "margin-top: 8.7%; margin-left: 69.5%;",
                 "margin-top: 8.7%; margin-left: 75.8%;",
                 "margin-top: 8.7%; margin-left: 82.4%;",
-                "width: 5.6vw; margin-top: 8.7%; margin-left: 88.8%;",
+                "width: calc(var(--CustomWidth)*5.6); margin-top: 8.7%; margin-left: 88.8%;",
                 "width: 11.3%; margin-top: 15.7%; margin-left: 2%;",
                 "margin-top: 15.7%; margin-left: 13.1%;",
                 "margin-top: 15.7%; margin-left: 19.6%;",

@@ -17,7 +17,7 @@
 }
 .MacroClassTitle{
     position: absolute;
-    height: 4.7vh;
+    height: calc(var(--CustomHeight)*4.7);
     width: 272.63px;
     margin-top: calc(var(--CustomHeight)*13);
     /* background: red; */
@@ -37,7 +37,7 @@
 .RBtnStyle{
     height: 19px;
     width: 19px;
-    margin-left: 1vw;
+    margin-left:calc(var(--CustomWidth)* 1);
 }
 
 

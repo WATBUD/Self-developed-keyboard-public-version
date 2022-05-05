@@ -7,10 +7,10 @@
     </div>
     <div (mouseleave)="switchEffectUI=false" [style.display]="switchEffectUI?'block':'none'" id="LightModeList" style="z-index: 9990; background-color: #151516;   
         color: #FFF; box-sizing: border-box;display: none;
-        position: absolute;width: 8vw;height: auto;border: 1px solid #91A9BF;">
+        position: absolute;width:calc(var(--CustomWidth)* 8);height: auto;border: 1px solid #91A9BF;">
 
     </div>
-    <div id="LedModeSelect" style="width: 17.3vw;height:232px;    margin-left: calc(var(--CustomWidth)*0.8);" class="SelectTemplate">
+    <div id="LedModeSelect" style="width: calc(var(--CustomWidth)*17.3);height:232px;    margin-left: calc(var(--CustomWidth)*0.8);" class="SelectTemplate">
         <div class="LEDModeSelect" (click)="LEDModeSelect($event,i);"
             *ngFor="let item of M_Light_APMode.recordModeArr ;let i = index"
             [style.background-color]="(M_Light_APMode.currentModeIndex==i)?'rgb(255, 87, 0)':'rgb(44, 44, 44)'"
@@ -19,7 +19,7 @@
                        margin-left: 5px;width: 22px;height: 100%;object-fit: none;"
                 [src]="(M_Light_APMode.currentModeIndex==i)?item.iconpath[1]:item.iconpath[0]">
 
-            <div style="float: left;line-height: 3.3vh;margin-left: 8px;">
+            <div style="float: left;line-height: calc(var(--CustomHeight)*3.3);margin-left: 8px;">
                 {{i18nManager.getTarget('LED_MODE_NAME')[M_Light_APMode.recordModeArr[i].sortPosition]}}
             </div>
 
@@ -101,7 +101,7 @@
         
         </div>
     </div>
-    <div id="FunctionList" style="background: #0808ce57;width: calc(var(--CustomWidth)*62);height:24px;left: calc(var(--CustomWidth)*20);top: 7vh;position: absolute;">
+    <div id="FunctionList" style="background: #0808ce57;width: calc(var(--CustomWidth)*62);height:24px;left: calc(var(--CustomWidth)*20);top:calc(var(--CustomHeight)* 7);position: absolute;">
         <input id="SwitchMouseMove" type="button" value="MoveMouseEvent true" (mousedown)="switchMouseEvent('MME')">
         <input id="SwitchMouseBoxSelection" type="button" value="MouseBoxSelection true"(mousedown)="switchMouseEvent('MBS');">
         <input id="CenterBtn" type="button" value="Center" (mousedown)="CenterShow()">

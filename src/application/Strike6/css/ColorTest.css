@@ -55,7 +55,7 @@ input[type="range"]#ColorSliderH:focus {
     outline: none;
 }
 input[type="range"]#ColorSliderH::-webkit-slider-thumb {
-    height: 1.6vw;
+    height: calc(var(--CustomWidth)*1.6);
     width: 4%;
     background-repeat: no-repeat;
     background-image: url(/image/skin/colorBarH_ico.png);
@@ -101,7 +101,7 @@ input[type=checkbox] :before{
     top: 30%;
     left: 29%;
     width: 150px;
-    height: 1.1vw;
+    height: calc(var(--CustomWidth)*1.1);
     background-color: #0000;
     transform: rotate(-90deg);
     background-image: url(/image/skin/colorBarH.png);
@@ -114,8 +114,8 @@ input[type=checkbox] :before{
     position: absolute;
     top: 90%;
     left: 0%;
-    width: 14.9VW;
-    height: 1.2vw;
+    width: calc(var(--CustomWidth)*14.9);
+    height: calc(var(--CustomWidth)*1.2);
     background-color: #0000;
     transform: rotate(0deg);
     background-image: url(/image/skin/colorBarH.png);
@@ -141,16 +141,16 @@ input[type=checkbox] :before{
     /* background: -webkit-linear-gradient(left,#ffffff,black); */
 }
 .colorBase{
-    width: 1.2vw;
+    width: calc(var(--CustomWidth)*1.2);
     border-radius: 10px;
-    height: 1.2vw;
+    height: calc(var(--CustomWidth)*1.2);
     border: 1px #2e2f2e solid;
 }
 .colorBaseList{
     left: 62%;
     top: 26%;
     width: calc(var(--CustomWidth)*14);
-    height: 6vh;
+    height:calc(var(--CustomHeight)* 6);
     position: absolute;
     z-index: 9999;
     display: flex;
@@ -163,8 +163,8 @@ input[type=checkbox] :before{
 .AdvancedColorBase{
     float: left;
     background-color: #c7cc33;
-    width: 1.8vw;
-    height: 1.8vw;
+    width: calc(var(--CustomWidth)*1.8);
+    height: calc(var(--CustomWidth)*1.8);
     border: 1px solid #2e2f2e;
     margin-bottom: 3px;
     margin-left: 3px;
@@ -173,8 +173,8 @@ input[type=checkbox] :before{
 
 
 .circle {
-    width: 1vh;
-    height: 1vh;
+    width:calc(var(--CustomHeight)* 1);
+    height:calc(var(--CustomHeight)* 1);
     background: transparent;
     position: absolute;
     pointer-events: none;

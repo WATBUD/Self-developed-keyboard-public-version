@@ -269,7 +269,7 @@ margin-top: 0;background: #0000008a;
     width: 100%;
     display: flex;
     align-items: center;
-    height: 3.9vh;
+    height: calc(var(--CustomHeight)*3.9);
     margin-bottom: 2%;
     border-radius: 3px;
     box-sizing: border-box;
@@ -289,7 +289,7 @@ background-color: red;}
     height: calc(var(--CustomHeight)*34);
     overflow-y: scroll;
     overflow-x: hidden;
-    margin-top: 5vh;
+    margin-top:calc(var(--CustomHeight)* 5);
     width: 272.63px;
 
 }
@@ -309,7 +309,7 @@ background-color: red;}
 }
 #MacroPage .MacroSettingOption{
     position: absolute;
-    height: 9.7vh;
+    height: calc(var(--CustomHeight)*9.7);
     width: calc(var(--CustomHeight)*31);
     top: 38%;
     left: 4%;
@@ -407,7 +407,7 @@ background-color: red;}
     width: 832px;
     height: calc(var(--CustomHeight)*35);
     margin-left: 302.08px;
-    margin-top: 12.4vh;
+    margin-top: calc(var(--CustomHeight)*12.4);
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -455,7 +455,7 @@ position: absolute;
 display: block;
 top: 31.8%;
 left: 46%;
-width: 11.8vw;
+width: calc(var(--CustomWidth)*11.8);
 text-align: center;
 
 }
@@ -500,8 +500,8 @@ text-align: center;
     overflow-y: visible;
     position: absolute;
     width: calc(var(--CustomWidth)*10);
-    margin-left: 0vw;
-    margin-top: 0vh;
+    margin-left:calc(var(--CustomWidth)* 0);
+    margin-top:calc(var(--CustomHeight)* 0);
     height: calc(var(--CustomHeight)*10);
 }
 
@@ -629,11 +629,11 @@ input.functionInputBtnStyle:hover {
 }
 
 #KeyAssignPrompt{
-    height: 9.5vh;
+    height: calc(var(--CustomHeight)*9.5);
     position: absolute;
     width: fit-content;
     z-index: 9998;
-    line-height: 3.2vh;
+    line-height: calc(var(--CustomHeight)*3.2);
     border: 2px solid #4d5b6f;
     border-radius: calc(var(--CustomWidth)*0.4);
     box-sizing: border-box;
@@ -654,8 +654,8 @@ input.functionInputBtnStyle:hover {
 .AdvancedBtnStyle{
     position: absolute;
     top: 92%;
-    width: 5.1vw;
-    height: 3.4vh;
+    width: calc(var(--CustomWidth)*5.1);
+    height: calc(var(--CustomHeight)*3.4);
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
@@ -676,14 +676,14 @@ input.functionInputBtnStyle:hover {
     width: 7%;display: inline-block;
     box-sizing: border-box;
     /* margin: calc(var(--CustomWidth)*0.8); */
-    margin-left: 1.8vw;
+    margin-left: calc(var(--CustomWidth)*1.8);
     margin-top: calc(var(--CustomWidth)*0.9);
     text-overflow: ellipsis;
     overflow: hidden;
     color: rgb(200, 200, 200);
     text-align: center;
     height: calc(var(--CustomHeight)*10);
-    white-space: nowrap;font-size: 1.9vh;
+    white-space: nowrap;font-size: calc(var(--CustomHeight)*1.9);
 }
 
 
@@ -753,12 +753,12 @@ input.functionInputBtnStyle:hover {
 }
 input[type="range"].PGInputRange {
     position: absolute;
-    margin-left: 15.6vw;
-    margin-top: 1.8vw;
+    margin-left: calc(var(--CustomWidth)*15.6);
+    margin-top: calc(var(--CustomWidth)*1.8);
     -webkit-appearance: none; /* 去除默认样式 */
     background: -webkit-linear-gradient(#2e9cfb, #2e9cfb) no-repeat, rgb(42, 42, 42);
     background-size: 0 100%; 
-    width: 5vw;
+    width:calc(var(--CustomWidth)* 5);
     height: calc(var(--CustomHeight)*0.6);
     border-radius: 15px;
     vertical-align: middle;
@@ -781,8 +781,8 @@ input[type="range"].PGInputRange::-webkit-slider-runnable-track {
 /* chrome自定义滑块 */
 input[type="range"].PGInputRange::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 1.2vh;
-    height: 1.3vh;
+    width: calc(var(--CustomHeight)*1.2);
+    height: calc(var(--CustomHeight)*1.3);
     background: #808080;
     border-radius: 50%;
     background-image: url('/image/P7/InputIcon.png');
