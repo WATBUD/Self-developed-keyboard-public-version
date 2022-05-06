@@ -9,14 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeviceService } from './application/Strike6/DeviceService';
 
 import { routes } from './application/Strike6/app.routes';
-let routerModule = RouterModule.forRoot(routes);
 import { HttpModule ,Http} from '@angular/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { sync_AppModePageModule } from './application/Strike6/sync_AppModePage/sync_AppModePage.module'
 import { PlugDevicePageComponent } from './application/Strike6/PlugDeviceFolder/PlugDevicePage';
-routerModule = RouterModule.forRoot(routes, {useHash: true});
+//let routerModule = RouterModule.forRoot(routes, {useHash: true});
+let routerModule = RouterModule.forRoot(routes);
+
 @NgModule({
-    declarations: [
+    declarations: [ 
         AppComponent,
         PlugDevicePageComponent
     ],

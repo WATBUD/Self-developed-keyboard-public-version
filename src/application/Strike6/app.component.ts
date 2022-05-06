@@ -67,7 +67,7 @@ export class AppComponent implements OnInit{
     SharesFunction=SharesFunction.getInstance();
     //-----------------Class專用---------------------
     KBSPBUI: any = [false, false, false, false,false, false, false, false];
-    switchEffectUI:boolean=true;
+    switchEffectUI:boolean=false;
     conslogtestText="";
     subscription: Subscription;//Lag Edited
     ShowPrompt:any=false;
