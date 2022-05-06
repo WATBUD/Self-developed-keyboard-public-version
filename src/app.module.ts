@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './application/Strike6/app.component';
-import { APP_BASE_HREF } from '@angular/common';
+// import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {CommonModule} from '@angular/common';
 // app routes
@@ -41,10 +41,10 @@ routerModule = RouterModule.forRoot(routes, {useHash: true});
     ],
     providers: [
         DeviceService,
-        {
-            provide: APP_BASE_HREF,
-            useValue: '<%= APP_BASE %>'
-        }
+        // {
+        //     provide: APP_BASE_HREF,
+        //     useValue: '<%= APP_BASE %>'
+        // }
     ]
                     
 })
