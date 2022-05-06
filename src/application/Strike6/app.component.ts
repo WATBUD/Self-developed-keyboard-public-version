@@ -918,23 +918,27 @@ export class AppComponent implements OnInit{
 
     
     LaunchFWUpdate() {
+        if (!this.Electron_Service.inTheElectronFramework()) {
+            return;
+        }
         this.FWManager.FWUpdating = true;
         console.log('LaunchFWUpdate', this.FWManager.getTarget().SN);
-        if (this.Electron_Service.inTheElectronFramework()) {
-            let Obj = {
-                Type: this.Electron_Service.getFuncVar().FuncType.System,
-                Func: this.Electron_Service.getFuncVar().FuncName.LaunchFWUpdate,
-                Param: {
-                    SN: this.FWManager.getTarget().SN,
-                },
-            }
-            this.Electron_Service.RunSetFunction(Obj).then((data) => {
-            })
+        let Obj = {
+            Type: this.Electron_Service.getFuncVar().FuncType.System,
+            Func: this.Electron_Service.getFuncVar().FuncName.LaunchFWUpdate,
+            Param: {
+                SN: this.FWManager.getTarget().SN,
+            },
         }
+        this.Electron_Service.RunSetFunction(Obj).then((data) => {
+        })
     }
     i18nClickExcute(){ 
         this.i18nManager.updateSettingValue();
         this.onSystemSetting=false;
+        if (!this.Electron_Service.inTheElectronFramework()) {
+            return;
+        }
         this.system.isMac=this.Electron_Service.getEnv().isMac;
     }
 
@@ -1066,15 +1070,15 @@ export class AppComponent implements OnInit{
         this.setPageIndex('KEYBOARDSETTINGS');
         this.onLoading = false;
         if (this.Electron_Service.get_nodeRequire_fs().existsSync(process.env.APPDATA + "\\Development_SupportDB")) {
-            //var data={"devicename":'GMMK Pro'};
-            var data = { "devicename": this.DeviceService.getCurrentDevice().devicename };
-            var setdata = {
-                "defaultProfile": JSON.parse(JSON.stringify(this.KeyBoardManager.KeyBoardArray)),
-            }
-            this.dbService.Node_NeDB.updateCmd('SupportDevice', data, setdata, function () {
-            });
-
+                //var data={"devicename":'GMMK Pro'};
+                var data = { "devicename": this.DeviceService.getCurrentDevice().devicename };
+                var setdata = {
+                    "defaultProfile": JSON.parse(JSON.stringify(this.KeyBoardManager.KeyBoardArray)),
+                }
+                this.dbService.Node_NeDB.updateCmd('SupportDevice', data, setdata, function () {
+                });
         }
+
     }
     /**
         * process switchChangAllkey Event
@@ -1271,6 +1275,9 @@ export class AppComponent implements OnInit{
 
     setAppModeToServer(from="未設置") {
         //console.log("setAppModeToServer_"+from);
+        if(!this.Electron_Service.inTheElectronFramework()){
+            return;
+        }
         if(from!="setModeFrameRange"){
             var passbyreference=this.APModeData.ParameterNumberList;
             for (let index = 0; index < passbyreference.length; index++) {
@@ -1294,7 +1301,6 @@ export class AppComponent implements OnInit{
         });
         //SetSyncLEDData
         console.log('SetAPModeLEDData:'+from, devdata);
-        if (this.Electron_Service.inTheElectronFramework()) {
             let obj3 = {
                 Type: this.Electron_Service.getFuncVar().FuncType.System,
                 Func: this.Electron_Service.getFuncVar().FuncName.SetAPModeLEDData,
@@ -1302,7 +1308,7 @@ export class AppComponent implements OnInit{
             }
             this.Electron_Service.RunSetFunction(obj3).then((data) => {
             })
-        }
+        
     };
     RGBEffectCenterEventArr:any=[];
     setPageIndex(pageName=""){
@@ -1344,10 +1350,12 @@ export class AppComponent implements OnInit{
                 this.addColor_PickerEvent();
                 this.refreshM_Light_BuiltIn();
                 this.pageIconSet = [false, false, false, false];
-                if(this.Electron_Service.get_nodeRequire_fs().existsSync(process.env.APPDATA + "\\L_tsetEffect")){
-                    document.addEventListener("keyup",(evemt2)=>{
-                        this.setPassiveEffects(37);
-                    });
+                if (this.Electron_Service.inTheElectronFramework()) {
+                    if (this.Electron_Service.get_nodeRequire_fs().existsSync(process.env.APPDATA + "\\L_tsetEffect")) {
+                        document.addEventListener("keyup", (evemt2) => {
+                            this.setPassiveEffects(37);
+                        });
+                    }
                 }
                 break;
             case "KEYBOARDSETTINGS":
@@ -1463,6 +1471,9 @@ export class AppComponent implements OnInit{
         return this.M_Light_APMode.AllBlockColor[index].border&&this.M_Light_APMode.BSModule_L.EventCanBoxSelect?'1px solid #ff0':'none';
     }
     sendCoordnatesToServer(){
+        if (!this.Electron_Service.inTheElectronFramework()) {
+            return;
+        }
         var coordinates = document.querySelectorAll<HTMLElement>('.RGBColorBlockStyle');
         //var coordinates = document.getElementsByClassName('RGBColorBlockStyle') as HTMLCollectionOf<HTMLElement>;    
         console.log('sendCoordnatesToServer長度',coordinates.length,this.M_Light_APMode.ledcoordinates);
@@ -1485,7 +1496,6 @@ export class AppComponent implements OnInit{
             let apmodesetting={
                 DeviceBtnAxis:this.M_Light_APMode.ledcoordinates
             }
-        if (this.Electron_Service.inTheElectronFramework()) {
             let obj = {
                 Type: this.Electron_Service.getFuncVar().FuncType.System,
                 Func: this.Electron_Service.getFuncVar().FuncName.SetDeviceBtnAxis,
@@ -1494,7 +1504,7 @@ export class AppComponent implements OnInit{
             this.Electron_Service.RunSetFunction(obj).then((data) => {
                 console.log('SetDeviceBtnAxis Finish');
             });
-        }
+        
 
 
     }
@@ -1779,6 +1789,9 @@ export class AppComponent implements OnInit{
          
     }
     notifyMessage(setIndex) {
+        if (!this.Electron_Service.inTheElectronFramework()) {
+            return;
+        }
         this.Electron_Service.getElectronSelf().send("AlertOSDMessage",{
             functionName:"notifyMessage",
             index:setIndex,
@@ -1790,6 +1803,9 @@ export class AppComponent implements OnInit{
         if (this.KeyBoardManager.currentChooseKeyBoard != index) {
             this.KeyBoardManager.currentChooseKeyBoard = index;
             this.ShowPrompt=false;
+            if (!this.Electron_Service.inTheElectronFramework()) {
+                return;
+            }
             this.notifyMessage(index);
             let apmodesetting = {
                 Profile: index,
@@ -1806,6 +1822,9 @@ export class AppComponent implements OnInit{
         }
     }
     ImportProfile() {
+        if (!this.Electron_Service.inTheElectronFramework()) {
+            return;
+        }
         this.CRUDCheck=!this.CRUDCheck;
         this.onAppImportExport=true;
         var typeName="";
@@ -1876,7 +1895,6 @@ export class AppComponent implements OnInit{
                 let obj = {
                     Path: fns[0],
                 }
-                if (this.Electron_Service.inTheElectronFramework()) {
                     let obj2 = {
                         Type: this.Electron_Service.getFuncVar().FuncType.System,
                         Func: this.Electron_Service.getFuncVar().FuncName.ImportProfile,
@@ -1952,7 +1970,7 @@ export class AppComponent implements OnInit{
                             alert("檔案有誤 請重新輸入");
                         }
                     });
-                }
+                
 
             }
             else {
@@ -1966,7 +1984,10 @@ export class AppComponent implements OnInit{
 
 
     }
-    ExportProfile() {        
+    ExportProfile() {
+        if (!this.Electron_Service.inTheElectronFramework()) {
+            return;
+        }        
         this.CRUDCheck=!this.CRUDCheck;
         var typeName="";
         var defaultName="";
