@@ -406,6 +406,9 @@ export class ColorModule{
     }
 
     rgbToHex(r, g, b) {
+        r=Math.round(r);
+        g=Math.round(g);
+        b=Math.round(b);
         var red = this.NumTo16Decimal(r);
         var green = this.NumTo16Decimal(g);
         var blue = this.NumTo16Decimal(b);

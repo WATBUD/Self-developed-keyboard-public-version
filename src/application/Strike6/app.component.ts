@@ -12,6 +12,10 @@ import { ColorModule,MacroScriptContent,MacroManager,Wave,APModeModule,KeyBoardM
 import { M_Built_ineffect } from './M_Built_ineffect';
 import { G_Built_ineffect } from './G_Built_ineffect';
 import { AppSettingService } from './AppSettingService';
+import { ENGINE_METHOD_DIGESTS } from 'constants';
+//import  SpecEffects  from './SpecEffects';
+var SpecEffects = require('./SpecEffects');
+
 @Component({
     selector: 'app-selector',
     templateUrl : './app.component.html',
@@ -89,22 +93,9 @@ export class AppComponent implements OnInit{
     macroContentInEdit: Boolean =false;
     pulldownable=false;
     BatteryStep: any =[0,0,0,0];
-    myColor: any ={ 
-        hex: 10774118,
-        hexString: "#ffffff",
-        rgb: {
-            red:100,
-            green:100,
-            blue:100,
-        },
-        hsl: {
-            hue:100,
-            saturation:100,
-            lightness:100,
-        },
-    }
-    dbService;
 
+    dbService;
+    SpecEffects;
     modeNameTable:any=['Static','Cycle','Breathing','Rainbow'];
     static instance;
     static getInstance() {
@@ -232,6 +223,10 @@ export class AppComponent implements OnInit{
             this.Electron_Service.RunSetFunction(DataContent).then((data) => {//=>to AppProtocol=>electron.js
             });
         }
+
+
+        //console.log('%c SpecEffects','background: red; color: white',SpecEffects,this.SpecEffects );
+
     }
     _RefreshDevice(){
         console.log('%c _RefreshDevice:','color:rgb(255,0,0)');
@@ -363,7 +358,32 @@ export class AppComponent implements OnInit{
             this.M_Light_BuiltIn.imageMaxWidth = temp_data.imageMaxWidth;
             this.M_Light_BuiltIn.imageMaxHeight = temp_data.imageMaxHeight;
             this.M_Light_BuiltIn.setKeyTableArray(temp_data.KeyTableArray);
+            if (this.SpecEffects == undefined) {
+                this.SpecEffects = SpecEffects.getInstance();
+                // _this.SpecEffects = new SpecEffects.SpecEffects();
+                this.SpecEffects.RefreshDevices();
+                
+                setInterval(()=>{
+                    this.SpecEffects.GetRenderColors().then((data) => {      
+                        //&&this.M_Light_APMode.BSModule_L.EventCanBoxSelect==false
+                        //console.log('%c this.M_Light_APMode.BSModule_L', 'color:rgb(255,0,0)', this.M_Light_APMode.BSModule_L);
 
+                        var target=data[0];
+                        //varthis.LedColor.rgbToHex()
+                        //console.log('%c GetRenderColors', 'color:rgb(255,0,0)', target);
+                        if (this.CurrentPageName == "LIGHTINGSETTING"&&this.M_Light_APMode.BSModule_L.EventCanBoxSelect==false) {
+                            //console.log('%c M_Light_APMode_AllBlockColor', 'color:rgb(255,0,0)', this.M_Light_APMode.AllBlockColor);
+                            console.log('%c M_Light_APMode_AllBlockColor', 'color:rgb(255,0,0)', this.M_Light_APMode.AllBlockColor[0].color);
+                            for (let index = 0; index < this.M_Light_APMode.AllBlockColor.length; index++) {
+                                this.M_Light_APMode.AllBlockColor[index].color=this.LedColor.rgbToHex(target[index][0],target[index][1],target[index][2]);
+                                // for (let rgb_i = 0; rgb_i < 3; rgb_i++) {
+                                // }
+                            }
+                        }
+                    });
+                }, 100);
+    
+            }
             this.BoxSelectFnArrP7[0] = (e: MouseEvent) => {
                 console.log('%c LCFM_Fn_mousedown', 'background: black; color: white');
 
