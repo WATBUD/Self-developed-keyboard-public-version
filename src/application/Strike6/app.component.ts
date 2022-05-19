@@ -336,6 +336,8 @@ export class AppComponent implements OnInit{
             }
             var T_length = this.KeyBoardStyle.getTarget().keyMapping.length;
             this.KeyBoardManager = new KeyBoardManager(T_length);
+            console.log('%c T_length', 'color:rgb(255,75,255,1)', T_length);
+
             this.APModeData = new Wave(T_length);
             this.M_Light_APMode = new APModeModule(T_length);
             this.LCFM = new LedChainFramesManager(T_length);
@@ -369,13 +371,16 @@ export class AppComponent implements OnInit{
                         //console.log('%c this.M_Light_APMode.BSModule_L', 'color:rgb(255,0,0)', this.M_Light_APMode.BSModule_L);
 
                         var target=data[0];
+
                         //varthis.LedColor.rgbToHex()
-                        //console.log('%c GetRenderColors', 'color:rgb(255,0,0)', target);
+                        console.log('%c GetRenderColors', 'color:rgb(255,0,0)', target);
+                        console.log('%c M_Light_APMode_AllBlockColor', 'color:rgb(255,0,0)', this.M_Light_APMode.AllBlockColor);
                         if (this.CurrentPageName == "LIGHTINGSETTING"&&this.M_Light_APMode.BSModule_L.EventCanBoxSelect==false) {
-                            //console.log('%c M_Light_APMode_AllBlockColor', 'color:rgb(255,0,0)', this.M_Light_APMode.AllBlockColor);
-                            console.log('%c M_Light_APMode_AllBlockColor', 'color:rgb(255,0,0)', this.M_Light_APMode.AllBlockColor[0].color);
-                            for (let index = 0; index < this.M_Light_APMode.AllBlockColor.length; index++) {
-                                this.M_Light_APMode.AllBlockColor[index].color=this.LedColor.rgbToHex(target[index][0],target[index][1],target[index][2]);
+                            //console.log('%c M_Light_APMode_AllBlockColor', 'color:rgb(255,0,0)', this.M_Light_APMode.AllBlockColor[0].color);
+                            var currentArrayOfColors=this.M_Light_APMode.AllBlockColor;
+                            for (let index = 0; index < currentArrayOfColors.length; index++) {
+                                console.log('%c target[index]', 'color:rgb(255,0,0)', target[index],index);
+                                currentArrayOfColors[index].color=this.LedColor.rgbToHex(target[index][0],target[index][1],target[index][2]);
                                 // for (let rgb_i = 0; rgb_i < 3; rgb_i++) {
                                 // }
                             }
@@ -738,8 +743,6 @@ export class AppComponent implements OnInit{
         
     }
 
-
-
     PerKeyArea="";
     PerKeyAreaCick(GroupName) {
         clearInterval(this.M_Light_BuiltIn.repeater);
@@ -776,8 +779,6 @@ export class AppComponent implements OnInit{
         this.M_Light_BuiltIn.setGroupArrayColor(obj);
         
     }
-
-
 
     onRecordClick(){
         if(this.MacroManager.onRecord){
@@ -863,8 +864,6 @@ export class AppComponent implements OnInit{
         this.LCFM.getClass().checkFrameParameter(1,655);    
         this.setDBDataToServer('CustomData');
     }
-
-
 
     ngOnInit() {
         //this.ReadDBDataFromServer();
@@ -1491,9 +1490,7 @@ export class AppComponent implements OnInit{
         return this.M_Light_APMode.AllBlockColor[index].border&&this.M_Light_APMode.BSModule_L.EventCanBoxSelect?'1px solid #ff0':'none';
     }
     sendCoordnatesToServer(){
-        if (!this.Electron_Service.inTheElectronFramework()) {
-            return;
-        }
+
         var coordinates = document.querySelectorAll<HTMLElement>('.RGBColorBlockStyle');
         //var coordinates = document.getElementsByClassName('RGBColorBlockStyle') as HTMLCollectionOf<HTMLElement>;    
         console.log('sendCoordnatesToServer長度',coordinates.length,this.M_Light_APMode.ledcoordinates);
@@ -1513,6 +1510,7 @@ export class AppComponent implements OnInit{
          
         }
         
+        if (this.Electron_Service.inTheElectronFramework()) {
             let apmodesetting={
                 DeviceBtnAxis:this.M_Light_APMode.ledcoordinates
             }
@@ -1524,6 +1522,11 @@ export class AppComponent implements OnInit{
             this.Electron_Service.RunSetFunction(obj).then((data) => {
                 console.log('SetDeviceBtnAxis Finish');
             });
+        }
+        else{
+            
+        }
+           
         
 
 

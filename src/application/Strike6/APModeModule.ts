@@ -507,7 +507,7 @@ export class ModeParameter {
             this.recordModeArr=[
                 new Wave(this.maxkaycapNumber),
             ]
-            for (var i = 0; i <= this.maxkaycapNumber; i++) {//61Key
+            for (var i = 0; i < this.maxkaycapNumber; i++) {//61Key
                 this.AllBlockColor.push({color:this.frame_selectionColors[0],border:true});
             }
         }
